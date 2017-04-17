@@ -10,9 +10,21 @@ import Foundation
 
 class Table{
     var SoBan:Int?
-    var TinhTrang:Bool!
-    var Anh:String!
+    var TinhTrang:Int!
+    var HinhAnh:String!
     var GhiChu:String!
     var MaKV:Int!
     var MaHD:Int!
+    
+    init(SoBan:Int,TinhTrang:Int,HinhAnh:String,GhiChu:String,MaKV:Int,MaHD:Int) {
+        update(SoBan: SoBan, TinhTrang: TinhTrang, HinhAnh: HinhAnh, GhiChu: GhiChu, MaKV: MaKV, MaHD: MaHD)
+    }
+    func update(SoBan:Int,TinhTrang:Int,HinhAnh:String,GhiChu:String,MaKV:Int,MaHD:Int) {
+        self.SoBan = SoBan
+        self.TinhTrang = TinhTrang
+        self.HinhAnh = HinhAnh
+        self.GhiChu = GhiChu
+        self.MaKV = MaKV
+        self.MaHD = MaHD
+    }
 }

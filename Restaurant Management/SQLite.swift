@@ -61,7 +61,27 @@ func edit(query: String)-> Bool{
     return result
 }
 // Tran Van Dong
+func GetTablesFromSQLite(query: String) -> [Table]{
+    var Tables = [Table]()
+    var queryStatement:OpaquePointer? = nil
+    if sqlite3_prepare_v2(database, query, -1, &queryStatement, nil) == SQLITE_OK{
+        while sqlite3_step(queryStatement) == SQLITE_ROW{sqlite3_column_text(queryStatement, 1)
+            let queryResultCol2 = sqlite3_column_text(queryStatement, 2)
+             let queryResultCol3 = sqlite3_column_text(queryStatement, 3)
+            let SoBan = Int(sqlite3_column_int(queryStatement, 0))
+            let TinhTrang = Int(sqlite3_column_int(queryStatement, 1))
+            let HinhAnh = String(cString: queryResultCol2!)
+            let GhiChu = String(cString: queryResultCol3!)
+            let MaKV = Int(sqlite3_column_int(queryStatement, 4))
+            let MaHD = Int(sqlite3_column_int(queryStatement, 5))
+            let table = Table(SoBan: SoBan, TinhTrang: TinhTrang, HinhAnh: HinhAnh, GhiChu: GhiChu, MaKV: MaKV, MaHD: MaHD)
+            Tables.append(table)
+            //print("Query result: \(mssv): \(fname) \(lname) - \(classID) - \(birthday) - \(otherInfo)")
 
+        }
+    }
+    return Tables
+}
 
 // END DONG
 

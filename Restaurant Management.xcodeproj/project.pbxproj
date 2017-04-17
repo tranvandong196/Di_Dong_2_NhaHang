@@ -92,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				0AF2612F1EA4B5B400AF41BA /* Class */,
-				0AF261201EA4A64F00AF41BA /* QuanLyNhaHang.sqlite */,
 				23EDCFFB1EA47F6A005D23F0 /* Nguyen Dinh Son */,
 				0A6B2AB81EA388FA00876B02 /* Table_TableViewCell.swift */,
 				0A6B2ABA1EA3890B00876B02 /* Tables_ViewController.swift */,
@@ -103,6 +102,7 @@
 				0A7B08781EA11F7D002B068E /* Assets.xcassets */,
 				0A7B087A1EA11F7D002B068E /* LaunchScreen.storyboard */,
 				0A7B087D1EA11F7D002B068E /* Info.plist */,
+				0AF261201EA4A64F00AF41BA /* QuanLyNhaHang.sqlite */,
 				0AF261181EA49B3F00AF41BA /* SQLite.swift */,
 				0AF2611F1EA4A08100AF41BA /* SQLite_Briding_header.h */,
 			);

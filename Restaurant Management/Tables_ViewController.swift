@@ -9,14 +9,14 @@
 import UIKit
 var indexSelected = 0
 var id_ban = 0
+var Tables = [Table]()
 class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-    
-   var colorcell = true
+
     @IBOutlet var Tables_TableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
-        
+        Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,18 +35,20 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return Tables.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell_table", for: indexPath) as! Table_TableViewCell
-        cell.TableName_Label.text = "Bàn số \(indexPath.row + 1)"
-        cell.TableThumnail_ImageView.image = #imageLiteral(resourceName: "Ban1")
+        cell.TableName_Label.text = "Bàn số \(Tables[indexPath.row].SoBan!)"
         
-        cell.backgroundColor = colorcell == true ? UIColor.lightGray:UIColor.orange
+        cell.TableThumnail_ImageView.image = UIImage(named: Tables[indexPath.row].HinhAnh)
+       
+        let  NotSetupColor  = UIColor.init(red: 0/255.0, green: 128.0/255.0, blue: 1.0, alpha: 0.5)
+        let didSetupColor = UIColor.init(red: 1.0, green: 128.0/255.0, blue: 0, alpha: 0.7)
+        cell.backgroundColor = Tables[indexPath.row].TinhTrang == 1 ? didSetupColor:NotSetupColor
         cell.selectionStyle = .none
-        colorcell = !colorcell
         return cell
     }
   
