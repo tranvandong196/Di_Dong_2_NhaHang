@@ -7,10 +7,9 @@
 //
 
 import UIKit
-var indexSelected = 0
+var indexSelected_tables = 0
 var id_ban = 0
-var Tables = [Table]()
-var Foods = [Food]()
+
 class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet var Tables_TableView: UITableView!
@@ -54,13 +53,15 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        indexSelected = indexPath.row
+        indexSelected_tables = indexPath.row
         //let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
         //selectedCell.contentView.backgroundColor = UIColor.red
     }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let payAction = UITableViewRowAction(style: .normal, title: "Thanh toán") { (rowAction, indexPath) in
+        let Title = Tables[indexPath.row].TinhTrang  == 1 ? "Thanh toán":"Đặt bàn"
+        let payAction = UITableViewRowAction(style: .normal, title: Title) { (rowAction, indexPath) in
+      
           self.performSegue(withIdentifier: "Seque_detailTable", sender: nil)
             //TODO: edit the row at indexPath here
         }
