@@ -16,6 +16,9 @@
 		0A7B087C1EA11F7D002B068E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A7B087A1EA11F7D002B068E /* LaunchScreen.storyboard */; };
 		0A7B08841EA12CC9002B068E /* TableInfo_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7B08831EA12CC9002B068E /* TableInfo_ViewController.swift */; };
 		0A7B08861EA13C5C002B068E /* food_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7B08851EA13C5C002B068E /* food_TableViewCell.swift */; };
+		23EDCFFF1EA47F8F005D23F0 /* Area_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDCFFC1EA47F8F005D23F0 /* Area_TableViewCell.swift */; };
+		23EDD0001EA47F8F005D23F0 /* Area_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDCFFD1EA47F8F005D23F0 /* Area_TableViewController.swift */; };
+		23EDD0011EA47F8F005D23F0 /* FoodsList_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDCFFE1EA47F8F005D23F0 /* FoodsList_ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		0A7B087D1EA11F7D002B068E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A7B08831EA12CC9002B068E /* TableInfo_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableInfo_ViewController.swift; sourceTree = "<group>"; };
 		0A7B08851EA13C5C002B068E /* food_TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = food_TableViewCell.swift; sourceTree = "<group>"; };
+		23EDCFFC1EA47F8F005D23F0 /* Area_TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area_TableViewCell.swift; sourceTree = "<group>"; };
+		23EDCFFD1EA47F8F005D23F0 /* Area_TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area_TableViewController.swift; sourceTree = "<group>"; };
+		23EDCFFE1EA47F8F005D23F0 /* FoodsList_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodsList_ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,7 @@
 		0A7B08701EA11F7D002B068E /* Restaurant Management */ = {
 			isa = PBXGroup;
 			children = (
+				23EDCFFB1EA47F6A005D23F0 /* Nguyen Dinh Son */,
 				0A7B08711EA11F7D002B068E /* AppDelegate.swift */,
 				0A6B2AB81EA388FA00876B02 /* Table_TableViewCell.swift */,
 				0A6B2ABA1EA3890B00876B02 /* Tables_ViewController.swift */,
@@ -74,6 +81,16 @@
 				0A7B087D1EA11F7D002B068E /* Info.plist */,
 			);
 			path = "Restaurant Management";
+			sourceTree = "<group>";
+		};
+		23EDCFFB1EA47F6A005D23F0 /* Nguyen Dinh Son */ = {
+			isa = PBXGroup;
+			children = (
+				23EDCFFC1EA47F8F005D23F0 /* Area_TableViewCell.swift */,
+				23EDCFFD1EA47F8F005D23F0 /* Area_TableViewController.swift */,
+				23EDCFFE1EA47F8F005D23F0 /* FoodsList_ViewController.swift */,
+			);
+			name = "Nguyen Dinh Son";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,7 +165,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23EDD0001EA47F8F005D23F0 /* Area_TableViewController.swift in Sources */,
 				0A7B08861EA13C5C002B068E /* food_TableViewCell.swift in Sources */,
+				23EDD0011EA47F8F005D23F0 /* FoodsList_ViewController.swift in Sources */,
+				23EDCFFF1EA47F8F005D23F0 /* Area_TableViewCell.swift in Sources */,
 				0A6B2ABB1EA3890B00876B02 /* Tables_ViewController.swift in Sources */,
 				0A6B2ABD1EA3963600876B02 /* food_Detail_ViewController.swift in Sources */,
 				0A7B08841EA12CC9002B068E /* TableInfo_ViewController.swift in Sources */,
