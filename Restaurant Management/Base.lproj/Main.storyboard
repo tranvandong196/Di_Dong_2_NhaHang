@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< Updated upstream
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="res-yZ-BeK">
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nfd-mz-lbU">
+>>>>>>> Stashed changes
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -37,7 +41,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="258" height="50"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EG1-TM-aKc" id="Lb1-VH-Kjw">
-                                                            <rect key="frame" x="0.0" y="0.0" width="258" height="49"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="258" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WUq-gM-aM4" userLabel="food_image">
@@ -474,7 +478,7 @@
         <!--Khu Vực-->
         <scene sceneID="aEG-4R-mUu">
             <objects>
-                <viewController id="3QZ-aU-kEw" sceneMemberID="viewController">
+                <viewController id="3QZ-aU-kEw" customClass="AreaDetail_ViewController" customModule="Restaurant_Management" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XUH-qB-GKK"/>
                         <viewControllerLayoutGuide type="bottom" id="38S-J4-aSn"/>
@@ -484,7 +488,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PRt-eS-ga6">
-                                <rect key="frame" x="40" y="116" width="240" height="218"/>
+                                <rect key="frame" x="40" y="72" width="240" height="218"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="218" id="U6u-K9-Vbg"/>
                                 </constraints>
@@ -502,7 +506,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên khu vực" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nm4-WU-VpV">
-                                <rect key="frame" x="10" y="72" width="114" height="25"/>
+                                <rect key="frame" x="10" y="28" width="114" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="0p0-mP-Yt8"/>
                                     <constraint firstAttribute="height" constant="25" id="BdU-Pr-Azy"/>
@@ -616,7 +620,7 @@
             </objects>
             <point key="canvasLocation" x="-716" y="955"/>
         </scene>
-        <!--Foods List View Controller-->
+        <!--Danh sách món ăn-->
         <scene sceneID="SRB-6T-vlt">
             <objects>
                 <viewController id="VYs-0F-l1d" customClass="FoodsList_ViewController" customModule="Restaurant_Management" customModuleProvider="target" sceneMemberID="viewController">
@@ -637,11 +641,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="140" id="b7Z-Xe-jj0" customClass="foods_TableViewCell" customModule="Restaurant_Management" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="default" indentationWidth="10" rowHeight="140" id="b7Z-Xe-jj0" customClass="FoodCell_TableViewCell" customModule="Restaurant_Management" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="288" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b7Z-Xe-jj0" id="mt9-Kd-9yW">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="139"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QOX-XF-YAV">
@@ -664,6 +668,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="FoodImage" destination="QOX-XF-YAV" id="Rbx-zC-jnC"/>
+                                            <outlet property="FoodName" destination="rXs-cP-TKR" id="CSc-eb-7Os"/>
+                                            <outlet property="FoodPrice" destination="NMc-bM-a7L" id="Ivm-Rd-4ni"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -677,7 +686,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Dbc-hI-U8G"/>
+                    <navigationItem key="navigationItem" title="Danh sách món ăn" id="Dbc-hI-U8G"/>
                     <connections>
                         <outlet property="pickerFoodType" destination="iHc-YK-CoI" id="miz-IX-sRz"/>
                     </connections>
@@ -689,7 +698,7 @@
         <!--Chi tiết món-->
         <scene sceneID="K5R-U3-ZaP">
             <objects>
-                <viewController id="kt5-nr-Tt3" sceneMemberID="viewController">
+                <viewController id="kt5-nr-Tt3" customClass="FoodDetail_ViewController" customModule="Restaurant_Management" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="G3B-XW-71k"/>
                         <viewControllerLayoutGuide type="bottom" id="udU-Xq-q1o"/>
@@ -698,12 +707,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dV9-c6-uRu">
-                                <rect key="frame" x="40" y="72" width="240" height="218"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="218" id="By0-1i-5km"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Mô tả:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8S-NJ-XKN">
                                 <rect key="frame" x="10" y="353" width="90" height="25"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
@@ -716,31 +719,50 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên khu vực" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OH-GN-lAZ">
-                                <rect key="frame" x="10" y="28" width="114" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên món" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OH-GN-lAZ">
+                                <rect key="frame" x="10" y="28" width="294" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="114" id="DIa-3E-cBQ"/>
+                                    <constraint firstAttribute="width" constant="294" id="DIa-3E-cBQ"/>
                                     <constraint firstAttribute="height" constant="25" id="Gyr-CB-JhX"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="114" id="vIw-4n-lHA"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.500.000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E8u-KH-esm">
+                                <rect key="frame" x="16" y="68" width="288" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="H4n-Kc-7yS"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="114" id="UTg-oJ-3Gw"/>
+                                    <constraint firstAttribute="height" constant="25" id="fUk-tR-Ov7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dV9-c6-uRu">
+                                <rect key="frame" x="40" y="108" width="240" height="215"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="215" id="By0-1i-5km"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="L8S-NJ-XKN" firstAttribute="top" secondItem="dV9-c6-uRu" secondAttribute="bottom" constant="19" id="Fz9-Fj-NT3"/>
+                            <constraint firstItem="L8S-NJ-XKN" firstAttribute="top" secondItem="dV9-c6-uRu" secondAttribute="bottom" constant="30" id="Fz9-Fj-NT3"/>
                             <constraint firstAttribute="trailing" secondItem="5zL-yy-s94" secondAttribute="trailing" constant="16" id="HV4-vZ-zdd"/>
                             <constraint firstItem="5zL-yy-s94" firstAttribute="top" secondItem="L8S-NJ-XKN" secondAttribute="bottom" constant="4" id="YLa-rp-ZWG"/>
                             <constraint firstItem="L8S-NJ-XKN" firstAttribute="leading" secondItem="DfL-5K-lQB" secondAttribute="leading" constant="10" id="bQR-rk-fyn"/>
                             <constraint firstItem="5zL-yy-s94" firstAttribute="top" secondItem="L8S-NJ-XKN" secondAttribute="bottom" constant="4" id="cpK-uw-76Z"/>
                             <constraint firstItem="5zL-yy-s94" firstAttribute="leading" secondItem="DfL-5K-lQB" secondAttribute="leading" constant="10" id="gDI-e6-Nnp"/>
+                            <constraint firstItem="E8u-KH-esm" firstAttribute="trailing" secondItem="2OH-GN-lAZ" secondAttribute="trailing" id="jod-wc-eIR"/>
                             <constraint firstItem="2OH-GN-lAZ" firstAttribute="leading" secondItem="DfL-5K-lQB" secondAttribute="leading" constant="10" id="k0m-QY-6UV"/>
+                            <constraint firstItem="E8u-KH-esm" firstAttribute="top" secondItem="2OH-GN-lAZ" secondAttribute="bottom" constant="15" id="k7P-X3-YaM"/>
                             <constraint firstItem="dV9-c6-uRu" firstAttribute="leading" secondItem="DfL-5K-lQB" secondAttribute="leadingMargin" constant="24" id="kfR-vC-ikX"/>
-                            <constraint firstAttribute="trailing" secondItem="2OH-GN-lAZ" secondAttribute="trailing" constant="196" id="m0T-rK-iUF"/>
+                            <constraint firstAttribute="trailing" secondItem="2OH-GN-lAZ" secondAttribute="trailing" constant="16" id="m0T-rK-iUF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dV9-c6-uRu" secondAttribute="trailing" constant="24" id="oWq-PS-7O4"/>
-                            <constraint firstItem="dV9-c6-uRu" firstAttribute="top" secondItem="2OH-GN-lAZ" secondAttribute="bottom" constant="19" id="owf-GH-Y7Z"/>
+                            <constraint firstItem="dV9-c6-uRu" firstAttribute="top" secondItem="2OH-GN-lAZ" secondAttribute="bottom" constant="55" id="owf-GH-Y7Z"/>
                             <constraint firstAttribute="trailing" secondItem="L8S-NJ-XKN" secondAttribute="trailing" constant="220" id="rBx-dr-god"/>
                             <constraint firstItem="udU-Xq-q1o" firstAttribute="top" secondItem="5zL-yy-s94" secondAttribute="bottom" constant="34" id="uGW-CB-H0H"/>
                             <constraint firstItem="2OH-GN-lAZ" firstAttribute="top" secondItem="G3B-XW-71k" secondAttribute="bottom" constant="8" id="zFN-Xe-nlJ"/>
@@ -748,10 +770,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Chi tiết món" id="DQF-Z7-hRQ" userLabel="Chi tiết món"/>
+                    <connections>
+                        <outlet property="Description" destination="5zL-yy-s94" id="tth-Jf-RLo"/>
+                        <outlet property="Image" destination="dV9-c6-uRu" id="Apy-0d-9bZ"/>
+                        <outlet property="Name" destination="2OH-GN-lAZ" id="sYm-BH-69k"/>
+                        <outlet property="Price" destination="E8u-KH-esm" id="z3J-cq-Xmd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xRZ-ah-XeN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="846" y="1742"/>
+            <point key="canvasLocation" x="845.625" y="1741.9014084507041"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sSF-Ce-Px6">
@@ -776,6 +804,10 @@
         <image name="location-trade" width="360" height="460"/>
     </resources>
     <inferredMetricsTieBreakers>
+<<<<<<< Updated upstream
+=======
+        <segue reference="wlb-ww-fV1"/>
+>>>>>>> Stashed changes
         <segue reference="1Z0-TA-nZq"/>
         <segue reference="wlb-ww-fV1"/>
     </inferredMetricsTieBreakers>

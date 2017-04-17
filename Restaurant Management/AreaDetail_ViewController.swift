@@ -1,5 +1,5 @@
 //
-//  FoodsList_ViewController.swift
+//  AreaDetail_ViewController.swift
 //  Restaurant Management
 //
 //  Created by Windy on 4/17/17.
@@ -8,20 +8,13 @@
 
 import UIKit
 
-class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewDataSource {
+class AreaDetail_ViewController: UIViewController {
 
-    var listFoodTypes:[String]! = nil
-    
-    @IBOutlet weak var pickerFoodType: UIPickerView!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        pickerFoodType.delegate=self
-        pickerFoodType.dataSource=self
+
         // Do any additional setup after loading the view.
-        listFoodTypes = ["Tất cả", "Đồ ăn", "Đồ uống"]
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,17 +22,6 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
         // Dispose of any resources that can be recreated.
     }
     
-    //PickerView
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return listFoodTypes.count
-    }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return listFoodTypes[row]
-    }
 
     /*
     // MARK: - Navigation
