@@ -82,7 +82,26 @@ func GetTablesFromSQLite(query: String) -> [Table]{
     }
     return Tables
 }
-
+func GetFoodsFromSQLite(query: String) -> [Food]{
+    var Foods = [Food]()
+    var queryStatement:OpaquePointer? = nil
+    if sqlite3_prepare_v2(database, query, -1, &queryStatement, nil) == SQLITE_OK{
+        while sqlite3_step(queryStatement) == SQLITE_ROW{sqlite3_column_text(queryStatement, 1)
+            let MaMon = Int(sqlite3_column_int(queryStatement, 0))
+            let TenMon = String(cString: sqlite3_column_text(queryStatement, 1))
+            let Gia = Double(sqlite3_column_double(queryStatement, 2))
+            let HinhAnh = String(cString: sqlite3_column_text(queryStatement, 3))
+            let MoTa = String(cString: sqlite3_column_text(queryStatement, 4))
+             let Loai = Int(sqlite3_column_int(queryStatement, 5))
+            let Icon = String(cString: sqlite3_column_text(queryStatement, 6))
+            let food = Food(MaMon: MaMon, TenMon: TenMon, Gia: Gia, HinhAnh: HinhAnh, MoTa: MoTa, Loai: Loai, Icon: Icon)
+            Foods.append(food)
+            //print("Query result: \(mssv): \(fname) \(lname) - \(classID) - \(birthday) - \(otherInfo)")
+            
+        }
+    }
+    return Foods
+}
 // END DONG
 
 //func insert_row(stu: Studentx) -> Bool {

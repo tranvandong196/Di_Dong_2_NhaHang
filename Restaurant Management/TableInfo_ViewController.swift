@@ -27,13 +27,13 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     @IBOutlet weak var otherInfo: UITextView!
       @IBOutlet weak var payTable_Button: UIButton!
     // MARK: *** Global Variable
-
     // MARK: *** Display view
     override func viewDidLoad() {
         super.viewDidLoad()
         foods_TableView.delegate = self
         foods_TableView.dataSource = self
         setup_displayBegin()
+        Foods = GetFoodsFromSQLite(query: "SELECT * FROM MonAn")
         
         // Create notification for two func keyboardWillShow/Hide
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -46,8 +46,8 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
            self.navigationItem.rightBarButtonItem = nil
             self.picture_UIImageView.image = #imageLiteral(resourceName: "Empire_table")
             TotalPrice_Label.text = "195.000đ"
-            otherInfo_Label.text = "Khách VIP"
-            title_navi.title = "Bàn số \(indexSelected + 1)"
+            otherInfo_Label.text = Tables[indexSelected].GhiChu
+            title_navi.title = "Bàn số \(Tables[indexSelected].SoBan!)"
             PositionTable_Button.setTitle("Sân vườn A", for: .normal)
             
         }else{
@@ -56,7 +56,7 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
             TotalPrice_Label.text = "0đ"
             otherInfo_Label.text = "Nhập ghi chú vào đây"
             payTable_Button.isHidden = true
-            PositionTable_Button.setTitle("       Nhập khu vực", for: .normal)
+            PositionTable_Button.setTitle("Nhập khu vực", for: .normal)
         }
     }
     // MARK: *** UIEvent
@@ -77,8 +77,8 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if id_ban >= 0{
-        return foods_name.count
-            }
+            return Foods.count
+        }
         else{
             return 0
         }
@@ -88,9 +88,9 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! foods_TableViewCell
 
-        cell.nameOfFood_Label.text = foods_name[indexPath.row]
-        cell.food_ImageView.image = UIImage(named: foods_thumnail[indexPath.row] + ".png")
-        cell.priceOfFood.text = foods_price[indexPath.row] + "đ"
+        cell.nameOfFood_Label.text = Foods[indexPath.row].TenMon
+        cell.food_ImageView.image = UIImage(named: Foods[indexPath.row].Icon)
+        cell.priceOfFood.text = "\(Int(Foods[indexPath.row].Gia!))đ"
         
         return cell
     }

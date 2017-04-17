@@ -82,7 +82,7 @@
                                                             <outlet property="food_ImageView" destination="WUq-gM-aM4" id="uyN-pC-eCs"/>
                                                             <outlet property="nameOfFood_Label" destination="f07-bl-Rwn" id="Er5-gX-Int"/>
                                                             <outlet property="priceOfFood" destination="63h-89-C4h" id="NLO-8M-nbq"/>
-                                                            <segue destination="AOI-UW-k9a" kind="push" identifier="seque_foodDetal" id="ben-LO-EyD"/>
+                                                            <segue destination="AOI-UW-k9a" kind="showDetail" identifier="seque_foodDetal" action="showViewController:sender:" id="ben-LO-EyD"/>
                                                         </connections>
                                                     </tableViewCell>
                                                 </prototypes>
@@ -394,7 +394,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell_table" rowHeight="75" id="mYE-B6-qOQ" customClass="Table_TableViewCell" customModule="Restaurant_Management" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="56" width="320" height="75"/>
+                                <rect key="frame" x="0.0" y="55.5" width="320" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mYE-B6-qOQ" id="LJR-IH-ZHp">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="74"/>
@@ -484,7 +484,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PRt-eS-ga6">
-                                <rect key="frame" x="40" y="72" width="240" height="218"/>
+                                <rect key="frame" x="40" y="116" width="240" height="218"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="218" id="U6u-K9-Vbg"/>
                                 </constraints>
@@ -502,7 +502,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên khu vực" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nm4-WU-VpV">
-                                <rect key="frame" x="10" y="28" width="114" height="25"/>
+                                <rect key="frame" x="10" y="72" width="114" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="0p0-mP-Yt8"/>
                                     <constraint firstAttribute="height" constant="25" id="BdU-Pr-Azy"/>
@@ -641,7 +641,7 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b7Z-Xe-jj0" id="mt9-Kd-9yW">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="139"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QOX-XF-YAV">
@@ -777,6 +777,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1Z0-TA-nZq"/>
-        <segue reference="FTE-aI-gGa"/>
+        <segue reference="wlb-ww-fV1"/>
     </inferredMetricsTieBreakers>
 </document>

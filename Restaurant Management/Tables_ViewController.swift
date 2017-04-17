@@ -10,6 +10,7 @@ import UIKit
 var indexSelected = 0
 var id_ban = 0
 var Tables = [Table]()
+var Foods = [Food]()
 class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet var Tables_TableView: UITableView!
