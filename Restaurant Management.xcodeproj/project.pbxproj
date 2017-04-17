@@ -16,9 +16,6 @@
 		0A7B087C1EA11F7D002B068E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A7B087A1EA11F7D002B068E /* LaunchScreen.storyboard */; };
 		0A7B08841EA12CC9002B068E /* TableInfo_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7B08831EA12CC9002B068E /* TableInfo_ViewController.swift */; };
 		0A7B08861EA13C5C002B068E /* food_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7B08851EA13C5C002B068E /* food_TableViewCell.swift */; };
-		0AF261191EA49B3F00AF41BA /* SQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF261181EA49B3F00AF41BA /* SQLite.swift */; };
-		0AF2611E1EA4A01B00AF41BA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF2611D1EA4A01B00AF41BA /* libsqlite3.tbd */; };
-		0AF261211EA4A64F00AF41BA /* QuanLyNhaHang.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0AF261201EA4A64F00AF41BA /* QuanLyNhaHang.sqlite */; };
 		23EDCFFF1EA47F8F005D23F0 /* Area_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDCFFC1EA47F8F005D23F0 /* Area_TableViewCell.swift */; };
 		23EDD0001EA47F8F005D23F0 /* Area_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDCFFD1EA47F8F005D23F0 /* Area_TableViewController.swift */; };
 		23EDD0011EA47F8F005D23F0 /* FoodsList_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDCFFE1EA47F8F005D23F0 /* FoodsList_ViewController.swift */; };
@@ -39,10 +36,6 @@
 		0A7B087D1EA11F7D002B068E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A7B08831EA12CC9002B068E /* TableInfo_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableInfo_ViewController.swift; sourceTree = "<group>"; };
 		0A7B08851EA13C5C002B068E /* food_TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = food_TableViewCell.swift; sourceTree = "<group>"; };
-		0AF261181EA49B3F00AF41BA /* SQLite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLite.swift; sourceTree = "<group>"; };
-		0AF2611D1EA4A01B00AF41BA /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		0AF2611F1EA4A08100AF41BA /* SQLite_Briding_header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SQLite_Briding_header.h; sourceTree = "<group>"; };
-		0AF261201EA4A64F00AF41BA /* QuanLyNhaHang.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = QuanLyNhaHang.sqlite; sourceTree = "<group>"; };
 		23EDCFFC1EA47F8F005D23F0 /* Area_TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area_TableViewCell.swift; sourceTree = "<group>"; };
 		23EDCFFD1EA47F8F005D23F0 /* Area_TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area_TableViewController.swift; sourceTree = "<group>"; };
 		23EDCFFE1EA47F8F005D23F0 /* FoodsList_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodsList_ViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +49,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AF2611E1EA4A01B00AF41BA /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,7 +60,6 @@
 			children = (
 				0A7B08701EA11F7D002B068E /* Restaurant Management */,
 				0A7B086F1EA11F7D002B068E /* Products */,
-				0AF2611C1EA4A01B00AF41BA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,7 +74,6 @@
 		0A7B08701EA11F7D002B068E /* Restaurant Management */ = {
 			isa = PBXGroup;
 			children = (
-				0AF261201EA4A64F00AF41BA /* QuanLyNhaHang.sqlite */,
 				23EDCFFB1EA47F6A005D23F0 /* Nguyen Dinh Son */,
 				0A7B08711EA11F7D002B068E /* AppDelegate.swift */,
 				0A6B2AB81EA388FA00876B02 /* Table_TableViewCell.swift */,
@@ -95,18 +85,8 @@
 				0A7B08781EA11F7D002B068E /* Assets.xcassets */,
 				0A7B087A1EA11F7D002B068E /* LaunchScreen.storyboard */,
 				0A7B087D1EA11F7D002B068E /* Info.plist */,
-				0AF261181EA49B3F00AF41BA /* SQLite.swift */,
-				0AF2611F1EA4A08100AF41BA /* SQLite_Briding_header.h */,
 			);
 			path = "Restaurant Management";
-			sourceTree = "<group>";
-		};
-		0AF2611C1EA4A01B00AF41BA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0AF2611D1EA4A01B00AF41BA /* libsqlite3.tbd */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		23EDCFFB1EA47F6A005D23F0 /* Nguyen Dinh Son */ = {
@@ -184,7 +164,6 @@
 				0A7B087C1EA11F7D002B068E /* LaunchScreen.storyboard in Resources */,
 				0A7B08791EA11F7D002B068E /* Assets.xcassets in Resources */,
 				0A7B08771EA11F7D002B068E /* Main.storyboard in Resources */,
-				0AF261211EA4A64F00AF41BA /* QuanLyNhaHang.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +176,6 @@
 			files = (
 				23F0AF241EA4A19D006C64F6 /* AreaDetail_ViewController.swift in Sources */,
 				23EDD0001EA47F8F005D23F0 /* Area_TableViewController.swift in Sources */,
-				0AF261191EA49B3F00AF41BA /* SQLite.swift in Sources */,
 				0A7B08861EA13C5C002B068E /* food_TableViewCell.swift in Sources */,
 				23EDD0011EA47F8F005D23F0 /* FoodsList_ViewController.swift in Sources */,
 				23EDCFFF1EA47F8F005D23F0 /* Area_TableViewCell.swift in Sources */,
@@ -334,7 +312,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "M1412132.Restaurant-Management";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Restaurant Management/SQLite_Briding_header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -347,7 +324,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "M1412132.Restaurant-Management";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Restaurant Management/SQLite_Briding_header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

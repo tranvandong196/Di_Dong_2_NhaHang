@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< Updated upstream
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="res-yZ-BeK">
-=======
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nfd-mz-lbU">
->>>>>>> Stashed changes
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -28,10 +24,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9sq-Pc-ia1" userLabel="Table_info">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dq3-Tk-ONE" userLabel="List_foods">
-                                        <rect key="frame" x="30" y="109" width="260" height="296"/>
+                                        <rect key="frame" x="30" y="116.5" width="260" height="296"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="49" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JsW-u7-VSV">
                                                 <rect key="frame" x="1" y="1" width="258" height="294"/>
@@ -107,7 +103,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qNk-Oa-UTZ">
-                                        <rect key="frame" x="30" y="410" width="124" height="40"/>
+                                        <rect key="frame" x="30" y="417.5" width="124" height="40"/>
                                         <color key="backgroundColor" red="0.66685411520000004" green="0.7966767132" blue="0.27203038060000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="k78-Xd-RHd"/>
@@ -116,13 +112,13 @@
                                         <state key="normal" title="Thêm món"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bD4-AH-dcd">
-                                        <rect key="frame" x="166" y="410" width="124" height="40"/>
+                                        <rect key="frame" x="166" y="417.5" width="124" height="40"/>
                                         <color key="backgroundColor" red="0.66685411520000004" green="0.7966767132" blue="0.27203038060000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Thanh toán"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ghi chú:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyP-KS-GZt">
-                                        <rect key="frame" x="30" y="462" width="70" height="25"/>
+                                        <rect key="frame" x="30" y="469.5" width="70" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="11O-7H-rQc"/>
                                             <constraint firstAttribute="height" constant="25" id="cvo-BJ-fhj"/>
@@ -132,21 +128,21 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RRu-uZ-Bh6">
-                                        <rect key="frame" x="30" y="489" width="260" height="9"/>
+                                        <rect key="frame" x="30" y="496.5" width="260" height="45.5"/>
                                         <color key="backgroundColor" red="0.94119254090000004" green="0.89998581025949476" blue="0.77003749618985451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZ8-zN-4Nz" userLabel="Picture">
-                                        <rect key="frame" x="5" y="5" width="310" height="84"/>
+                                        <rect key="frame" x="5" y="5" width="310" height="91.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jcW-wG-564">
-                                                <rect key="frame" x="10" y="10" width="104" height="74"/>
+                                                <rect key="frame" x="10" y="10" width="104" height="81.5"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3f-7i-q7o">
-                                                <rect key="frame" x="169" y="10" width="121" height="35"/>
+                                                <rect key="frame" x="134" y="10" width="126" height="38.5"/>
                                                 <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Sân vườn">
+                                                <state key="normal" title="       Sân vườn">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
@@ -154,34 +150,33 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tổng tiền" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFS-rB-9hc">
-                                                <rect key="frame" x="169" y="49" width="121" height="35"/>
+                                                <rect key="frame" x="134" y="53" width="126" height="38.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6H-hd-Hd2">
-                                                <rect key="frame" x="134" y="13" width="35" height="29"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TlD-Js-qZm" userLabel="location_icon">
+                                                <rect key="frame" x="134" y="10" width="25" height="38.5"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="35" id="66W-D2-7ye"/>
+                                                    <constraint firstAttribute="width" constant="25" id="8t4-Mi-OWi"/>
                                                 </constraints>
-                                                <state key="normal" image="location-trade"/>
-                                            </button>
+                                            </imageView>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="TlD-Js-qZm" firstAttribute="height" secondItem="V3f-7i-q7o" secondAttribute="height" id="5FX-kx-k85"/>
+                                            <constraint firstItem="V3f-7i-q7o" firstAttribute="leading" secondItem="jcW-wG-564" secondAttribute="trailing" constant="20" id="5j3-Ir-l2R"/>
                                             <constraint firstItem="AFS-rB-9hc" firstAttribute="width" secondItem="V3f-7i-q7o" secondAttribute="width" id="AY6-hU-ekH"/>
                                             <constraint firstAttribute="bottom" secondItem="jcW-wG-564" secondAttribute="bottom" id="FW8-ff-eMs"/>
                                             <constraint firstItem="V3f-7i-q7o" firstAttribute="height" secondItem="jcW-wG-564" secondAttribute="height" multiplier="10/21" id="I6j-zn-6dr"/>
                                             <constraint firstItem="jcW-wG-564" firstAttribute="width" secondItem="fZ8-zN-4Nz" secondAttribute="width" multiplier="1/3" id="Q5c-DQ-JaH"/>
                                             <constraint firstItem="AFS-rB-9hc" firstAttribute="bottom" secondItem="jcW-wG-564" secondAttribute="bottom" id="Y9g-NE-H4K"/>
-                                            <constraint firstAttribute="trailing" secondItem="V3f-7i-q7o" secondAttribute="trailing" constant="20" id="YgM-id-38f"/>
-                                            <constraint firstItem="D6H-hd-Hd2" firstAttribute="centerY" secondItem="V3f-7i-q7o" secondAttribute="centerY" id="c1K-Sq-FlD"/>
-                                            <constraint firstItem="D6H-hd-Hd2" firstAttribute="leading" secondItem="jcW-wG-564" secondAttribute="trailing" constant="20" id="cJg-72-qDA"/>
-                                            <constraint firstItem="V3f-7i-q7o" firstAttribute="leading" secondItem="D6H-hd-Hd2" secondAttribute="trailing" id="hXa-Mr-KUL"/>
+                                            <constraint firstAttribute="trailing" secondItem="V3f-7i-q7o" secondAttribute="trailing" constant="50" id="YgM-id-38f"/>
                                             <constraint firstItem="AFS-rB-9hc" firstAttribute="height" secondItem="V3f-7i-q7o" secondAttribute="height" id="i41-2W-Nnh"/>
                                             <constraint firstItem="V3f-7i-q7o" firstAttribute="top" secondItem="jcW-wG-564" secondAttribute="top" id="j8h-S3-I8N"/>
                                             <constraint firstItem="jcW-wG-564" firstAttribute="top" secondItem="fZ8-zN-4Nz" secondAttribute="top" constant="10" id="jbX-jm-rBz"/>
                                             <constraint firstItem="AFS-rB-9hc" firstAttribute="leading" secondItem="V3f-7i-q7o" secondAttribute="leading" id="nLc-Fl-0eG"/>
-                                            <constraint firstItem="D6H-hd-Hd2" firstAttribute="height" secondItem="V3f-7i-q7o" secondAttribute="height" multiplier="5/6" id="t95-Cc-1kt"/>
+                                            <constraint firstItem="TlD-Js-qZm" firstAttribute="top" secondItem="V3f-7i-q7o" secondAttribute="top" id="szF-7n-DG2"/>
+                                            <constraint firstItem="TlD-Js-qZm" firstAttribute="leading" secondItem="V3f-7i-q7o" secondAttribute="leading" id="tw0-vc-wyP"/>
                                             <constraint firstItem="jcW-wG-564" firstAttribute="leading" secondItem="fZ8-zN-4Nz" secondAttribute="leading" constant="10" id="vfQ-Ku-JAd"/>
                                         </constraints>
                                     </view>
@@ -231,11 +226,10 @@
                         <outlet property="TotalPrice_Label" destination="AFS-rB-9hc" id="6As-lg-Kzc"/>
                         <outlet property="foods_TableView" destination="JsW-u7-VSV" id="tI8-gW-Sgs"/>
                         <outlet property="listFoods_View" destination="dq3-Tk-ONE" id="fM1-03-S5o"/>
-                        <outlet property="otherInfo" destination="RRu-uZ-Bh6" id="R9S-21-uFl"/>
+                        <outlet property="locationIcon_ImageView" destination="TlD-Js-qZm" id="49G-Kq-xEf"/>
                         <outlet property="otherInfo_Label" destination="RRu-uZ-Bh6" id="cGi-QK-cKE"/>
                         <outlet property="payTable_Button" destination="bD4-AH-dcd" id="Jbq-KG-mTD"/>
                         <outlet property="picture_UIImageView" destination="jcW-wG-564" id="Q5u-c7-7GG"/>
-                        <outlet property="saveChanged_Button" destination="Aut-f0-sAV" id="vaH-AE-u8k"/>
                         <outlet property="tableInfo_View" destination="9sq-Pc-ia1" id="VvJ-GB-Ilo"/>
                         <outlet property="title_navi" destination="nIF-Er-P3n" id="eLz-Lf-yU7"/>
                         <outlet property="viewMain_View" destination="8bC-Xf-vdC" id="PoA-lI-RKd"/>
@@ -243,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="796.875" y="189.08450704225353"/>
+            <point key="canvasLocation" x="797" y="190"/>
         </scene>
         <!--Chi tiết-->
         <scene sceneID="kir-gq-H0R">
@@ -455,7 +449,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vdw-FW-FUB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="77" y="190"/>
+            <point key="canvasLocation" x="48.799999999999997" y="191.1544227886057"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YHP-Ed-6Os">
@@ -800,15 +794,8 @@
             <point key="canvasLocation" x="-716" y="1742"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="location-trade" width="360" height="460"/>
-    </resources>
     <inferredMetricsTieBreakers>
-<<<<<<< Updated upstream
-=======
         <segue reference="wlb-ww-fV1"/>
->>>>>>> Stashed changes
         <segue reference="1Z0-TA-nZq"/>
-        <segue reference="wlb-ww-fV1"/>
     </inferredMetricsTieBreakers>
 </document>
