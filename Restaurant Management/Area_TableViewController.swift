@@ -9,7 +9,9 @@
 import UIKit
 
 class Area_TableViewController: UITableViewController {
-
+    
+    public static var listArea = [Area]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +20,48 @@ class Area_TableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         //self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        
+        //sqlite
+        database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
+        
+        //Lay data
+        let statement:OpaquePointer = Select(query: "SELECT * FROM KhuVuc", database: database!)
+        
+        // Do du lieu vao mang
+        while sqlite3_step(statement) == SQLITE_ROW {
+            // Do ra tung cot tuong ung voi no
+            let area = Area()
+            
+            if(sqlite3_column_text(statement, 0) != nil)
+            {
+                area.MaKV = Int(sqlite3_column_int(statement, 0))
+                if(sqlite3_column_text(statement, 1) != nil)
+                {
+                    area.TenKV = String(cString: sqlite3_column_text(statement, 1))
+                }
+                if(sqlite3_column_text(statement, 2) != nil)
+                {
+                    area.MoTa = String(cString: sqlite3_column_text(statement, 2))
+                }
+                if(sqlite3_column_text(statement, 3) != nil)
+                {
+                    area.HinhAnh = String(cString: sqlite3_column_text(statement, 3))
+                    
+                }
+            }
+            
+            Area_TableViewController.listArea.append(area)
+            
+            //let rowData = sqlite3_column_text(statement, 1)
+            // Neu cot nao co dau tieng viet thi can phai lam them buoc nay
+            //let fieldValue = String(cString: rowData!)
+            // Them Vao mang da co
+            //mang.append(fieldValue!)
+        }
+        sqlite3_finalize(statement)
+        sqlite3_close(database)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,14 +78,14 @@ class Area_TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return Area_TableViewController.listArea.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell_table", for: indexPath) as! Area_TableViewCell
-        cell.Area_Lable.text = "Khu vực ngoài trời"
-        cell.Area_Image.image = #imageLiteral(resourceName: "Ban1")
+        cell.Area_Lable.text = Area_TableViewController.listArea[indexPath.row].TenKV
+        cell.Area_Image.image = UIImage(named: Area_TableViewController.listArea[indexPath.row].HinhAnh)
         
         cell.selectionStyle = .none
         return cell

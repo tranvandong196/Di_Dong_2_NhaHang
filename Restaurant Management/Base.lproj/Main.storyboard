@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="res-yZ-BeK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="V4R-HY-G0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -776,7 +776,7 @@
         <image name="location-trade" width="360" height="460"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="FTE-aI-gGa"/>
         <segue reference="1Z0-TA-nZq"/>
-        <segue reference="wlb-ww-fV1"/>
     </inferredMetricsTieBreakers>
 </document>
