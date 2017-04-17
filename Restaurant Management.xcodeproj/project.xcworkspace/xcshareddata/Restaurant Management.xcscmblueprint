@@ -1,0 +1,28 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "74758A2F-DBD6-4441-89C7-BF403B11322A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Restaurant Management",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Restaurant Management.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tranvandong196\/Di_Dong_2_NhaHang.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tranvandong196\/Restaurant-Management.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D"
+    }
+  ]
+}
