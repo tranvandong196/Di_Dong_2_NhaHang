@@ -23,7 +23,8 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     @IBOutlet weak var tableInfo_View: UIView!
     @IBOutlet var viewMain_View: UIView!
     @IBOutlet weak var PositionTable_Button: UIButton!
-    @IBOutlet weak var locationIcon_ImageView: UIImageView!
+    @IBOutlet weak var saveChanged_Button: UIBarButtonItem!
+    @IBOutlet weak var otherInfo: UITextView!
       @IBOutlet weak var payTable_Button: UIButton!
     // MARK: *** Global Variable
 
@@ -33,20 +34,24 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         foods_TableView.delegate = self
         foods_TableView.dataSource = self
         setup_displayBegin()
+        
+        // Create notification for two func keyboardWillShow/Hide
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     func setup_displayBegin(){
-        locationIcon_ImageView.image = #imageLiteral(resourceName: "location-trade")
         setupUI_PositionTable()
         setupUI_foodsList()
         if id_ban >= 0{
+           self.navigationItem.rightBarButtonItem = nil
             self.picture_UIImageView.image = #imageLiteral(resourceName: "Empire_table")
             TotalPrice_Label.text = "195.000đ"
             otherInfo_Label.text = "Khách VIP"
             title_navi.title = "Bàn số \(indexSelected + 1)"
-            PositionTable_Button.setTitle("       Sân vườn A", for: .normal)
+            PositionTable_Button.setTitle("Sân vườn A", for: .normal)
             
         }else{
-            
+            id_ban = 0
             self.picture_UIImageView.image = #imageLiteral(resourceName: "Add_image_icon")
             TotalPrice_Label.text = "0đ"
             otherInfo_Label.text = "Nhập ghi chú vào đây"
@@ -103,7 +108,20 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
             
         }
     }
-
+    // MARK: *** My function
+    func keyboardWillShow(_ notification: NSNotification){
+        //Reserve fouth in code vs ViewController
+        var keyboardHeight:Float = 0
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            keyboardHeight = Float(keyboardSize.height)
+        }
+        if otherInfo.isEditable{
+                view.frame.origin.y -= CGFloat(keyboardHeight)
+            }
+    }
+    func keyboardWillHide(_ notification: NSNotification){
+        self.tableInfo_View.frame.origin.y = 0
+    }
     /*
     // MARK: *** Navigation
 
