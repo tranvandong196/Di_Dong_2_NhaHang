@@ -60,6 +60,10 @@ func edit(query: String)-> Bool{
     sqlite3_finalize(insertStatement)
     return result
 }
+// Tran Van Dong
+
+
+// END DONG
 
 //func insert_row(stu: Studentx) -> Bool {
 //    let bd: String = dateFormatter.string(from: stu.m_birthday)

@@ -15,8 +15,8 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
     @IBOutlet var Tables_TableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
         
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {

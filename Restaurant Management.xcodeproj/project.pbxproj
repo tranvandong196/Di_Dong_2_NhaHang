@@ -19,6 +19,10 @@
 		0AF2611E1EA4A01B00AF41BA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF2611D1EA4A01B00AF41BA /* libsqlite3.tbd */; };
 		0AF261211EA4A64F00AF41BA /* QuanLyNhaHang.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0AF261201EA4A64F00AF41BA /* QuanLyNhaHang.sqlite */; };
 		0AF261261EA4AE6900AF41BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AF261241EA4AE6900AF41BA /* Main.storyboard */; };
+		0AF261281EA4B2BA00AF41BA /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF261271EA4B2BA00AF41BA /* Table.swift */; };
+		0AF2612A1EA4B38200AF41BA /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF261291EA4B38200AF41BA /* Area.swift */; };
+		0AF2612C1EA4B3D000AF41BA /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF2612B1EA4B3D000AF41BA /* Food.swift */; };
+		0AF2612E1EA4B45800AF41BA /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF2612D1EA4B45800AF41BA /* Bill.swift */; };
 		23EDCFFF1EA47F8F005D23F0 /* Area_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDCFFC1EA47F8F005D23F0 /* Area_TableViewCell.swift */; };
 		23EDD0001EA47F8F005D23F0 /* Area_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDCFFD1EA47F8F005D23F0 /* Area_TableViewController.swift */; };
 		23EDD0011EA47F8F005D23F0 /* FoodsList_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDCFFE1EA47F8F005D23F0 /* FoodsList_ViewController.swift */; };
@@ -43,6 +47,10 @@
 		0AF2611F1EA4A08100AF41BA /* SQLite_Briding_header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SQLite_Briding_header.h; sourceTree = "<group>"; };
 		0AF261201EA4A64F00AF41BA /* QuanLyNhaHang.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = QuanLyNhaHang.sqlite; sourceTree = "<group>"; };
 		0AF261251EA4AE6900AF41BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0AF261271EA4B2BA00AF41BA /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
+		0AF261291EA4B38200AF41BA /* Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
+		0AF2612B1EA4B3D000AF41BA /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		0AF2612D1EA4B45800AF41BA /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		23EDCFFC1EA47F8F005D23F0 /* Area_TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area_TableViewCell.swift; sourceTree = "<group>"; };
 		23EDCFFD1EA47F8F005D23F0 /* Area_TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area_TableViewController.swift; sourceTree = "<group>"; };
 		23EDCFFE1EA47F8F005D23F0 /* FoodsList_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodsList_ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +91,7 @@
 		0A7B08701EA11F7D002B068E /* Restaurant Management */ = {
 			isa = PBXGroup;
 			children = (
+				0AF2612F1EA4B5B400AF41BA /* Class */,
 				0AF261201EA4A64F00AF41BA /* QuanLyNhaHang.sqlite */,
 				23EDCFFB1EA47F6A005D23F0 /* Nguyen Dinh Son */,
 				0A6B2AB81EA388FA00876B02 /* Table_TableViewCell.swift */,
@@ -107,6 +116,17 @@
 				0AF2611D1EA4A01B00AF41BA /* libsqlite3.tbd */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0AF2612F1EA4B5B400AF41BA /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				0AF261271EA4B2BA00AF41BA /* Table.swift */,
+				0AF261291EA4B38200AF41BA /* Area.swift */,
+				0AF2612B1EA4B3D000AF41BA /* Food.swift */,
+				0AF2612D1EA4B45800AF41BA /* Bill.swift */,
+			);
+			name = Class;
 			sourceTree = "<group>";
 		};
 		23EDCFFB1EA47F6A005D23F0 /* Nguyen Dinh Son */ = {
@@ -197,15 +217,19 @@
 			files = (
 				23F0AF241EA4A19D006C64F6 /* AreaDetail_ViewController.swift in Sources */,
 				23EDD0001EA47F8F005D23F0 /* Area_TableViewController.swift in Sources */,
+				0AF2612E1EA4B45800AF41BA /* Bill.swift in Sources */,
 				0AF261191EA49B3F00AF41BA /* SQLite.swift in Sources */,
 				0A7B08861EA13C5C002B068E /* food_TableViewCell.swift in Sources */,
 				23EDD0011EA47F8F005D23F0 /* FoodsList_ViewController.swift in Sources */,
 				23EDCFFF1EA47F8F005D23F0 /* Area_TableViewCell.swift in Sources */,
 				0A6B2ABB1EA3890B00876B02 /* Tables_ViewController.swift in Sources */,
 				0A6B2ABD1EA3963600876B02 /* food_Detail_ViewController.swift in Sources */,
+				0AF261281EA4B2BA00AF41BA /* Table.swift in Sources */,
 				0A7B08841EA12CC9002B068E /* TableInfo_ViewController.swift in Sources */,
+				0AF2612A1EA4B38200AF41BA /* Area.swift in Sources */,
 				23EDD0031EA48EA7005D23F0 /* FoodCell_TableViewCell.swift in Sources */,
 				0A6B2AB91EA388FA00876B02 /* Table_TableViewCell.swift in Sources */,
+				0AF2612C1EA4B3D000AF41BA /* Food.swift in Sources */,
 				0A7B08721EA11F7D002B068E /* AppDelegate.swift in Sources */,
 				23EDD0051EA4942B005D23F0 /* FoodDetail_ViewController.swift in Sources */,
 			);
