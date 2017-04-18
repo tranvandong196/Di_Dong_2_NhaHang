@@ -22,4 +22,7 @@ class Area{
         self.MoTa = MoTa
         self.HinhAnh = HinhAnh
     }
+    init(){
+        
+    }
 }
