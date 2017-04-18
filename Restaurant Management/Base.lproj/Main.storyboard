@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="res-yZ-BeK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="V4R-HY-G0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -394,7 +394,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell_table" rowHeight="75" id="mYE-B6-qOQ" customClass="Table_TableViewCell" customModule="Restaurant_Management" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="320" height="75"/>
+                                <rect key="frame" x="0.0" y="56" width="320" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mYE-B6-qOQ" id="LJR-IH-ZHp">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="74"/>
@@ -484,7 +484,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PRt-eS-ga6">
-                                <rect key="frame" x="40" y="116" width="240" height="218"/>
+                                <rect key="frame" x="40" y="72" width="240" height="218"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="218" id="U6u-K9-Vbg"/>
                                 </constraints>
@@ -502,7 +502,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên khu vực" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nm4-WU-VpV">
-                                <rect key="frame" x="10" y="72" width="114" height="25"/>
+                                <rect key="frame" x="10" y="28" width="114" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="0p0-mP-Yt8"/>
                                     <constraint firstAttribute="height" constant="25" id="BdU-Pr-Azy"/>
@@ -641,7 +641,7 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b7Z-Xe-jj0" id="mt9-Kd-9yW">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="140"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="139"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QOX-XF-YAV">
