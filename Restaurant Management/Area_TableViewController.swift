@@ -86,6 +86,8 @@ class Area_TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell_table", for: indexPath) as! Area_TableViewCell
         cell.Area_Lable.text = Area_TableViewController.listArea[indexPath.row].TenKV
         cell.Area_Image.image = UIImage(named: Area_TableViewController.listArea[indexPath.row].HinhAnh)
+        cell.Area_Description.text = Area_TableViewController.listArea[indexPath.row].MoTa
+
         
         cell.selectionStyle = .none
         return cell

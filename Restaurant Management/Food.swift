@@ -27,4 +27,6 @@ class Food{
         self.Loai = Loai
         self.Icon = Icon
     }
+    init() {
+    }
 }
