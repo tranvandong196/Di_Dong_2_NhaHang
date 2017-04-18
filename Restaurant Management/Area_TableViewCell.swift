@@ -12,7 +12,6 @@ class Area_TableViewCell: UITableViewCell {
 
     @IBOutlet weak var Area_Image: UIImageView!
     @IBOutlet weak var Area_Lable: UILabel!
-    @IBOutlet weak var Area_Description: UITextView!
     
     @IBOutlet weak var Area_Content: UIView!
     

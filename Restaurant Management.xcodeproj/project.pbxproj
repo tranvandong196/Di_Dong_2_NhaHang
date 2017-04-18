@@ -23,8 +23,6 @@
 		0AF2612A1EA4B38200AF41BA /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF261291EA4B38200AF41BA /* Area.swift */; };
 		0AF2612C1EA4B3D000AF41BA /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF2612B1EA4B3D000AF41BA /* Food.swift */; };
 		0AF2612E1EA4B45800AF41BA /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF2612D1EA4B45800AF41BA /* Bill.swift */; };
-		23752F9B1EA63D28007AB0AD /* Manager_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23752F9A1EA63D28007AB0AD /* Manager_ViewController.swift */; };
-		23CC7AB61EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CC7AB51EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift */; };
 		23EDCFFF1EA47F8F005D23F0 /* Area_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDCFFC1EA47F8F005D23F0 /* Area_TableViewCell.swift */; };
 		23EDD0001EA47F8F005D23F0 /* Area_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDCFFD1EA47F8F005D23F0 /* Area_TableViewController.swift */; };
 		23EDD0011EA47F8F005D23F0 /* FoodsList_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDCFFE1EA47F8F005D23F0 /* FoodsList_ViewController.swift */; };
@@ -53,8 +51,6 @@
 		0AF261291EA4B38200AF41BA /* Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
 		0AF2612B1EA4B3D000AF41BA /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		0AF2612D1EA4B45800AF41BA /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
-		23752F9A1EA63D28007AB0AD /* Manager_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager_ViewController.swift; sourceTree = "<group>"; };
-		23CC7AB51EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area_Add_Edit_ViewController.swift; sourceTree = "<group>"; };
 		23EDCFFC1EA47F8F005D23F0 /* Area_TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area_TableViewCell.swift; sourceTree = "<group>"; };
 		23EDCFFD1EA47F8F005D23F0 /* Area_TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area_TableViewController.swift; sourceTree = "<group>"; };
 		23EDCFFE1EA47F8F005D23F0 /* FoodsList_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodsList_ViewController.swift; sourceTree = "<group>"; };
@@ -150,8 +146,6 @@
 				23EDD0021EA48EA7005D23F0 /* FoodCell_TableViewCell.swift */,
 				23EDD0041EA4942B005D23F0 /* FoodDetail_ViewController.swift */,
 				23F0AF231EA4A19D006C64F6 /* AreaDetail_ViewController.swift */,
-				23CC7AB51EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift */,
-				23752F9A1EA63D28007AB0AD /* Manager_ViewController.swift */,
 			);
 			name = "Nguyen Dinh Son";
 			sourceTree = "<group>";
@@ -230,7 +224,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				23F0AF241EA4A19D006C64F6 /* AreaDetail_ViewController.swift in Sources */,
-				23752F9B1EA63D28007AB0AD /* Manager_ViewController.swift in Sources */,
 				23EDD0001EA47F8F005D23F0 /* Area_TableViewController.swift in Sources */,
 				0AF2612E1EA4B45800AF41BA /* Bill.swift in Sources */,
 				0AF261191EA49B3F00AF41BA /* SQLite.swift in Sources */,
@@ -247,7 +240,6 @@
 				0AF2612C1EA4B3D000AF41BA /* Food.swift in Sources */,
 				0A7B08721EA11F7D002B068E /* AppDelegate.swift in Sources */,
 				23EDD0051EA4942B005D23F0 /* FoodDetail_ViewController.swift in Sources */,
-				23CC7AB61EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
