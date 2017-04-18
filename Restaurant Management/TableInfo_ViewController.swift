@@ -7,9 +7,7 @@
 //
 
 import UIKit
-let foods_name  = ["Kem tràng tiền","Bánh kem","Cà phê"]
-let foods_thumnail = ["ice-cream-chocolate","Piece-of-cake","Coffee"]
-let foods_price = ["20.000","150.000","25.000"]
+    // MARK: *** Global Variable
 var indexSelected_foods = 0
 class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
@@ -26,15 +24,16 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     @IBOutlet weak var saveChanged_Button: UIBarButtonItem!
     @IBOutlet weak var otherInfo: UITextView!
       @IBOutlet weak var payTable_Button: UIButton!
-    // MARK: *** Global Variable
     // MARK: *** Display view
     override func viewDidLoad() {
         super.viewDidLoad()
         foods_TableView.delegate = self
         foods_TableView.dataSource = self
-        setup_displayBegin()
-        Foods = GetFoodsFromSQLite(query: "SELECT * FROM MonAn")
         
+        Foods = GetFoodsFromSQLite(query: "SELECT * FROM MonAn")
+        Areas = GetAreasFromSQLite(query: "SElECT * FROM KhuVuc WHERE MaKV = \(Tables[indexSelected_tables].MaKV! )")
+        
+        setup_displayBegin()
         // Create notification for two func keyboardWillShow/Hide
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -42,21 +41,21 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     func setup_displayBegin(){
         setupUI_PositionTable()
         setupUI_foodsList()
-        if id_ban >= 0{
+        if id_ban >= 0 && Tables[indexSelected_tables].TinhTrang == 1{
            self.navigationItem.rightBarButtonItem = nil
-            self.picture_UIImageView.image = #imageLiteral(resourceName: "Empire_table")
+            self.picture_UIImageView.image = UIImage(named: Tables[indexSelected_tables].HinhAnh)
             TotalPrice_Label.text = "195.000đ"
-            otherInfo_Label.text = Tables[indexSelected].GhiChu
-            title_navi.title = "Bàn số \(Tables[indexSelected].SoBan!)"
-            PositionTable_Button.setTitle("Sân vườn A", for: .normal)
+            otherInfo_Label.text = Tables[indexSelected_tables].GhiChu
+            title_navi.title = "Bàn số \(Tables[indexSelected_tables].SoBan!)"
+            PositionTable_Button.setTitle(Areas[0].TenKV, for: .normal)
             
         }else{
             id_ban = 0
             self.picture_UIImageView.image = #imageLiteral(resourceName: "Add_image_icon")
             TotalPrice_Label.text = "0đ"
-            otherInfo_Label.text = "Nhập ghi chú vào đây"
-            payTable_Button.isHidden = true
-            PositionTable_Button.setTitle("Nhập khu vực", for: .normal)
+            otherInfo_Label.text = ""
+            payTable_Button.isEnabled = false
+            PositionTable_Button.setTitle(Areas[0].TenKV, for: .normal)
         }
     }
     // MARK: *** UIEvent
@@ -76,7 +75,7 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if id_ban >= 0{
+        if id_ban >= 0 && Tables[indexSelected_tables].TinhTrang == 1{
             return Foods.count
         }
         else{
@@ -90,7 +89,7 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
 
         cell.nameOfFood_Label.text = Foods[indexPath.row].TenMon
         cell.food_ImageView.image = UIImage(named: Foods[indexPath.row].Icon)
-        cell.priceOfFood.text = "\(Int(Foods[indexPath.row].Gia!))đ"
+        cell.priceOfFood.text = "\(Int(Foods[indexPath.row].Gia!).stringFormattedWithSeparator)đ"
         
         return cell
     }

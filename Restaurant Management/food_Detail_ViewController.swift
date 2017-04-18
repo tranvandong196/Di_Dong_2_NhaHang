@@ -17,6 +17,7 @@ class food_Detail_ViewController: UIViewController {
     @IBOutlet weak var foodInfo_TextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         foodImage_ImageView.image = UIImage(named: Foods[indexSelected_foods].HinhAnh)
         foodName_Label.text = Foods[indexSelected_foods].TenMon
         foodPrice_Label.text = "\(Int(Foods[indexSelected_foods].Gia!))đ"

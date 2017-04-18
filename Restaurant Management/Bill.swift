@@ -18,4 +18,8 @@ class Bill{
     var ThanhTien:Double!
     var Bill_details:[Detail]!
     
+//    func update(MaHD: Int,ThoiGian:Date,SoBan:Int,Bill_details:[Detail]){
+//        MaHD
+//    }
+    
 }

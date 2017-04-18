@@ -7,9 +7,34 @@
 //
 
 import Foundation
-// MARK: ***SQLite3
+
+// MARK: *** Global Variable
 
 var database:OpaquePointer?
+
+var Tables = [Table]()
+var Foods = [Food]()
+var Areas = [Area]()
+
+// MARK: *** extension
+
+//Setup NumberFormatter: Int 1250000 --> to String: 1.250.000
+struct Number {
+    static let formatterWithSeparator: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.groupingSeparator = "."
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
+}
+
+extension Integer {
+    var stringFormattedWithSeparator: String {
+        return Number.formatterWithSeparator.string(for: self) ?? ""
+    }
+}
+
+// MARK: *** SQLite3 function
 //Database pointer
 func Connect_DB_SQLite( dbName:String, type:String)->OpaquePointer{
     var database:OpaquePointer? = nil
@@ -60,7 +85,7 @@ func edit(query: String)-> Bool{
     sqlite3_finalize(insertStatement)
     return result
 }
-// Tran Van Dong
+// MARK: *** Tran Van Dong
 func GetTablesFromSQLite(query: String) -> [Table]{
     var Tables = [Table]()
     var queryStatement:OpaquePointer? = nil
@@ -101,6 +126,24 @@ func GetFoodsFromSQLite(query: String) -> [Food]{
         }
     }
     return Foods
+}
+
+func GetAreasFromSQLite(query: String) -> [Area]{
+    var Areas = [Area]()
+    var queryStatement:OpaquePointer? = nil
+    if sqlite3_prepare_v2(database, query, -1, &queryStatement, nil) == SQLITE_OK{
+        while sqlite3_step(queryStatement) == SQLITE_ROW{sqlite3_column_text(queryStatement, 1)
+            let MaKV = Int(sqlite3_column_int(queryStatement, 0))
+            let TenKV = String(cString: sqlite3_column_text(queryStatement, 1))
+            
+            let MoTa = String(cString: sqlite3_column_text(queryStatement, 2))
+            let HinhAnh = String(cString: sqlite3_column_text(queryStatement, 3))
+            let area = Area(MaKV: MaKV, TenKV: TenKV, MoTa: MoTa, HinhAnh: HinhAnh)
+            Areas.append(area)
+            //print("Query result: \(mssv): \(fname) \(lname) - \(classID) - \(birthday) - \(otherInfo)")
+        }
+    }
+    return Areas
 }
 // END DONG
 

@@ -95,6 +95,7 @@
 		0A7B08701EA11F7D002B068E /* Restaurant Management */ = {
 			isa = PBXGroup;
 			children = (
+				0AE8323A1EA52203004B675B /* Tran Van Dong */,
 				0AF2612F1EA4B5B400AF41BA /* Class */,
 				23EDCFFB1EA47F6A005D23F0 /* Nguyen Dinh Son */,
 				0A6B2AB81EA388FA00876B02 /* Table_TableViewCell.swift */,
@@ -111,6 +112,13 @@
 				0AF2611F1EA4A08100AF41BA /* SQLite_Briding_header.h */,
 			);
 			path = "Restaurant Management";
+			sourceTree = "<group>";
+		};
+		0AE8323A1EA52203004B675B /* Tran Van Dong */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Tran Van Dong";
 			sourceTree = "<group>";
 		};
 		0AF2611C1EA4A01B00AF41BA /* Frameworks */ = {
