@@ -8,7 +8,7 @@
 
 import Foundation
 class Area{
-    var MaKV:Int?
+    var MaKV:Int!
     var TenKV:String!
     var MoTa:String!
     var HinhAnh:String!
@@ -21,5 +21,8 @@ class Area{
         self.TenKV = TenKV
         self.MoTa = MoTa
         self.HinhAnh = HinhAnh
+    }
+    init(){
+        
     }
 }

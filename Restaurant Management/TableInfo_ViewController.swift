@@ -31,7 +31,7 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         foods_TableView.dataSource = self
         
         Foods = GetFoodsFromSQLite(query: "SELECT * FROM MonAn")
-        Areas = GetAreasFromSQLite(query: "SElECT * FROM KhuVuc WHERE MaKV = \(Tables[indexSelected_tables].MaKV! )")
+        Areas = GetAreasFromSQLite(query: "SElECT * FROM KhuVuc WHERE MaKV = \(Tables[indexSelected_tables].MaKV!)")
         
         setup_displayBegin()
         // Create notification for two func keyboardWillShow/Hide

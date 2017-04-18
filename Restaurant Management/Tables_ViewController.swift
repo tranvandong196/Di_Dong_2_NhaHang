@@ -15,6 +15,8 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
     @IBOutlet var Tables_TableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        Tables_TableView.delegate = self
+        Tables_TableView.dataSource = self
         database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
         Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
     }

@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "FoodsList_ViewController.viewDidLoad() -&gt; ():FoodsList_ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "FoodsList_ViewController.listFoods">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "FoodsList_ViewController.init(coder : NSCoder) -&gt; FoodsList_ViewController?:FoodsList_ViewController.swift">
          <PersistentStrings>
             <PersistentString

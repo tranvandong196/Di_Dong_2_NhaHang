@@ -147,6 +147,29 @@ func GetAreasFromSQLite(query: String) -> [Area]{
 }
 // END DONG
 
+//====================Nguyễn Đình Sơn
+
+//SQLITE func
+
+func Select( query:String, database:OpaquePointer)->OpaquePointer{
+    var statement:OpaquePointer? = nil
+    sqlite3_prepare_v2(database, query, -1, &statement, nil)
+    return statement!
+}
+
+func Query( sql:String, database:OpaquePointer){
+    var errMsg:UnsafeMutablePointer<Int8>? = nil
+    let result = sqlite3_exec(database, sql, nil, nil, &errMsg);
+    if (result != SQLITE_OK) {
+        sqlite3_close(database)
+        print("Cau truy van bi loi!")
+        return
+    }
+}
+
+
+//====================Nguyễn Đình Sơn
+
 //func insert_row(stu: Studentx) -> Bool {
 //    let bd: String = dateFormatter.string(from: stu.m_birthday)
 //    let query = "INSERT INTO Student(mssv,firstName,lastName,classID,birthday,otherInfo) VALUES (\(stu.m_mssv!),'\(stu.m_fName!)','\(stu.m_lName!)','\(stu.m_classID!)','\(bd)','\(stu.m_otherInfo!)')"
