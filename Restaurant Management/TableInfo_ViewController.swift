@@ -49,6 +49,7 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
             payTable_Button.isEnabled = false
             PositionTable_Button.setTitle(Areas[0].TenKV, for: .normal)
             
+            
         }else{
             
             self.navigationItem.rightBarButtonItem = nil
@@ -79,9 +80,9 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isAdded || Tables[indexSelected_tables].TinhTrang == 0{
+        if isAdded2 || Tables[indexSelected_tables].TinhTrang == 0{
+           isAdded = false
             return 0
-            isAdded = false
         }
         else{
             return Foods.count
@@ -152,7 +153,7 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
                 Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
                 isAdded2 = false
             }else{
-                //Tables[indexSelected_tables].TinhTrang = 1
+                Tables[indexSelected_tables].TinhTrang = 1
                 Tables[indexSelected_tables].GhiChu = otherInfo.text
                 updateRow(Tables[indexSelected_tables])
                 Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
