@@ -130,7 +130,7 @@ func GetAreasFromSQLite(query: String) -> [Area]{
     return Areas
 }
 
-func addTable(_ T: Table){
+func addRow(_ T: Table){
     //Tables.append(T)
     let query = "INSERT INTO BanAn VALUES(\(T.SoBan!),\(T.TinhTrang!),'\(T.HinhAnh!)','\(T.GhiChu!)',\(T.MaKV!),\(T.MaHD!))"
     print(query)
@@ -140,6 +140,16 @@ func addTable(_ T: Table){
         print("Không thể thêm bàn số \(T.SoBan!)")
     }
     
+}
+func updateRow( _ T: Table){
+    let query = "UPDATE BanAn SET TinhTrang = \(T.TinhTrang!), HinhAnh = '\(T.HinhAnh!)', GhiChu = '\(T.GhiChu!)', MaKV = \(T.MaKV!), MaHD = \(T.MaHD!) WHERE SoBan = \(T.SoBan!)"
+    print(query)
+    if edit(query: query){
+        print("Cập nhât bàn số \(T.SoBan!)")
+    }else{
+        print("Không thể cập nhật bàn số \(T.SoBan!)")
+    }
+
 }
 // END DONG
 

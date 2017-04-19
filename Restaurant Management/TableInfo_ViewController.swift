@@ -9,8 +9,9 @@
 import UIKit
     // MARK: *** Global Variable
 var indexSelected_foods = 0
+
 class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
-    
+    var isAdded2 = false
     // MARK: *** IBOutlet
     @IBOutlet weak var title_navi: UINavigationItem!
     @IBOutlet weak var listFoods_View: UIView!
@@ -26,6 +27,7 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     // MARK: *** Display view
     override func viewDidLoad() {
         super.viewDidLoad()
+        isAdded2 = isAdded
         foods_TableView.delegate = self
         foods_TableView.dataSource = self
         addDoneButton(otherInfo)
@@ -40,20 +42,20 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     func setup_displayBegin(){
         setupUI_PositionTable()
         setupUI_foodsList()
-        if !isAdded && Tables[indexSelected_tables].TinhTrang == 1{
-           self.navigationItem.rightBarButtonItem = nil
-            self.picture_UIImageView.image = UIImage(named: Tables[indexSelected_tables].HinhAnh)
-            TotalPrice_Label.text = "195.000đ"
-            otherInfo.text = Tables[indexSelected_tables].GhiChu
-            title_navi.title = "Bàn số \(Tables[indexSelected_tables].SoBan!)"
-            PositionTable_Button.setTitle(Areas[0].TenKV, for: .normal)
-            
-        }else{
-            isAdded = !isAdded
+        if isAdded || Tables[indexSelected_tables].TinhTrang == 0{
             self.picture_UIImageView.image = #imageLiteral(resourceName: "Add_image_icon")
             TotalPrice_Label.text = "0đ"
             otherInfo.text = ""
             payTable_Button.isEnabled = false
+            PositionTable_Button.setTitle(Areas[0].TenKV, for: .normal)
+            
+        }else{
+            
+            self.navigationItem.rightBarButtonItem = nil
+            self.picture_UIImageView.image = UIImage(named: Tables[indexSelected_tables].HinhAnh)
+            TotalPrice_Label.text = "195.000đ"
+            otherInfo.text = Tables[indexSelected_tables].GhiChu
+            title_navi.title = "Bàn số \(Tables[indexSelected_tables].SoBan!)"
             PositionTable_Button.setTitle(Areas[0].TenKV, for: .normal)
         }
     }
@@ -77,11 +79,12 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if !isAdded && Tables[indexSelected_tables].TinhTrang == 1{
-            return Foods.count
+        if isAdded || Tables[indexSelected_tables].TinhTrang == 0{
+            return 0
+            isAdded = false
         }
         else{
-            return 0
+            return Foods.count
         }
     }
     
@@ -136,11 +139,25 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "seque_saveChanged" {
-            let T = Table(SoBan: Tables.count + 1, TinhTrang: 1, HinhAnh: "Ban.png", GhiChu: otherInfo.text, MaKV: -1, MaHD: -1)
-            addTable(T)
-            Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
+            if isAdded2 {
+                var num:Int = Tables.count + 1
+                for i in 1...Tables.count{
+                    if Tables[i - 1].SoBan != i{
+                        num = i
+                        break;
+                    }
+                }
+                let T = Table(SoBan: num, TinhTrang: 1, HinhAnh: "Ban.png", GhiChu: otherInfo.text, MaKV: 1, MaHD: 0)
+                addRow(T)
+                Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
+                isAdded2 = false
+            }else{
+                //Tables[indexSelected_tables].TinhTrang = 1
+                Tables[indexSelected_tables].GhiChu = otherInfo.text
+                updateRow(Tables[indexSelected_tables])
+                Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
+            }
         }
-        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

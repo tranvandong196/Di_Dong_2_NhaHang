@@ -26,10 +26,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9sq-Pc-ia1" userLabel="Table_info">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dq3-Tk-ONE" userLabel="List_foods">
-                                        <rect key="frame" x="30" y="117" width="260" height="296"/>
+                                        <rect key="frame" x="30" y="109.5" width="260" height="296"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="49" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JsW-u7-VSV">
                                                 <rect key="frame" x="1" y="1" width="258" height="294"/>
@@ -39,7 +39,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="258" height="50"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EG1-TM-aKc" id="Lb1-VH-Kjw">
-                                                            <rect key="frame" x="0.0" y="0.0" width="258" height="50"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="258" height="49"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WUq-gM-aM4" userLabel="food_image">
@@ -105,7 +105,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qNk-Oa-UTZ">
-                                        <rect key="frame" x="30" y="418" width="124" height="40"/>
+                                        <rect key="frame" x="30" y="410.5" width="124" height="40"/>
                                         <color key="backgroundColor" red="0.66685411520000004" green="0.7966767132" blue="0.27203038060000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="k78-Xd-RHd"/>
@@ -114,13 +114,13 @@
                                         <state key="normal" title="Thêm món"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bD4-AH-dcd">
-                                        <rect key="frame" x="166" y="418" width="124" height="40"/>
+                                        <rect key="frame" x="166" y="410.5" width="124" height="40"/>
                                         <color key="backgroundColor" red="0.66685411520000004" green="0.7966767132" blue="0.27203038060000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Thanh toán"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ghi chú:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyP-KS-GZt">
-                                        <rect key="frame" x="30" y="470" width="70" height="25"/>
+                                        <rect key="frame" x="30" y="462.5" width="70" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="11O-7H-rQc"/>
                                             <constraint firstAttribute="height" constant="25" id="cvo-BJ-fhj"/>
@@ -130,32 +130,32 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RRu-uZ-Bh6">
-                                        <rect key="frame" x="30" y="496.5" width="260" height="45.5"/>
+                                        <rect key="frame" x="30" y="489" width="260" height="9"/>
                                         <color key="backgroundColor" red="0.94119254090000004" green="0.89998581025949476" blue="0.77003749618985451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZ8-zN-4Nz" userLabel="Picture">
-                                        <rect key="frame" x="5" y="5" width="310" height="92"/>
+                                        <rect key="frame" x="5" y="5" width="310" height="84.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jcW-wG-564">
-                                                <rect key="frame" x="10" y="10" width="103.5" height="82"/>
+                                                <rect key="frame" x="10" y="10" width="103.5" height="74.5"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3f-7i-q7o">
-                                                <rect key="frame" x="168.5" y="10" width="121.5" height="39"/>
+                                                <rect key="frame" x="168.5" y="10" width="121.5" height="35.5"/>
                                                 <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Sân vườn">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tổng tiền" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFS-rB-9hc">
-                                                <rect key="frame" x="168.5" y="52.5" width="121.5" height="39.5"/>
+                                                <rect key="frame" x="168.5" y="48.5" width="121.5" height="36"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6H-hd-Hd2">
-                                                <rect key="frame" x="133.5" y="14" width="35" height="32"/>
+                                                <rect key="frame" x="133.5" y="13.5" width="35" height="29.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="35" id="66W-D2-7ye"/>
                                                 </constraints>
@@ -739,7 +739,7 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="237"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b7Z-Xe-jj0" id="mt9-Kd-9yW">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="237"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="236"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gà Đông Tảo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXs-cP-TKR">
@@ -975,6 +975,6 @@
         <image name="location-trade" width="360" height="460"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="meg-a7-Fb2"/>
+        <segue reference="Ja4-r1-aer"/>
     </inferredMetricsTieBreakers>
 </document>

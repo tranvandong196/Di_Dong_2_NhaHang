@@ -8,13 +8,14 @@
 
 import UIKit
 var indexSelected_tables = 0
-var isAdded = false
+var isAdded:Bool = false
 
 class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet var Tables_TableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         Tables_TableView.delegate = self
         Tables_TableView.dataSource = self
         database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
@@ -29,6 +30,8 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
 
     @IBAction func addNewTable_Button(_ sender: Any) {
         isAdded = true
+        
+        print("isAdded: \(isAdded)")
         pushToVC(withIdentifier: "table_detail")
         //moveToVC(withIdentifier: "table_detail", animated: true)
     }
@@ -91,14 +94,19 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }
     }
     
-       /*
+    /*
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "table_detail" {
+            
+            isAdded = true
+            print("isAdded: \(isAdded)")
+        }
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
      }
-     */
+ */
     
 }
