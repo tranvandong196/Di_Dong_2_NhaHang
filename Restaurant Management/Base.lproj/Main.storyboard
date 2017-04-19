@@ -13,7 +13,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Bàn số 96-->
+        <!--Bàn số-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="table_detail" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="TableInfo_ViewController" customModule="Restaurant_Management" sceneMemberID="viewController">
@@ -26,10 +26,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9sq-Pc-ia1" userLabel="Table_info">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dq3-Tk-ONE" userLabel="List_foods">
-                                        <rect key="frame" x="30" y="109.5" width="260" height="296"/>
+                                        <rect key="frame" x="30" y="117" width="260" height="296"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="49" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JsW-u7-VSV">
                                                 <rect key="frame" x="1" y="1" width="258" height="294"/>
@@ -39,7 +39,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="258" height="50"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EG1-TM-aKc" id="Lb1-VH-Kjw">
-                                                            <rect key="frame" x="0.0" y="0.0" width="258" height="49"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="258" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WUq-gM-aM4" userLabel="food_image">
@@ -105,7 +105,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qNk-Oa-UTZ">
-                                        <rect key="frame" x="30" y="410.5" width="124" height="40"/>
+                                        <rect key="frame" x="30" y="418" width="124" height="40"/>
                                         <color key="backgroundColor" red="0.66685411520000004" green="0.7966767132" blue="0.27203038060000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="k78-Xd-RHd"/>
@@ -114,13 +114,13 @@
                                         <state key="normal" title="Thêm món"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bD4-AH-dcd">
-                                        <rect key="frame" x="166" y="410.5" width="124" height="40"/>
+                                        <rect key="frame" x="166" y="418" width="124" height="40"/>
                                         <color key="backgroundColor" red="0.66685411520000004" green="0.7966767132" blue="0.27203038060000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Thanh toán"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ghi chú:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyP-KS-GZt">
-                                        <rect key="frame" x="30" y="462.5" width="70" height="25"/>
+                                        <rect key="frame" x="30" y="470" width="70" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="11O-7H-rQc"/>
                                             <constraint firstAttribute="height" constant="25" id="cvo-BJ-fhj"/>
@@ -130,32 +130,32 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RRu-uZ-Bh6">
-                                        <rect key="frame" x="30" y="489" width="260" height="9"/>
+                                        <rect key="frame" x="30" y="496.5" width="260" height="45.5"/>
                                         <color key="backgroundColor" red="0.94119254090000004" green="0.89998581025949476" blue="0.77003749618985451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZ8-zN-4Nz" userLabel="Picture">
-                                        <rect key="frame" x="5" y="5" width="310" height="84.5"/>
+                                        <rect key="frame" x="5" y="5" width="310" height="92"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jcW-wG-564">
-                                                <rect key="frame" x="10" y="10" width="103.5" height="74.5"/>
+                                                <rect key="frame" x="10" y="10" width="103.5" height="82"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3f-7i-q7o">
-                                                <rect key="frame" x="168.5" y="10" width="121.5" height="35.5"/>
+                                                <rect key="frame" x="168.5" y="10" width="121.5" height="39"/>
                                                 <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Sân vườn">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tổng tiền" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFS-rB-9hc">
-                                                <rect key="frame" x="168.5" y="48.5" width="121.5" height="36"/>
+                                                <rect key="frame" x="168.5" y="52.5" width="121.5" height="39.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6H-hd-Hd2">
-                                                <rect key="frame" x="133.5" y="13.5" width="35" height="29.5"/>
+                                                <rect key="frame" x="133.5" y="14" width="35" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="35" id="66W-D2-7ye"/>
                                                 </constraints>
@@ -214,10 +214,18 @@
                             <constraint firstAttribute="trailing" secondItem="9sq-Pc-ia1" secondAttribute="trailing" id="pCe-jz-pwO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Bàn số 96" id="nIF-Er-P3n">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="Aut-f0-sAV">
+                    <navigationItem key="navigationItem" title="Bàn số" id="nIF-Er-P3n">
+                        <barButtonItem key="rightBarButtonItem" title="Save" style="plain" id="Uih-zP-AOp">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jUa-k2-HP5">
+                                <rect key="frame" x="233" y="7" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <segue destination="6lr-x8-M2H" kind="show" identifier="seque_saveChanged" id="meg-a7-Fb2"/>
+                                </connections>
+                            </button>
                             <connections>
-                                <segue destination="6lr-x8-M2H" kind="show" id="DD6-bS-OAN"/>
+                                <action selector="Save_Button_Clicked:" destination="BYZ-38-t0r" id="7sB-6d-7eo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -227,10 +235,9 @@
                         <outlet property="foods_TableView" destination="JsW-u7-VSV" id="tI8-gW-Sgs"/>
                         <outlet property="listFoods_View" destination="dq3-Tk-ONE" id="fM1-03-S5o"/>
                         <outlet property="otherInfo" destination="RRu-uZ-Bh6" id="R9S-21-uFl"/>
-                        <outlet property="otherInfo_Label" destination="RRu-uZ-Bh6" id="cGi-QK-cKE"/>
                         <outlet property="payTable_Button" destination="bD4-AH-dcd" id="Jbq-KG-mTD"/>
                         <outlet property="picture_UIImageView" destination="jcW-wG-564" id="Q5u-c7-7GG"/>
-                        <outlet property="saveChanged_Button" destination="Aut-f0-sAV" id="vaH-AE-u8k"/>
+                        <outlet property="saveChanged_Button" destination="Uih-zP-AOp" id="hCf-MT-g85"/>
                         <outlet property="tableInfo_View" destination="9sq-Pc-ia1" id="VvJ-GB-Ilo"/>
                         <outlet property="title_navi" destination="nIF-Er-P3n" id="eLz-Lf-yU7"/>
                         <outlet property="viewMain_View" destination="8bC-Xf-vdC" id="PoA-lI-RKd"/>
@@ -400,13 +407,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T2s-zG-OBI">
-                                            <rect key="frame" x="4" y="4" width="70" height="67"/>
+                                            <rect key="frame" x="4" y="4" width="70" height="66"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="70" id="984-Wu-A9h"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bàn số 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kzb-6y-KSH">
-                                            <rect key="frame" x="84" y="4" width="130" height="66.5"/>
+                                            <rect key="frame" x="84" y="4" width="130" height="67"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="130" id="xS9-vN-nvr"/>
                                             </constraints>
@@ -438,9 +445,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Danh sách" id="xeC-8X-Gme">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="7UY-qJ-b0a">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="add" id="lO6-rF-aRN">
                             <connections>
-                                <action selector="addNewTable_Button:" destination="6lr-x8-M2H" id="74c-51-Oaf"/>
+                                <action selector="addNewTable_Button:" destination="6lr-x8-M2H" id="Pjl-Lc-RoT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -732,7 +739,7 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="237"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b7Z-Xe-jj0" id="mt9-Kd-9yW">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="236"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="237"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gà Đông Tảo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXs-cP-TKR">
@@ -968,6 +975,6 @@
         <image name="location-trade" width="360" height="460"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ja4-r1-aer"/>
+        <segue reference="meg-a7-Fb2"/>
     </inferredMetricsTieBreakers>
 </document>

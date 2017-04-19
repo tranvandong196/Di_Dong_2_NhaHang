@@ -17,7 +17,6 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     @IBOutlet weak var foods_TableView: UITableView!
     @IBOutlet weak var picture_UIImageView: UIImageView!
     @IBOutlet weak var TotalPrice_Label: UILabel!
-    @IBOutlet weak var otherInfo_Label: UITextView!
     @IBOutlet weak var tableInfo_View: UIView!
     @IBOutlet var viewMain_View: UIView!
     @IBOutlet weak var PositionTable_Button: UIButton!
@@ -29,37 +28,40 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         super.viewDidLoad()
         foods_TableView.delegate = self
         foods_TableView.dataSource = self
-        
+        addDoneButton(otherInfo)
         Foods = GetFoodsFromSQLite(query: "SELECT * FROM MonAn")
         Areas = GetAreasFromSQLite(query: "SElECT * FROM KhuVuc WHERE MaKV = \(Tables[indexSelected_tables].MaKV!)")
         
         setup_displayBegin()
-        // Create notification for two func keyboardWillShow/Hide
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        KeyboardShow(self,open_Func:  #selector(self.keyboardWillShow(_:)))
+        KeyboardHide(self, open_Func: #selector(self.keyboardWillHide(_:)))
+        
     }
     func setup_displayBegin(){
         setupUI_PositionTable()
         setupUI_foodsList()
-        if id_ban >= 0 && Tables[indexSelected_tables].TinhTrang == 1{
+        if !isAdded && Tables[indexSelected_tables].TinhTrang == 1{
            self.navigationItem.rightBarButtonItem = nil
             self.picture_UIImageView.image = UIImage(named: Tables[indexSelected_tables].HinhAnh)
             TotalPrice_Label.text = "195.000đ"
-            otherInfo_Label.text = Tables[indexSelected_tables].GhiChu
+            otherInfo.text = Tables[indexSelected_tables].GhiChu
             title_navi.title = "Bàn số \(Tables[indexSelected_tables].SoBan!)"
             PositionTable_Button.setTitle(Areas[0].TenKV, for: .normal)
             
         }else{
-            id_ban = 0
+            isAdded = !isAdded
             self.picture_UIImageView.image = #imageLiteral(resourceName: "Add_image_icon")
             TotalPrice_Label.text = "0đ"
-            otherInfo_Label.text = ""
+            otherInfo.text = ""
             payTable_Button.isEnabled = false
             PositionTable_Button.setTitle(Areas[0].TenKV, for: .normal)
         }
     }
     // MARK: *** UIEvent
 
+    @IBAction func Save_Button_Clicked(_ sender: Any) {
+        
+    }
   
     // MARK: *** UIDesign
     func setupUI_foodsList(){
@@ -75,7 +77,7 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if id_ban >= 0 && Tables[indexSelected_tables].TinhTrang == 1{
+        if !isAdded && Tables[indexSelected_tables].TinhTrang == 1{
             return Foods.count
         }
         else{
@@ -107,7 +109,14 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
             
         }
     }
-    // MARK: *** My function
+    // MARK: *** Function
+    
+    //Hide keyboard when user touches outside keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    //  Thêm Action khi ẩn/hiện bàn phím
     func keyboardWillShow(_ notification: NSNotification){
         //Reserve fouth in code vs ViewController
         var keyboardHeight:Float = 0
@@ -115,20 +124,26 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
             keyboardHeight = Float(keyboardSize.height)
         }
         if otherInfo.isEditable{
-                view.frame.origin.y -= CGFloat(keyboardHeight)
-            }
+            view.frame.origin.y -= CGFloat(keyboardHeight)
+        }
     }
     func keyboardWillHide(_ notification: NSNotification){
-        self.tableInfo_View.frame.origin.y = 0
+        self.view.frame.origin.y = 0
     }
-    /*
+    
     // MARK: *** Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "seque_saveChanged" {
+            let T = Table(SoBan: Tables.count + 1, TinhTrang: 1, HinhAnh: "Ban.png", GhiChu: otherInfo.text, MaKV: -1, MaHD: -1)
+            addTable(T)
+            Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
+        }
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

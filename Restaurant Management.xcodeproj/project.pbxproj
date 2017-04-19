@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A4F84701EA72E8F004AEFCA /* UIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4F846F1EA72E8F004AEFCA /* UIExtension.swift */; };
+		0A4F84741EA73C07004AEFCA /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4F84731EA73C07004AEFCA /* NotificationExtension.swift */; };
+		0A4F84761EA73DF0004AEFCA /* SimpleTypeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4F84751EA73DF0004AEFCA /* SimpleTypeExtension.swift */; };
 		0A6B2AB91EA388FA00876B02 /* Table_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B2AB81EA388FA00876B02 /* Table_TableViewCell.swift */; };
 		0A6B2ABB1EA3890B00876B02 /* Tables_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B2ABA1EA3890B00876B02 /* Tables_ViewController.swift */; };
 		0A6B2ABD1EA3963600876B02 /* food_Detail_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B2ABC1EA3963600876B02 /* food_Detail_ViewController.swift */; };
@@ -34,6 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A4F846F1EA72E8F004AEFCA /* UIExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtension.swift; sourceTree = "<group>"; };
+		0A4F84731EA73C07004AEFCA /* NotificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
+		0A4F84751EA73DF0004AEFCA /* SimpleTypeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTypeExtension.swift; sourceTree = "<group>"; };
 		0A6B2AB81EA388FA00876B02 /* Table_TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Table_TableViewCell.swift; sourceTree = "<group>"; };
 		0A6B2ABA1EA3890B00876B02 /* Tables_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tables_ViewController.swift; sourceTree = "<group>"; };
 		0A6B2ABC1EA3963600876B02 /* food_Detail_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = food_Detail_ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +81,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A4F84711EA73218004AEFCA /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0A4F846F1EA72E8F004AEFCA /* UIExtension.swift */,
+				0A4F84731EA73C07004AEFCA /* NotificationExtension.swift */,
+				0A4F84751EA73DF0004AEFCA /* SimpleTypeExtension.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		0A4F84721EA73255004AEFCA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0AF261181EA49B3F00AF41BA /* SQLite.swift */,
+				0AF2611F1EA4A08100AF41BA /* SQLite_Briding_header.h */,
+				0AF261201EA4A64F00AF41BA /* QuanLyNhaHang.sqlite */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0A4F84771EA73EAB004AEFCA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0A6B2AB81EA388FA00876B02 /* Table_TableViewCell.swift */,
+				0A6B2ABA1EA3890B00876B02 /* Tables_ViewController.swift */,
+				0A7B08831EA12CC9002B068E /* TableInfo_ViewController.swift */,
+				0A7B08851EA13C5C002B068E /* food_TableViewCell.swift */,
+				0A6B2ABC1EA3963600876B02 /* food_Detail_ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		0A4F84781EA73ED7004AEFCA /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		0A7B08651EA11F7D002B068E = {
 			isa = PBXGroup;
 			children = (
@@ -95,30 +140,18 @@
 		0A7B08701EA11F7D002B068E /* Restaurant Management */ = {
 			isa = PBXGroup;
 			children = (
-				0AE8323A1EA52203004B675B /* Tran Van Dong */,
+				0A4F84781EA73ED7004AEFCA /* View */,
+				0A4F84771EA73EAB004AEFCA /* Controller */,
+				0A4F84721EA73255004AEFCA /* Model */,
+				0A4F84711EA73218004AEFCA /* Helper */,
 				0AF2612F1EA4B5B400AF41BA /* Class */,
 				23EDCFFB1EA47F6A005D23F0 /* Nguyen Dinh Son */,
-				0A6B2AB81EA388FA00876B02 /* Table_TableViewCell.swift */,
-				0A6B2ABA1EA3890B00876B02 /* Tables_ViewController.swift */,
-				0A7B08831EA12CC9002B068E /* TableInfo_ViewController.swift */,
-				0A7B08851EA13C5C002B068E /* food_TableViewCell.swift */,
-				0A6B2ABC1EA3963600876B02 /* food_Detail_ViewController.swift */,
-				0AF261241EA4AE6900AF41BA /* Main.storyboard */,
 				0A7B08781EA11F7D002B068E /* Assets.xcassets */,
+				0AF261241EA4AE6900AF41BA /* Main.storyboard */,
 				0A7B087A1EA11F7D002B068E /* LaunchScreen.storyboard */,
 				0A7B087D1EA11F7D002B068E /* Info.plist */,
-				0AF261201EA4A64F00AF41BA /* QuanLyNhaHang.sqlite */,
-				0AF261181EA49B3F00AF41BA /* SQLite.swift */,
-				0AF2611F1EA4A08100AF41BA /* SQLite_Briding_header.h */,
 			);
 			path = "Restaurant Management";
-			sourceTree = "<group>";
-		};
-		0AE8323A1EA52203004B675B /* Tran Van Dong */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Tran Van Dong";
 			sourceTree = "<group>";
 		};
 		0AF2611C1EA4A01B00AF41BA /* Frameworks */ = {
@@ -232,14 +265,17 @@
 				23F0AF241EA4A19D006C64F6 /* AreaDetail_ViewController.swift in Sources */,
 				23752F9B1EA63D28007AB0AD /* Manager_ViewController.swift in Sources */,
 				23EDD0001EA47F8F005D23F0 /* Area_TableViewController.swift in Sources */,
+				0A4F84701EA72E8F004AEFCA /* UIExtension.swift in Sources */,
 				0AF2612E1EA4B45800AF41BA /* Bill.swift in Sources */,
 				0AF261191EA49B3F00AF41BA /* SQLite.swift in Sources */,
 				0A7B08861EA13C5C002B068E /* food_TableViewCell.swift in Sources */,
+				0A4F84761EA73DF0004AEFCA /* SimpleTypeExtension.swift in Sources */,
 				23EDD0011EA47F8F005D23F0 /* FoodsList_ViewController.swift in Sources */,
 				23EDCFFF1EA47F8F005D23F0 /* Area_TableViewCell.swift in Sources */,
 				0A6B2ABB1EA3890B00876B02 /* Tables_ViewController.swift in Sources */,
 				0A6B2ABD1EA3963600876B02 /* food_Detail_ViewController.swift in Sources */,
 				0AF261281EA4B2BA00AF41BA /* Table.swift in Sources */,
+				0A4F84741EA73C07004AEFCA /* NotificationExtension.swift in Sources */,
 				0A7B08841EA12CC9002B068E /* TableInfo_ViewController.swift in Sources */,
 				0AF2612A1EA4B38200AF41BA /* Area.swift in Sources */,
 				23EDD0031EA48EA7005D23F0 /* FoodCell_TableViewCell.swift in Sources */,

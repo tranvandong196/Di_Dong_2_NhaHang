@@ -8,7 +8,7 @@
 
 import UIKit
 var indexSelected_tables = 0
-var id_ban = 0
+var isAdded = false
 
 class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
@@ -19,14 +19,16 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
         Tables_TableView.dataSource = self
         database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
         Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
+        Tables_TableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     @IBAction func addNewTable_Button(_ sender: Any) {
-        id_ban = -1
+        isAdded = true
         pushToVC(withIdentifier: "table_detail")
         //moveToVC(withIdentifier: "table_detail", animated: true)
     }
@@ -68,7 +70,12 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
             //TODO: edit the row at indexPath here
         }
         let delAction = UITableViewRowAction(style: .normal, title: "Xoá") { (rowAction, indexPath) in
-            
+            let soban:Int = Tables[indexPath.row].SoBan!
+            if edit(query: "DELETE FROM BanAn WHERE SoBan = \(soban)"){
+                Tables.remove(at: indexPath.row)
+                print("Đã xoá bàn số \(soban)")
+                self.Tables_TableView.reloadData()
+            }
             //TODO: edit the row at indexPath here
         }
         payAction.backgroundColor = UIColor.init(red: 15.0/255.0, green: 125.0/255.0, blue: 15.0/255.0, alpha: 1.0)
@@ -84,21 +91,7 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }
     }
     
-    func moveToVC(withIdentifier: String,animated: Bool){
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let objSomeViewController = storyBoard.instantiateViewController(withIdentifier: withIdentifier)
-        
-        // If you want to present the new ViewController then use this - animated: Hiệu ứng chuyển cảnh
-        self.present(objSomeViewController, animated: animated, completion: nil)
-    }
-    func pushToVC(withIdentifier: String){
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let objSomeViewController = storyBoard.instantiateViewController(withIdentifier: withIdentifier)
-        //let newViewController = NewViewController()
-        // If you want to present the new ViewController then use this - animated: Hiệu ứng chuyển cảnh
-        self.navigationController?.pushViewController(objSomeViewController, animated: true)
-    }
-    /*
+       /*
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation

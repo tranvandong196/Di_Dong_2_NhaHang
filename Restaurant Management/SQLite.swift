@@ -16,23 +16,7 @@ var Tables = [Table]()
 var Foods = [Food]()
 var Areas = [Area]()
 
-// MARK: *** extension
 
-//Setup NumberFormatter: Int 1250000 --> to String: 1.250.000
-struct Number {
-    static let formatterWithSeparator: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.groupingSeparator = "."
-        formatter.numberStyle = .decimal
-        return formatter
-    }()
-}
-
-extension Integer {
-    var stringFormattedWithSeparator: String {
-        return Number.formatterWithSeparator.string(for: self) ?? ""
-    }
-}
 
 // MARK: *** SQLite3 function
 //Database pointer
@@ -144,6 +128,18 @@ func GetAreasFromSQLite(query: String) -> [Area]{
         }
     }
     return Areas
+}
+
+func addTable(_ T: Table){
+    //Tables.append(T)
+    let query = "INSERT INTO BanAn VALUES(\(T.SoBan!),\(T.TinhTrang!),'\(T.HinhAnh!)','\(T.GhiChu!)',\(T.MaKV!),\(T.MaHD!))"
+    print(query)
+    if edit(query: query){
+        print("Thêm bàn số \(T.SoBan!)")
+    }else{
+        print("Không thể thêm bàn số \(T.SoBan!)")
+    }
+    
 }
 // END DONG
 
