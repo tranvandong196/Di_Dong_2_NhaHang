@@ -18,8 +18,10 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
        
         Tables_TableView.delegate = self
         Tables_TableView.dataSource = self
-        database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
-        Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
+        if !isAdded{
+            database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
+            Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
+        }
         Tables_TableView.reloadData()
     }
     

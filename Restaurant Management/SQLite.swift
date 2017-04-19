@@ -17,29 +17,29 @@ var Foods = [Food]()
 var Areas = [Area]()
 
 
-
 // MARK: *** SQLite3 function
 //Database pointer
 func Connect_DB_SQLite( dbName:String, type:String)->OpaquePointer{
     var database:OpaquePointer? = nil
-    var dbPath:String = ""
-    let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
-    let storePath : NSString = documentsPath.appendingPathComponent(dbName) as NSString
-    let fileManager : FileManager = FileManager.default
-    dbPath = Bundle.main.path(forResource: dbName , ofType:type)!
+    let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let storePath : String = documentURL.appendingPathComponent("\(dbName).\(type)").path
+    let dbPath = Bundle.main.path(forResource: dbName , ofType:type)!
     do {
-        try fileManager.copyItem(atPath: dbPath, toPath: storePath as String)
-    } catch {
-        
+        try FileManager.default.copyItem(atPath: dbPath, toPath: storePath)
+    } catch{
+        print("File exists! Can not copy file")
     }
-    let result = sqlite3_open(dbPath, &database)
-    if result != SQLITE_OK {
+    if sqlite3_open(storePath as String, &database) == SQLITE_OK{
+        print("Opened < \(dbName).\(type) > from storePath")
+    }else{
         sqlite3_close(database)
-        print("Failed to open database")
+        print("Failed to open database -> Created \(dbName).\(type) but it wasn't set a valid structure/table!")
+        //createdTable(database: database, query: String) to create any table
     }
+    print("\nDatabase has been stored at: \(storePath)\n")
     return database!
 }
-func createTable(query: String) {
+func createTable(database: OpaquePointer?,query: String) {
     var statement : OpaquePointer?
     if sqlite3_prepare_v2(database, query,-1, &statement, nil) == SQLITE_OK{
         if sqlite3_step(statement) == SQLITE_DONE{
@@ -151,6 +151,7 @@ func updateRow( _ T: Table){
     }
 
 }
+
 // END DONG
 
 //====================Nguyễn Đình Sơn
