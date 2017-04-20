@@ -72,6 +72,7 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
 
     @IBAction func Save_Button_Clicked(_ sender: Any, forEvent event: UIEvent) {
         saveToDB()
+        self.navigationController?.popViewController(animated: true)
     }
     func saveToDB(){
         if isAdded2 {

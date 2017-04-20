@@ -15,16 +15,16 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
     @IBOutlet var Tables_TableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         Tables_TableView.delegate = self
         Tables_TableView.dataSource = self
-        if !isAdded{
-            database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
-            Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
-        }
-        Tables_TableView.reloadData()
+        
+         print("ViewDidAppear")
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
+        Tables_TableView.reloadData()
+        print("ViewWillAppear")
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -57,7 +57,7 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
         let  NotSetupColor  = UIColor.init(red: 0/255.0, green: 128.0/255.0, blue: 1.0, alpha: 0.5)
         let didSetupColor = UIColor.init(red: 1.0, green: 128.0/255.0, blue: 0, alpha: 0.7)
         cell.backgroundColor = Tables[indexPath.row].TinhTrang == 1 ? didSetupColor:NotSetupColor
-        cell.selectionStyle = .none
+        //cell.selectionStyle = .none
         return cell
     }
   
