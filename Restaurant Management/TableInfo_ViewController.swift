@@ -40,6 +40,11 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         KeyboardHide(self, open_Func: #selector(self.keyboardWillHide(_:)))
         
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        foods_TableView.reloadData()
+    }
+
     
     func setup_displayBegin(){
         setupUI_PositionTable()
