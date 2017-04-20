@@ -165,6 +165,14 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
             saveToDB()
         }
     }
+    //Edit Area
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "segue_PickArea")
+        {
+            let dest = segue.destination as! Area_TableViewController
+            dest.Edit_Mode = false
+        }
+    }
     
     /*
     // MARK: *** Navigation

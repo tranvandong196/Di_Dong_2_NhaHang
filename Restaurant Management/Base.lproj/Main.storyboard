@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6av-JC-duF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MVE-Yd-VHJ">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -160,6 +160,9 @@
                                                     <constraint firstAttribute="width" constant="35" id="66W-D2-7ye"/>
                                                 </constraints>
                                                 <state key="normal" image="location-icon"/>
+                                                <connections>
+                                                    <segue destination="Kam-sd-Ymg" kind="show" identifier="segue_PickArea" id="sZJ-B4-vAB"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -402,7 +405,7 @@
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mYE-B6-qOQ" id="LJR-IH-ZHp">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="74"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="74.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T2s-zG-OBI">
@@ -586,6 +589,9 @@
                                     <constraint firstAttribute="width" secondItem="prq-4I-dqQ" secondAttribute="height" multiplier="107:30" id="NNX-yf-aKI"/>
                                 </constraints>
                                 <state key="normal" title="Quản lý món ăn"/>
+                                <connections>
+                                    <segue destination="VYs-0F-l1d" kind="show" id="HeH-SZ-5Io"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1M4-sX-QZx">
                                 <rect key="frame" x="105" y="228" width="110" height="30"/>
@@ -633,7 +639,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell_table" editingAccessoryType="detailDisclosureButton" rowHeight="359" id="Iw9-tg-TsY" customClass="Area_TableViewCell" customModule="Restaurant_Management" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="56" width="320" height="359"/>
+                                <rect key="frame" x="0.0" y="55.5" width="320" height="359"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Iw9-tg-TsY" id="CRZ-9Q-LX7">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="358"/>
@@ -703,6 +709,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="Add_Btn_Outlet" destination="dD8-is-QBJ" id="Iyw-At-Sie"/>
                         <outlet property="Edit_Btn_Outlet" destination="qjg-Ks-Qlj" id="IQI-kb-tcT"/>
                         <outlet property="MyTableView" destination="Vlk-6P-VQU" id="KPc-3A-i91"/>
                     </connections>
@@ -974,6 +981,8 @@
         <image name="location-icon" width="240" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="rsf-gB-Wc8"/>
+        <segue reference="HeH-SZ-5Io"/>
         <segue reference="meg-a7-Fb2"/>
     </inferredMetricsTieBreakers>
 </document>

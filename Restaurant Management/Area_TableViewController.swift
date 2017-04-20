@@ -10,12 +10,13 @@ import UIKit
 class Area_TableViewController: UITableViewController {
     
     public static var listArea = [Area]()
-    public static var Edit_Mode = true //0=hide_nav_btn    1=edit
     public static var Add_New_Item = false;
     public static var Edit_Item_Index = -1;
     
+    var Edit_Mode = true //0=hide_nav_btn    1=edit
     @IBOutlet var MyTableView: UITableView!
     @IBOutlet weak var Edit_Btn_Outlet: UIBarButtonItem!
+    @IBOutlet weak var Add_Btn_Outlet: UIBarButtonItem!
     @IBAction func Edit_Btn(_ sender: Any) {
     }
     @IBAction func Add_Btn(_ sender: Any) {
@@ -46,14 +47,19 @@ class Area_TableViewController: UITableViewController {
         Area_TableViewController.Add_New_Item = false;
         Area_TableViewController.Edit_Item_Index = -1;
         
-        if(Area_TableViewController.Edit_Mode == false){
+        if(Edit_Mode == false){
             self.navigationItem.rightBarButtonItem?.isEnabled = false
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
+            Add_Btn_Outlet.isEnabled = false
+            Add_Btn_Outlet.tintColor = UIColor.clear
            
         }
         else{
             self.navigationItem.rightBarButtonItem?.isEnabled = true
             self.navigationItem.rightBarButtonItem?.tintColor = self.view.tintColor
+            
+            Add_Btn_Outlet.isEnabled = true
+            Add_Btn_Outlet.tintColor = view.tintColor
         }
         reloadDbData()
         
@@ -192,6 +198,7 @@ class Area_TableViewController: UITableViewController {
     }
 
 
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {

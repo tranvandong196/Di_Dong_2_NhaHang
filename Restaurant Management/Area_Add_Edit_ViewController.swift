@@ -39,7 +39,6 @@ class Area_Add_Edit_ViewController: UIViewController {
             let str = "UPDATE KhuVuc SET TenKV = '" + area.TenKV + "', MoTa = '" + area.MoTa + "', HinhAnh = '" + area.HinhAnh + "' WHERE MaKV = " + "\(area.MaKV!)";
             Query(sql: str, database: database!)
         }
-        
         self.navigationController?.popViewController(animated: true)
     }
     
