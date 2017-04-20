@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6av-JC-duF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MVE-Yd-VHJ">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -112,6 +112,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Thêm món"/>
+                                        <connections>
+                                            <segue destination="VYs-0F-l1d" kind="show" identifier="Segue_Add_Foods" id="IR3-H3-RO9"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bD4-AH-dcd">
                                         <rect key="frame" x="166" y="410.5" width="124" height="40"/>
@@ -995,7 +998,7 @@
         <!--Chi tiết-->
         <scene sceneID="pD3-ox-njy">
             <objects>
-                <viewController id="R41-sY-dkS" customClass="food_Detail_ViewController" customModule="Restaurant_Management" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Add_Edit_Food" useStoryboardIdentifierAsRestorationIdentifier="YES" id="R41-sY-dkS" customClass="newFood_ViewController" customModule="Restaurant_Management" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g2n-Oi-CzH"/>
                         <viewControllerLayoutGuide type="bottom" id="atb-Gb-gmt"/>
@@ -1122,7 +1125,7 @@
         <image name="location-icon" width="240" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HeH-SZ-5Io"/>
+        <segue reference="IR3-H3-RO9"/>
         <segue reference="sZJ-B4-vAB"/>
     </inferredMetricsTieBreakers>
 </document>

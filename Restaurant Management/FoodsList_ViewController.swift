@@ -246,7 +246,7 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
         if tableView.isEditing == true
         {
             //if Area_TableViewController.Edit_Mode == true {
-            if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddArea") as? Area_Add_Edit_ViewController
+            if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Add_Edit_Food") as? newFood_ViewController
             {
                 //viewController.newsObj = newsObj
                 if let navigator = navigationController {

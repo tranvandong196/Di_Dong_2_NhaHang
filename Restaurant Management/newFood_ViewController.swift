@@ -8,13 +8,13 @@
 
 import UIKit
 
-//class newFood_ViewController: UIViewController, UIPickerViewDelegate,UIPickerViewDataSource {
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        // Do any additional setup after loading the view.
-//    }
+class newFood_ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
 //
 //    override func didReceiveMemoryWarning() {
 //        super.didReceiveMemoryWarning()
@@ -56,4 +56,4 @@ import UIKit
 //    }
 //    */
 //
-//}
+}

@@ -180,6 +180,12 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
             let dest = segue.destination as! Area_TableViewController
             dest.Edit_Mode = false
         }
+        if(segue.identifier == "Segue_Add_Foods")
+        {
+            let dest = segue.destination as! FoodsList_ViewController
+            dest.Edit_Mode = false
+        }
+        
     }
     
     /*
