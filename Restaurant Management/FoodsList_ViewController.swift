@@ -12,6 +12,8 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
 
     public static var listFoods = [Food]()
     
+    public static var Add_New_Item = false;
+    public static var Edit_Item_Index = -1;
     var Edit_Mode = true //0=hide_nav_btn    1=edit
     var listFoodTypes:[String]! = ["Tất cả", "Đồ ăn", "Đồ uống"]
     
@@ -20,8 +22,15 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
     @IBOutlet weak var FoodsList_TableView: UITableView!
     @IBOutlet weak var Edit_Btn_Outlet: UIBarButtonItem!
     @IBOutlet weak var Add_Btn_Outlet: UIBarButtonItem!
-//
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        FoodsList_ViewController.Add_New_Item = false;
+        FoodsList_ViewController.Edit_Item_Index = -1;
+        reloadDbData()
+        FoodsList_TableView.reloadData()
+        
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,11 +42,34 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
         FoodsList_TableView.dataSource = self
         
         // Do any additional setup after loading the view.
-        loadAllDataFromDB()
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        FoodsList_ViewController.Add_New_Item = false;
+        FoodsList_ViewController.Edit_Item_Index = -1;
+        
+        if(Edit_Mode == false){
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
+            Add_Btn_Outlet.isEnabled = false
+            Add_Btn_Outlet.tintColor = UIColor.clear
+            
+        }
+        else{
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
+            self.navigationItem.rightBarButtonItem?.tintColor = self.view.tintColor
+            
+            Add_Btn_Outlet.isEnabled = true
+            Add_Btn_Outlet.tintColor = view.tintColor
+        }
 
     }
     
-    func loadAllDataFromDB(){
+    func reloadDbData(){
+        let defaults = UserDefaults.standard
+        if (defaults.string(forKey: "pickerViewRow") != nil)
+        {
+            pickerFoodType.selectRow(0, inComponent: 0, animated: true)
+        }
+        
         FoodsList_ViewController.listFoods.removeAll()
         
         //sqlite
@@ -207,7 +239,35 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
         
         return cell
     }
+    
+    //select a row
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        if tableView.isEditing == true
+        {
+            //if Area_TableViewController.Edit_Mode == true {
+            if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddArea") as? Area_Add_Edit_ViewController
+            {
+                //viewController.newsObj = newsObj
+                if let navigator = navigationController {
+                    
+                    FoodsList_ViewController.Edit_Item_Index = indexPath.row;
+                    navigator.pushViewController(viewController, animated: true)
+                }
+            }
+            
+        }
+        else{
+            if Edit_Mode == false
+            {
+                //updateRow(Tables[indexSelected_tables])
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+        
+    }
 
+    
     /*
     // MARK: - Navigation
 
