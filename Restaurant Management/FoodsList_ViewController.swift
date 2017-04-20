@@ -86,7 +86,7 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
         Foods.removeAll()
         
         //sqlite
-        database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
+        database = Connect_DB_SQLite(dbName: DBName, type: DBType)
         
         //Lay data
         let statement:OpaquePointer = Select(query: "SELECT * FROM MonAn", database: database!)
@@ -168,7 +168,7 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
         }
         
         //sqlite
-        database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
+        database = Connect_DB_SQLite(dbName: DBName, type: DBType)
         
         
         Foods.removeAll()
@@ -270,7 +270,7 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
             
         }
         else{
-            if Edit_Mode == false
+            if Edit_Mode == false // on
             {
                 //updateRow(Tables[indexSelected_tables])
                 self.navigationController?.popViewController(animated: true)
@@ -292,17 +292,17 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-//            database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
-//            
-//            let str = "DELETE FROM KhuVuc WHERE MaKV=" + "\(Area_TableViewController.listArea[indexPath.row].MaKV!)"
-//            Query(sql: str, database: database!)
-//            
-//            sqlite3_close(database)
-//            
-//            Area_TableViewController.listArea.remove(at: indexPath.row)
-//            
-//            sqlite3_close(database)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
+            database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+            
+            let str = "DELETE FROM MonAn WHERE MaMon=" + "\(Foods[indexPath.row].MaMon!)"
+            Query(sql: str, database: database!)
+            
+            sqlite3_close(database)
+            
+            Foods.remove(at: indexPath.row)
+            
+            sqlite3_close(database)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
         
     }
