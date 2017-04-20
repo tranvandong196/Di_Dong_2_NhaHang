@@ -256,7 +256,7 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
     //select a row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        if tableView.isEditing == true
+        if FoodsList_TableView.isEditing == true
         {
             //if Area_TableViewController.Edit_Mode == true {
             if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Add_Edit_Food") as? newFood_ViewController
