@@ -71,7 +71,7 @@ class Area_TableViewController: UITableViewController {
         Area_TableViewController.listArea.removeAll()
         
         //sqlite
-        database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
+        database = Connect_DB_SQLite(dbName: DBName, type: DBType)
         
         //Lay data
         let statement:OpaquePointer = Select(query: "SELECT * FROM KhuVuc", database: database!)

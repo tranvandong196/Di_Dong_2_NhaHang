@@ -16,6 +16,8 @@ var Tables = [Table]()
 var Foods = [Food]()
 var Areas = [Area]()
 
+let DBName = "QuanLyNhaHang"
+let DBType = "sqlite"
 
 // MARK: *** SQLite3 function
 //Database pointer
@@ -27,7 +29,7 @@ func Connect_DB_SQLite( dbName:String, type:String)->OpaquePointer{
     do {
         try FileManager.default.copyItem(atPath: dbPath, toPath: storePath)
     } catch{
-        print("File exists! Can not copy file")
+        //print("File exists! Can not copy file")
     }
     if sqlite3_open(storePath as String, &database) == SQLITE_OK{
         print("Opened < \(dbName).\(type) > from storePath")
@@ -36,7 +38,7 @@ func Connect_DB_SQLite( dbName:String, type:String)->OpaquePointer{
         print("Failed to open database -> Created \(dbName).\(type) but it wasn't set a valid structure/table!")
         //createdTable(database: database, query: String) to create any table
     }
-    print("\nDatabase has been stored at: \(storePath)\n")
+    //print("\nDatabase has been stored at: \(storePath)\n")
     return database!
 }
 func createTable(database: OpaquePointer?,query: String) {
@@ -69,8 +71,10 @@ func edit(query: String)-> Bool{
     sqlite3_finalize(insertStatement)
     return result
 }
+
 // MARK: *** Tran Van Dong
 func GetTablesFromSQLite(query: String) -> [Table]{
+     database = Connect_DB_SQLite(dbName: DBName, type: DBType)
     var Tables = [Table]()
     var queryStatement:OpaquePointer? = nil
     if sqlite3_prepare_v2(database, query, -1, &queryStatement, nil) == SQLITE_OK{
@@ -89,9 +93,11 @@ func GetTablesFromSQLite(query: String) -> [Table]{
 
         }
     }
+    sqlite3_close(database)
     return Tables
 }
 func GetFoodsFromSQLite(query: String) -> [Food]{
+    database = Connect_DB_SQLite(dbName: DBName, type: DBType)
     var Foods = [Food]()
     var queryStatement:OpaquePointer? = nil
     if sqlite3_prepare_v2(database, query, -1, &queryStatement, nil) == SQLITE_OK{
@@ -109,10 +115,12 @@ func GetFoodsFromSQLite(query: String) -> [Food]{
             
         }
     }
+    sqlite3_close(database)
     return Foods
 }
 
 func GetAreasFromSQLite(query: String) -> [Area]{
+    database = Connect_DB_SQLite(dbName: DBName, type: DBType)
     var Areas = [Area]()
     var queryStatement:OpaquePointer? = nil
     if sqlite3_prepare_v2(database, query, -1, &queryStatement, nil) == SQLITE_OK{
@@ -127,11 +135,12 @@ func GetAreasFromSQLite(query: String) -> [Area]{
             //print("Query result: \(mssv): \(fname) \(lname) - \(classID) - \(birthday) - \(otherInfo)")
         }
     }
+    sqlite3_close(database)
     return Areas
 }
 
 func addRow(_ T: Table){
-    //Tables.append(T)
+     database = Connect_DB_SQLite(dbName: DBName, type: DBType)
     let query = "INSERT INTO BanAn VALUES(\(T.SoBan!),\(T.TinhTrang!),'\(T.HinhAnh!)','\(T.GhiChu!)',\(T.MaKV!),\(T.MaHD!))"
     print(query)
     if edit(query: query){
@@ -139,10 +148,10 @@ func addRow(_ T: Table){
     }else{
         print("Không thể thêm bàn số \(T.SoBan!)")
     }
-    
+    sqlite3_close(database)
 }
 func updateRow( _ T: Table){
-    database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
+    database = Connect_DB_SQLite(dbName: DBName, type: DBType)
     let query = "UPDATE BanAn SET TinhTrang = \(T.TinhTrang!), HinhAnh = '\(T.HinhAnh!)', GhiChu = '\(T.GhiChu!)', MaKV = \(T.MaKV!), MaHD = \(T.MaHD!) WHERE SoBan = \(T.SoBan!)"
     print(query)
     if edit(query: query){
@@ -150,7 +159,7 @@ func updateRow( _ T: Table){
     }else{
         print("Không thể cập nhật bàn số \(T.SoBan!)")
     }
-
+    sqlite3_close(database)
 }
 
 // END DONG
