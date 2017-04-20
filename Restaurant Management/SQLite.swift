@@ -142,6 +142,7 @@ func addRow(_ T: Table){
     
 }
 func updateRow( _ T: Table){
+    database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
     let query = "UPDATE BanAn SET TinhTrang = \(T.TinhTrang!), HinhAnh = '\(T.HinhAnh!)', GhiChu = '\(T.GhiChu!)', MaKV = \(T.MaKV!), MaHD = \(T.MaHD!) WHERE SoBan = \(T.SoBan!)"
     print(query)
     if edit(query: query){

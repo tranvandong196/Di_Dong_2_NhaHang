@@ -29,22 +29,23 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         isAdded2 = isAdded
+        addDoneButton(otherInfo)
+        KeyboardShow(self,open_Func:  #selector(self.keyboardWillShow(_:)))
+        KeyboardHide(self, open_Func: #selector(self.keyboardWillHide(_:)))
+        
+
+        print("ViewDidLoad")
+    }
+    override func viewWillAppear(_ animated: Bool) {
         foods_TableView.delegate = self
         foods_TableView.dataSource = self
-        addDoneButton(otherInfo)
+        
         Foods = GetFoodsFromSQLite(query: "SELECT * FROM MonAn")
         Areas = GetAreasFromSQLite(query: "SElECT * FROM KhuVuc WHERE MaKV = \(Tables[indexSelected_tables].MaKV!)")
         
         setup_displayBegin()
-        KeyboardShow(self,open_Func:  #selector(self.keyboardWillShow(_:)))
-        KeyboardHide(self, open_Func: #selector(self.keyboardWillHide(_:)))
-        
+        print("ViewWillAppear")
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        foods_TableView.reloadData()
-    }
-
     
     func setup_displayBegin(){
         setupUI_PositionTable()
