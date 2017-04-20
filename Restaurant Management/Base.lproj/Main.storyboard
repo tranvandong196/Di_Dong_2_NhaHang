@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6av-JC-duF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MVE-Yd-VHJ">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -39,7 +39,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="258" height="50"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EG1-TM-aKc" id="Lb1-VH-Kjw">
-                                                            <rect key="frame" x="0.0" y="0.0" width="258" height="50"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="258" height="49"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WUq-gM-aM4" userLabel="food_image">
@@ -745,7 +745,7 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="237"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b7Z-Xe-jj0" id="mt9-Kd-9yW">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="237"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="236"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gà Đông Tảo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXs-cP-TKR">
@@ -827,15 +827,32 @@
                             <constraint firstAttribute="bottom" secondItem="lwd-EE-STj" secondAttribute="bottom" constant="20" symbolic="YES" id="uPw-eM-uly"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Danh sách món" id="Dbc-hI-U8G"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Danh sách món" id="Dbc-hI-U8G">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Edit" id="4kA-sn-0ux">
+                                <connections>
+                                    <action selector="Edit_Btn:" destination="Kam-sd-Ymg" id="sg8-64-DvB"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Add" id="4oT-BB-6Da">
+                                <connections>
+                                    <action selector="Add_Btn:" destination="Kam-sd-Ymg" id="JsJ-fZ-u2O"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="FoodsList_TableView" destination="lwd-EE-STj" id="miq-Ig-Mae"/>
+                        <outlet property="Add_Btn_Outlet" destination="4oT-BB-6Da" id="VAV-Zj-pAb"/>
+                        <outlet property="Edit_Btn_Outlet" destination="4kA-sn-0ux" id="sLP-z7-Bvt"/>
+                        <outlet property="FoodsList_TableView" destination="lwd-EE-STj" id="Bsk-gJ-3Kc"/>
                         <outlet property="pickerFoodType" destination="iHc-YK-CoI" id="miz-IX-sRz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rbk-tX-Gml" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48.75" y="1741.9014084507041"/>
+            <point key="canvasLocation" x="842" y="1782"/>
         </scene>
         <!--Chi tiết món-->
         <scene sceneID="K5R-U3-ZaP">
@@ -902,7 +919,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xRZ-ah-XeN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="846" y="1742"/>
+            <point key="canvasLocation" x="1639" y="1782"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sSF-Ce-Px6">
@@ -920,7 +937,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z71-WH-oek" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-716" y="1742"/>
+            <point key="canvasLocation" x="77" y="1782"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fh1-41-Rm2">
@@ -981,8 +998,8 @@
         <image name="location-icon" width="240" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sZJ-B4-vAB"/>
         <segue reference="meg-a7-Fb2"/>
-        <segue reference="HeH-SZ-5Io"/>
+        <segue reference="rsf-gB-Wc8"/>
+        <segue reference="N7j-G4-gDQ"/>
     </inferredMetricsTieBreakers>
 </document>

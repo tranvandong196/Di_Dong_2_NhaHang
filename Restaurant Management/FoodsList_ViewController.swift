@@ -12,12 +12,15 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
 
     public static var listFoods = [Food]()
     
+    var Edit_Mode = true //0=hide_nav_btn    1=edit
     var listFoodTypes:[String]! = ["Tất cả", "Đồ ăn", "Đồ uống"]
     
     
     @IBOutlet weak var pickerFoodType: UIPickerView!
     @IBOutlet weak var FoodsList_TableView: UITableView!
-    
+    @IBOutlet weak var Edit_Btn_Outlet: UIBarButtonItem!
+    @IBOutlet weak var Add_Btn_Outlet: UIBarButtonItem!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +33,13 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
         FoodsList_TableView.dataSource = self
         
         // Do any additional setup after loading the view.
+        loadAllDataFromDB()
+
+    }
+    
+    func loadAllDataFromDB(){
+        FoodsList_ViewController.listFoods.removeAll()
+        
         //sqlite
         database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
         
@@ -85,9 +95,8 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
         }
         sqlite3_finalize(statement)
         sqlite3_close(database)
-
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -103,6 +112,78 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return listFoodTypes[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let str:String
+        if row == 0{//select all
+            str = "SELECT * FROM MonAn"
+        }
+        else{
+            str = "SELECT * FROM MonAn WHERE Loai = " + "\(row)"
+        }
+        
+        //sqlite
+        database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
+        
+        
+        FoodsList_ViewController.listFoods.removeAll()
+        
+        
+        
+        //Lay data
+        let statement:OpaquePointer = Select(query: str, database: database!)
+        
+        // Do du lieu vao mang
+        while sqlite3_step(statement) == SQLITE_ROW {
+            // Do ra tung cot tuong ung voi no
+            let food = Food()
+            
+            if(sqlite3_column_text(statement, 0) != nil)
+            {
+                food.MaMon = Int(sqlite3_column_int(statement, 0))
+                if(sqlite3_column_text(statement, 1) != nil)
+                {
+                    food.TenMon = String(cString: sqlite3_column_text(statement, 1))
+                }
+                if(sqlite3_column_text(statement, 2) != nil)
+                {
+                    food.Gia = Double(sqlite3_column_double(statement, 2))
+                }
+                if(sqlite3_column_text(statement, 3) != nil)
+                {
+                    food.HinhAnh = String(cString: sqlite3_column_text(statement, 3))
+                    
+                }
+                if(sqlite3_column_text(statement, 3) != nil)
+                {
+                    food.HinhAnh = String(cString: sqlite3_column_text(statement, 3))
+                }
+                if(sqlite3_column_text(statement, 4) != nil)
+                {
+                    food.MoTa = String(cString: sqlite3_column_text(statement, 4))
+                }
+                if(sqlite3_column_text(statement, 5) != nil)
+                {
+                    food.Loai = Int(sqlite3_column_int(statement, 5))
+                }
+                if(sqlite3_column_text(statement, 6) != nil)
+                {
+                    food.Icon = String(cString: sqlite3_column_text(statement, 6))
+                }
+            }
+            
+            FoodsList_ViewController.listFoods.append(food)
+            
+            //let rowData = sqlite3_column_text(statement, 1)
+            // Neu cot nao co dau tieng viet thi can phai lam them buoc nay
+            //let fieldValue = String(cString: rowData!)
+            // Them Vao mang da co
+            //mang.append(fieldValue!)
+        }
+        sqlite3_finalize(statement)
+        sqlite3_close(database)
+        FoodsList_TableView.reloadData()
+
     }
 
     // MARK: *** Table view data source

@@ -168,6 +168,9 @@ func Select( query:String, database:OpaquePointer)->OpaquePointer{
 func Query( sql:String, database:OpaquePointer){
     var errMsg:UnsafeMutablePointer<Int8>? = nil
     let result = sqlite3_exec(database, sql, nil, nil, &errMsg);
+    
+    
+    print(sql)
     if (result != SQLITE_OK) {
         sqlite3_close(database)
         print("Cau truy van bi loi!")
