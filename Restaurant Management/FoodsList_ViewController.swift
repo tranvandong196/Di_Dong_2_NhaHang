@@ -22,12 +22,26 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
     @IBOutlet weak var FoodsList_TableView: UITableView!
     @IBOutlet weak var Edit_Btn_Outlet: UIBarButtonItem!
     @IBOutlet weak var Add_Btn_Outlet: UIBarButtonItem!
+    @IBAction func Add_Btn_Action(_ sender: Any) {
+//        FoodsList_ViewController.Add_New_Item = true;
+//        
+//        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Add_Edit_Food") as? newFood_ViewController{
+// 
+//            //viewController.newsObj = newsObj
+//            if let navigator = navigationController {
+//                navigator.pushViewController(viewController, animated: true)
+//            }
+//        }
 
+    }
+
+    
     override func viewWillAppear(_ animated: Bool) {
         FoodsList_ViewController.Add_New_Item = false;
         FoodsList_ViewController.Edit_Item_Index = -1;
         reloadDbData()
         FoodsList_TableView.reloadData()
+        
         
     }
 
@@ -266,7 +280,42 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
         }
         
     }
-
+    //edit
+    // Override to support editing the table view.
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        if tableView.isEditing {
+            return .delete
+        }
+        
+        return .none
+        
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+//            database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
+//            
+//            let str = "DELETE FROM KhuVuc WHERE MaKV=" + "\(Area_TableViewController.listArea[indexPath.row].MaKV!)"
+//            Query(sql: str, database: database!)
+//            
+//            sqlite3_close(database)
+//            
+//            Area_TableViewController.listArea.remove(at: indexPath.row)
+//            
+//            sqlite3_close(database)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        
+    }
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        self.FoodsList_TableView.setEditing(editing, animated: animated)
+    }
+//    
+//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
     
     /*
     // MARK: - Navigation
