@@ -18,10 +18,7 @@ class food_Detail_ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        foodImage_ImageView.image = UIImage(named: Foods[indexSelected_foods].HinhAnh)
-        foodName_Label.text = Foods[indexSelected_foods].TenMon
-        foodPrice_Label.text = "\(Int(Foods[indexSelected_foods].Gia!).stringFormattedWithSeparator)đ"
-        foodInfo_TextView.text = Foods[indexSelected_foods].MoTa
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,7 +26,13 @@ class food_Detail_ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        Foods = GetFoodsFromSQLite(query: "SELECT * FROM MonAn")
+        foodImage_ImageView.image = UIImage(named: Foods[indexSelected_foods].HinhAnh)
+        foodName_Label.text = Foods[indexSelected_foods].TenMon
+        foodPrice_Label.text = "\(Int(Foods[indexSelected_foods].Gia!).stringFormattedWithSeparator)đ"
+        foodInfo_TextView.text = Foods[indexSelected_foods].MoTa
+    }
     /*
     // MARK: - Navigation
 

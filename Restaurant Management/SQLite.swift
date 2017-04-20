@@ -163,6 +163,17 @@ func addRow(_ T: Table){
     }
     sqlite3_close(database)
 }
+func addRow(_ F: Food){
+    database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+    let query = "INSERT INTO MonAn VALUES(12,'\(F.TenMon!)', \(F.Gia!), '\(F.HinhAnh!)','\(F.MoTa!)', \(F.Loai!), '\(F.Icon!)')"
+    print(query)
+    if edit(query: query){
+        print("Thêm món: \(F.TenMon!)")
+    }else{
+        print("Không thể thêm món: \(F.TenMon!)")
+    }
+    sqlite3_close(database)
+}
 func updateRow( _ T: Table){
     database = Connect_DB_SQLite(dbName: DBName, type: DBType)
     let query = "UPDATE BanAn SET TinhTrang = \(T.TinhTrang!), HinhAnh = '\(T.HinhAnh!)', GhiChu = '\(T.GhiChu!)', MaKV = \(T.MaKV!), MaHD = \(T.MaHD!) WHERE SoBan = \(T.SoBan!)"
@@ -174,7 +185,17 @@ func updateRow( _ T: Table){
     }
     sqlite3_close(database)
 }
-
+func updateRow( _ F: Food){
+    database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+    let query = "UPDATE MonAn SET TenMon = '\(F.TenMon!)', Gia = \(F.Gia!), HinhAnh = '\(F.HinhAnh!)', MoTa = '\(F.MoTa!)', Loai = \(F.Loai!), Icon = '\(F.Icon!)' WHERE MaMon = \(F.MaMon!)"
+    print(query)
+    if edit(query: query){
+        print("Cập nhât món: \(F.TenMon!)")
+    }else{
+        print("Không thể cập nhật món:  \(F.TenMon!)")
+    }
+    sqlite3_close(database)
+}
 // END DONG
 
 //====================Nguyễn Đình Sơn

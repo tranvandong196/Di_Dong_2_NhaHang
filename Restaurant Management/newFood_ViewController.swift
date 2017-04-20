@@ -12,6 +12,7 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     
     // MARK: *** Variable
     let Kinds = GetKindsFromSQLite(query: "SELECT * FROM Loai")
+    var kind_selected:Int?
     // MARK: *** UIOulet
     
     @IBOutlet weak var imageFood_ImageView: UIImageView!
@@ -23,6 +24,8 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     @IBOutlet weak var nameOfFood_TextField: UITextField!
     
     @IBOutlet weak var priceOfFood_TextField: UITextField!
+    
+    // MARK: *** Display show
     override func viewDidLoad() {
         super.viewDidLoad()
         Show_Hide_PickerView_Button.layer.cornerRadius = 5
@@ -43,12 +46,31 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        
+        setupDisplayBegin()
         
     }
-    
+    func setupDisplayBegin(){
+    if indexSelected_foods > -1{
+        let kind_tmp = GetKindsFromSQLite(query: "SELECT * FROM Loai WHERE Ma = \(Foods[indexSelected_foods].Loai!)")
+        imageFood_ImageView.image = UIImage(named: Foods[indexSelected_foods].HinhAnh)
+        nameOfFood_TextField.text = Foods[indexSelected_foods].TenMon
+        priceOfFood_TextField.text = String(Foods[indexSelected_foods].Gia!)
+        NameKindFood_Label.text = " " + kind_tmp[0].Ten
+        
+        let number: Int = Kinds.count
+        for i in 0..<number{
+            if kind_tmp[0].Ma == Kinds[i].Ma {
+                KindofFood_PickerView.selectRow(i, inComponent: 0, animated: true)
+                kind_selected = kind_tmp[0].Ma
+                break
+            }
+        }
+    }
+        
+    }
     // MARK: *** UIEvent
     @IBAction func SaveChanged_Button(_ sender: Any) {
+        saveToDB()
         navigationController!.popViewController(animated: true)
     }
     @IBAction func Show_Hide_PickerView_Button_Tapped(_ sender: Any) {
@@ -102,10 +124,22 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
             self.NameKindFood_Label.isHidden = false
             self.KindofFood_PickerView.isHidden = true
             Show_Hide_PickerView_Button.isEnabled = true
-        
+        kind_selected = Kinds[row].Ma
         NameKindFood_Label.text = " " + Kinds[row].Ten
     }
+    // MARK: *** Data
     
+    func saveToDB(){
+        let food = Food(MaMon: -1, TenMon: nameOfFood_TextField.text!, Gia: Double(priceOfFood_TextField.text!)!, HinhAnh: "Chưa có", MoTa: otherInfo.text, Loai: kind_selected!, Icon: "Chưa có")
+        if indexSelected_foods > -1{
+            food.MaMon = Foods[indexSelected_foods].MaMon
+            food.HinhAnh = Foods[indexSelected_foods].HinhAnh
+            food.Icon = Foods[indexSelected_foods].Icon
+            updateRow(food)
+        }else{
+            addRow(food)
+        }
+    }
     /*
     // MARK: - Navigation
 

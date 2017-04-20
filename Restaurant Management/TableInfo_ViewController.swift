@@ -33,16 +33,18 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         KeyboardShow(self,open_Func:  #selector(self.keyboardWillShow(_:)))
         KeyboardHide(self, open_Func: #selector(self.keyboardWillHide(_:)))
         
-
+        Foods = GetFoodsFromSQLite(query: "SELECT * FROM MonAn")
         print("ViewDidLoad")
     }
     override func viewWillAppear(_ animated: Bool) {
         foods_TableView.delegate = self
         foods_TableView.dataSource = self
         
-        Foods = GetFoodsFromSQLite(query: "SELECT * FROM MonAn")
+        
+        
         Areas = GetAreasFromSQLite(query: "SElECT * FROM KhuVuc WHERE MaKV = \(Tables[indexSelected_tables].MaKV!)")
         
+        foods_TableView.reloadData()
         setup_displayBegin()
         print("ViewWillAppear")
     }
