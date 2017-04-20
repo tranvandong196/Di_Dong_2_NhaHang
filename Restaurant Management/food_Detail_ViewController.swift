@@ -20,8 +20,8 @@ class food_Detail_ViewController: UIViewController {
         
         foodImage_ImageView.image = UIImage(named: Foods[indexSelected_foods].HinhAnh)
         foodName_Label.text = Foods[indexSelected_foods].TenMon
-        foodPrice_Label.text = "\(Int(Foods[indexSelected_foods].Gia!))đ"
-        
+        foodPrice_Label.text = "\(Int(Foods[indexSelected_foods].Gia!).stringFormattedWithSeparator)đ"
+        foodInfo_TextView.text = Foods[indexSelected_foods].MoTa
     }
 
     override func didReceiveMemoryWarning() {
