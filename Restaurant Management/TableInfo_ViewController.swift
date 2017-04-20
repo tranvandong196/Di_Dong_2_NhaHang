@@ -96,6 +96,10 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
                     {
                         food.Icon = String(cString: sqlite3_column_text(statement, 6))
                     }
+                    if(sqlite3_column_text(statement, 8) != nil)
+                    {
+                        food.SoLuong = Int(sqlite3_column_int(statement, 8))
+                    }
                 }
                 
                 list_BookedFoods.append(food)
@@ -191,9 +195,10 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! foods_TableViewCell
         
-        cell.nameOfFood_Label.text = list_BookedFoods[indexPath.row].TenMon
+        cell.nameOfFood_Label.text = list_BookedFoods[indexPath.row].TenMon + " (x" + "\(list_BookedFoods[indexPath.row].SoLuong!)" + ")"
         cell.food_ImageView.image = UIImage(named: list_BookedFoods[indexPath.row].Icon)
-        cell.priceOfFood.text = "\(Int(list_BookedFoods[indexPath.row].Gia!).stringFormattedWithSeparator)đ"
+        cell.priceOfFood.text = "\(Int((list_BookedFoods[indexPath.row].Gia)!).stringFormattedWithSeparator)đ"
+        
         
         return cell
     }
