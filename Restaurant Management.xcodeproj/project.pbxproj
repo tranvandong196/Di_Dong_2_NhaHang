@@ -26,6 +26,7 @@
 		0AF2612C1EA4B3D000AF41BA /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF2612B1EA4B3D000AF41BA /* Food.swift */; };
 		0AF2612E1EA4B45800AF41BA /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF2612D1EA4B45800AF41BA /* Bill.swift */; };
 		0AF579961EA878230001DC58 /* newFood_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF579951EA878230001DC58 /* newFood_ViewController.swift */; };
+		0AF579981EA893FF0001DC58 /* Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF579971EA893FF0001DC58 /* Kind.swift */; };
 		23752F9B1EA63D28007AB0AD /* Manager_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23752F9A1EA63D28007AB0AD /* Manager_ViewController.swift */; };
 		23A45F361EA872D5009CCD1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23A45F351EA872D5009CCD1A /* Main.storyboard */; };
 		23CC7AB61EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CC7AB51EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift */; };
@@ -60,6 +61,7 @@
 		0AF2612B1EA4B3D000AF41BA /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		0AF2612D1EA4B45800AF41BA /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		0AF579951EA878230001DC58 /* newFood_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newFood_ViewController.swift; sourceTree = "<group>"; };
+		0AF579971EA893FF0001DC58 /* Kind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kind.swift; sourceTree = "<group>"; };
 		23752F9A1EA63D28007AB0AD /* Manager_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager_ViewController.swift; sourceTree = "<group>"; };
 		23A45F351EA872D5009CCD1A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		23CC7AB51EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area_Add_Edit_ViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				0AF261291EA4B38200AF41BA /* Area.swift */,
 				0AF2612B1EA4B3D000AF41BA /* Food.swift */,
 				0AF2612D1EA4B45800AF41BA /* Bill.swift */,
+				0AF579971EA893FF0001DC58 /* Kind.swift */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				23EDD0011EA47F8F005D23F0 /* FoodsList_ViewController.swift in Sources */,
 				23EDCFFF1EA47F8F005D23F0 /* Area_TableViewCell.swift in Sources */,
 				0A6B2ABB1EA3890B00876B02 /* Tables_ViewController.swift in Sources */,
+				0AF579981EA893FF0001DC58 /* Kind.swift in Sources */,
 				0A6B2ABD1EA3963600876B02 /* food_Detail_ViewController.swift in Sources */,
 				0AF261281EA4B2BA00AF41BA /* Table.swift in Sources */,
 				0A4F84741EA73C07004AEFCA /* NotificationExtension.swift in Sources */,

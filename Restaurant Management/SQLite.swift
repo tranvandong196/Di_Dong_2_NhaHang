@@ -138,17 +138,19 @@ func GetAreasFromSQLite(query: String) -> [Area]{
     sqlite3_close(database)
     return Areas
 }
-func GetKindFoodFromSQLite(query: String) -> String{
+func GetKindsFromSQLite(query: String) -> [Kind]{
     database = Connect_DB_SQLite(dbName: DBName, type: DBType)
-    var Ten:String!
+    var Kinds = [Kind]()
     var queryStatement:OpaquePointer? = nil
     if sqlite3_prepare_v2(database, query, -1, &queryStatement, nil) == SQLITE_OK{
         while sqlite3_step(queryStatement) == SQLITE_ROW{sqlite3_column_text(queryStatement, 1)
-            Ten = String(cString: sqlite3_column_text(queryStatement, 1))
+            let Ma = Int(sqlite3_column_int(queryStatement, 0))
+            let Ten = String(cString: sqlite3_column_text(queryStatement, 1))
+            Kinds.append(Kind(Ma: Ma,Ten: Ten))
         }
     }
     sqlite3_close(database)
-    return Ten
+    return Kinds
 }
 func addRow(_ T: Table){
      database = Connect_DB_SQLite(dbName: DBName, type: DBType)
