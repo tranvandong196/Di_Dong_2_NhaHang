@@ -10,10 +10,8 @@ import UIKit
 
 class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDataSource, UITableViewDelegate{
 
-    public static var listFoods = [Food]()
     
     public static var Add_New_Item = false;
-    public static var Edit_Item_Index = -1;
     var Edit_Mode = true //0=hide_nav_btn    1=edit
     var listFoodTypes:[String]! = ["Tất cả", "Đồ ăn", "Đồ uống"]
     
@@ -30,6 +28,7 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
             
             //viewController.newsObj = newsObj
             if let navigator = navigationController {
+                indexSelected_foods = -1
                 navigator.pushViewController(viewController, animated: true)
             }
         }
@@ -40,7 +39,6 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
     
     override func viewWillAppear(_ animated: Bool) {
         FoodsList_ViewController.Add_New_Item = false;
-        FoodsList_ViewController.Edit_Item_Index = -1;
         reloadDbData()
         FoodsList_TableView.reloadData()
         
@@ -60,7 +58,6 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
         // Do any additional setup after loading the view.
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         FoodsList_ViewController.Add_New_Item = false;
-        FoodsList_ViewController.Edit_Item_Index = -1;
         
         if(Edit_Mode == false){
             self.navigationItem.rightBarButtonItem?.isEnabled = false
@@ -86,10 +83,10 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
             pickerFoodType.selectRow(0, inComponent: 0, animated: true)
         }
         
-        FoodsList_ViewController.listFoods.removeAll()
+        Foods.removeAll()
         
         //sqlite
-        database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
+        database = Connect_DB_SQLite(dbName: DBName, type: DBType)
         
         //Lay data
         let statement:OpaquePointer = Select(query: "SELECT * FROM MonAn", database: database!)
@@ -133,7 +130,7 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
                 }
             }
             
-            FoodsList_ViewController.listFoods.append(food)
+            Foods.append(food)
             
             //let rowData = sqlite3_column_text(statement, 1)
             // Neu cot nao co dau tieng viet thi can phai lam them buoc nay
@@ -171,10 +168,10 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
         }
         
         //sqlite
-        database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
+        database = Connect_DB_SQLite(dbName: DBName, type: DBType)
         
         
-        FoodsList_ViewController.listFoods.removeAll()
+        Foods.removeAll()
         
         
         
@@ -220,7 +217,7 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
                 }
             }
             
-            FoodsList_ViewController.listFoods.append(food)
+            Foods.append(food)
             
             //let rowData = sqlite3_column_text(statement, 1)
             // Neu cot nao co dau tieng viet thi can phai lam them buoc nay
@@ -241,17 +238,17 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return FoodsList_ViewController.listFoods.count
+        return Foods.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FoodCell_TableViewCell
         
-        cell.Name.text = FoodsList_ViewController.listFoods[indexPath.row].TenMon
-        cell.Price.text = String(format:"%.1f", FoodsList_ViewController.listFoods[indexPath.row].Gia)
-        cell.Description.text = FoodsList_ViewController.listFoods[indexPath.row].MoTa
-        cell._Image.image = UIImage(named: FoodsList_ViewController.listFoods[indexPath.row].HinhAnh)
+        cell.Name.text = Foods[indexPath.row].TenMon
+        cell.Price.text = String(format:"%.1f", Foods[indexPath.row].Gia)
+        cell.Description.text = Foods[indexPath.row].MoTa
+        cell._Image.image = UIImage(named: Foods[indexPath.row].HinhAnh)
         
         return cell
     }
@@ -259,22 +256,21 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
     //select a row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        if tableView.isEditing == true
+        if FoodsList_TableView.isEditing == true
         {
             //if Area_TableViewController.Edit_Mode == true {
             if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Add_Edit_Food") as? newFood_ViewController
             {
                 //viewController.newsObj = newsObj
                 if let navigator = navigationController {
-                    
-                    FoodsList_ViewController.Edit_Item_Index = indexPath.row;
+                    indexSelected_foods = indexPath.row;
                     navigator.pushViewController(viewController, animated: true)
                 }
             }
             
         }
         else{
-            if Edit_Mode == false
+            if Edit_Mode == false // on
             {
                 //updateRow(Tables[indexSelected_tables])
                 self.navigationController?.popViewController(animated: true)
@@ -296,17 +292,17 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-//            database = Connect_DB_SQLite(dbName: "QuanLyNhaHang", type: "sqlite")
-//            
-//            let str = "DELETE FROM KhuVuc WHERE MaKV=" + "\(Area_TableViewController.listArea[indexPath.row].MaKV!)"
-//            Query(sql: str, database: database!)
-//            
-//            sqlite3_close(database)
-//            
-//            Area_TableViewController.listArea.remove(at: indexPath.row)
-//            
-//            sqlite3_close(database)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
+            database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+            
+            let str = "DELETE FROM MonAn WHERE MaMon=" + "\(Foods[indexPath.row].MaMon!)"
+            Query(sql: str, database: database!)
+            
+            sqlite3_close(database)
+            
+            Foods.remove(at: indexPath.row)
+            
+            sqlite3_close(database)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
         
     }
