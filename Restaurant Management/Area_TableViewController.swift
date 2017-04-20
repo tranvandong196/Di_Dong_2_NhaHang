@@ -158,6 +158,14 @@ class Area_TableViewController: UITableViewController {
                 }
             
         }
+        else{
+            if Edit_Mode == false
+            {
+                Tables[indexSelected_tables].MaKV =  Area_TableViewController.listArea[indexPath.row].MaKV
+                updateRow(Tables[indexSelected_tables])
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
         
     }
 
