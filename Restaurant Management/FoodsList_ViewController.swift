@@ -22,18 +22,20 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
     @IBOutlet weak var FoodsList_TableView: UITableView!
     @IBOutlet weak var Edit_Btn_Outlet: UIBarButtonItem!
     @IBOutlet weak var Add_Btn_Outlet: UIBarButtonItem!
+ 
     @IBAction func Add_Btn_Action(_ sender: Any) {
-//        FoodsList_ViewController.Add_New_Item = true;
-//        
-//        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Add_Edit_Food") as? newFood_ViewController{
-// 
-//            //viewController.newsObj = newsObj
-//            if let navigator = navigationController {
-//                navigator.pushViewController(viewController, animated: true)
-//            }
-//        }
+        FoodsList_ViewController.Add_New_Item = true;
+        
+        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Add_Edit_Food") as? newFood_ViewController{
+            
+            //viewController.newsObj = newsObj
+            if let navigator = navigationController {
+                navigator.pushViewController(viewController, animated: true)
+            }
+        }
 
     }
+ 
 
     
     override func viewWillAppear(_ animated: Bool) {
