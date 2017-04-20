@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MVE-Yd-VHJ">
-=======
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6av-JC-duF">
->>>>>>> origin/master
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -833,29 +829,29 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Danh sách món" id="Dbc-hI-U8G">
                         <rightBarButtonItems>
-                            <barButtonItem title="Edit" id="4kA-sn-0ux">
+                            <barButtonItem title="Edit" id="9V6-Nc-elQ">
                                 <connections>
-                                    <action selector="Edit_Btn:" destination="Kam-sd-Ymg" id="sg8-64-DvB"/>
+                                    <action selector="Edit_Btn:" destination="Kam-sd-Ymg" id="pCm-Jh-lw5"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Add" id="4oT-BB-6Da">
+                            <barButtonItem title="Add" id="p9R-PY-e7P">
                                 <connections>
-                                    <action selector="Add_Btn:" destination="Kam-sd-Ymg" id="JsJ-fZ-u2O"/>
+                                    <action selector="Add_Btn:" destination="Kam-sd-Ymg" id="eGp-vj-crj"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="Add_Btn_Outlet" destination="4oT-BB-6Da" id="VAV-Zj-pAb"/>
-                        <outlet property="Edit_Btn_Outlet" destination="4kA-sn-0ux" id="sLP-z7-Bvt"/>
-                        <outlet property="FoodsList_TableView" destination="lwd-EE-STj" id="Bsk-gJ-3Kc"/>
+                        <outlet property="Add_Btn_Outlet" destination="p9R-PY-e7P" id="cen-VO-aNf"/>
+                        <outlet property="Edit_Btn_Outlet" destination="9V6-Nc-elQ" id="C13-Dv-40T"/>
+                        <outlet property="FoodsList_TableView" destination="lwd-EE-STj" id="miq-Ig-Mae"/>
                         <outlet property="pickerFoodType" destination="iHc-YK-CoI" id="miz-IX-sRz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rbk-tX-Gml" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="842" y="1782"/>
+            <point key="canvasLocation" x="48.75" y="1741.9014084507041"/>
         </scene>
         <!--Chi tiết món-->
         <scene sceneID="K5R-U3-ZaP">
@@ -922,7 +918,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xRZ-ah-XeN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1639" y="1782"/>
+            <point key="canvasLocation" x="846" y="1742"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sSF-Ce-Px6">
@@ -940,7 +936,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z71-WH-oek" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="77" y="1782"/>
+            <point key="canvasLocation" x="-716" y="1742"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fh1-41-Rm2">
@@ -1001,13 +997,7 @@
         <image name="location-icon" width="240" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
-        <segue reference="meg-a7-Fb2"/>
-        <segue reference="rsf-gB-Wc8"/>
-        <segue reference="N7j-G4-gDQ"/>
-=======
         <segue reference="HeH-SZ-5Io"/>
         <segue reference="sZJ-B4-vAB"/>
->>>>>>> origin/master
     </inferredMetricsTieBreakers>
 </document>
