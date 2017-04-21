@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MVE-Yd-VHJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6av-JC-duF">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -311,7 +311,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Món ăn có chưa nhiều đường" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3nd-hv-Gqa">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Món ăn có chưa nhiều đường" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nd-hv-Gqa">
                                         <rect key="frame" x="1" y="146" width="294" height="160.5"/>
                                         <color key="backgroundColor" red="0.94192057847976685" green="0.89884644746780396" blue="0.76796823740005493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -754,7 +754,7 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="237"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b7Z-Xe-jj0" id="mt9-Kd-9yW">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="237"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="236"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gà Đông Tảo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXs-cP-TKR">
@@ -1079,7 +1079,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView hidden="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="25K-Kx-rL4">
-                                        <rect key="frame" x="86" y="45" width="204" height="150"/>
+                                        <rect key="frame" x="86" y="15" width="204" height="210"/>
                                         <connections>
                                             <outlet property="dataSource" destination="R41-sY-dkS" id="T9t-Nc-S6V"/>
                                             <outlet property="delegate" destination="R41-sY-dkS" id="one-o5-sL3"/>
@@ -1115,7 +1115,7 @@
                                     <constraint firstItem="IsT-xl-CtT" firstAttribute="leading" secondItem="lWk-DS-19i" secondAttribute="leading" id="JdC-k2-xSj"/>
                                     <constraint firstAttribute="bottom" secondItem="DAP-0C-A0Z" secondAttribute="bottom" constant="2" id="KSI-Y6-mdU"/>
                                     <constraint firstItem="25K-Kx-rL4" firstAttribute="width" secondItem="UPC-ay-sgh" secondAttribute="width" id="M4F-al-OiR"/>
-                                    <constraint firstItem="25K-Kx-rL4" firstAttribute="height" secondItem="UPC-ay-sgh" secondAttribute="height" multiplier="5" id="NFQ-Iu-skT"/>
+                                    <constraint firstItem="25K-Kx-rL4" firstAttribute="height" secondItem="UPC-ay-sgh" secondAttribute="height" multiplier="7" id="NFQ-Iu-skT"/>
                                     <constraint firstItem="IsT-xl-CtT" firstAttribute="height" secondItem="lWk-DS-19i" secondAttribute="height" id="NcB-Hm-uBQ"/>
                                     <constraint firstItem="UPC-ay-sgh" firstAttribute="centerX" secondItem="I2S-SS-43b" secondAttribute="centerX" id="NoL-tp-9I9"/>
                                     <constraint firstItem="IsT-xl-CtT" firstAttribute="width" secondItem="lWk-DS-19i" secondAttribute="width" id="Pfj-xY-2um"/>

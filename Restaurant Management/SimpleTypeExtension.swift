@@ -30,4 +30,9 @@ extension String {
     func trim() -> String {
         return self.trimmingCharacters(in: .whitespaces)
     }
+    func trim(_ characterSetIn: String) -> String {
+        let cs = CharacterSet.init(charactersIn: characterSetIn)
+        return self.trimmingCharacters(in: cs)
+    }
+  
 }

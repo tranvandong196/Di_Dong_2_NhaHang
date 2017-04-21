@@ -17,8 +17,8 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
         super.viewDidLoad()
         Tables_TableView.delegate = self
         Tables_TableView.dataSource = self
-        
-         print("ViewDidAppear")
+        copyDataToDocumentURL(ParentDir: Parent_dir_data, SubFolder: Sub_folder_data)
+        print("ViewDidAppear")
     }
     override func viewWillAppear(_ animated: Bool) {
         Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
@@ -52,8 +52,9 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell_table", for: indexPath) as! Table_TableViewCell
         cell.TableName_Label.text = "Bàn số \(Tables[indexPath.row].SoBan!)"
         
-        cell.TableThumnail_ImageView.image = UIImage(named: Tables[indexPath.row].HinhAnh)
-       
+        let ImageURL = DocURL().appendingPathComponent("\(Parent_dir_data)/\(Sub_folder_data[0])/\(Tables[indexPath.row].HinhAnh!)")
+        //print("ImageURL: \(ImageURL.path)")
+       cell.TableThumnail_ImageView.image = UIImage(contentsOfFile: ImageURL.path)
         let  NotSetupColor  = UIColor.init(red: 0/255.0, green: 128.0/255.0, blue: 1.0, alpha: 0.5)
         let didSetupColor = UIColor.init(red: 1.0, green: 128.0/255.0, blue: 0, alpha: 0.7)
         cell.backgroundColor = Tables[indexPath.row].TinhTrang == 1 ? didSetupColor:NotSetupColor
@@ -72,7 +73,6 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
         let payAction = UITableViewRowAction(style: .normal, title: Title) { (rowAction, indexPath) in
       
           self.performSegue(withIdentifier: "Seque_detailTable", sender: nil)
-            //TODO: edit the row at indexPath here
         }
         let delAction = UITableViewRowAction(style: .normal, title: "Xoá") { (rowAction, indexPath) in
             let soban:Int = Tables[indexPath.row].SoBan!
@@ -81,7 +81,6 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
                 print("Đã xoá bàn số \(soban)")
                 self.Tables_TableView.reloadData()
             }
-            //TODO: edit the row at indexPath here
         }
         payAction.backgroundColor = UIColor.init(red: 15.0/255.0, green: 125.0/255.0, blue: 15.0/255.0, alpha: 1.0)
         delAction.backgroundColor = UIColor.red
@@ -96,6 +95,8 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }
     }
     
+    // MARK: *** Function
+        
     /*
      // MARK: - Navigation
      

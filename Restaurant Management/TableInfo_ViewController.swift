@@ -43,7 +43,7 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         
         
         
-        Areas = GetAreasFromSQLite(query: "SElECT * FROM KhuVuc WHERE MaKV = \(Tables[indexSelected_tables].MaKV!)")
+        Areas = GetAreasFromSQLite(query: "SELECT * FROM KhuVuc WHERE MaKV = \(Tables[indexSelected_tables].MaKV!)")
         
         
         if(Tables[indexSelected_tables].MaHD != nil){
@@ -195,8 +195,10 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! foods_TableViewCell
         
-        cell.nameOfFood_Label.text = list_BookedFoods[indexPath.row].TenMon + " (x" + "\(list_BookedFoods[indexPath.row].SoLuong!)" + ")"
-        cell.food_ImageView.image = UIImage(named: list_BookedFoods[indexPath.row].Icon)
+        cell.nameOfFood_Label.text = "\(list_BookedFoods[indexPath.row].SoLuong!)‣ " + list_BookedFoods[indexPath.row].TenMon
+        let IconURL = DocURL().appendingPathComponent("\(Parent_dir_data)/\(Sub_folder_data[1])/\(list_BookedFoods[indexPath.row].Icon!)")
+        //print("IconURL: \(IconURL.path)")
+        cell.food_ImageView.image = UIImage(contentsOfFile: IconURL.path )
         cell.priceOfFood.text = "\(Int((list_BookedFoods[indexPath.row].Gia)!).stringFormattedWithSeparator)đ"
         
         

@@ -70,13 +70,39 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     }
     // MARK: *** UIEvent
     @IBAction func SaveChanged_Button(_ sender: Any) {
-        saveToDB()
+        if saveToDB(){
         navigationController!.popViewController(animated: true)
+            }
+        else{
+            func status(_ textField: UITextField){
+                if textField.isEmpty(){
+                    textField.layer.backgroundColor = UIColor.red.cgColor
+                }else{
+                    textField.layer.backgroundColor = UIColor.white.cgColor
+                }
+                textField.resignFirstResponder()
+            }
+            
+            status(priceOfFood_TextField)
+            status(nameOfFood_TextField)
+            if NameKindFood_Label.isEmpty(){
+                self.Show_Hide_PickerView_Button.layer.borderColor = UIColor.red.cgColor
+            }else{
+                self.Show_Hide_PickerView_Button.layer.borderColor = UIColor.lightGray.cgColor
+            }
+            alert(title: "⚠️", message: "Bạn chưa nhập đầy đủ thông tin", titleAction: "Nhập lại"){
+                _ in
+            }
+        }
     }
     @IBAction func Show_Hide_PickerView_Button_Tapped(_ sender: Any) {
         KindofFood_PickerView.isHidden = false
         Show_Hide_PickerView_Button.isEnabled = false
         NameKindFood_Label.text = ""
+        
+        nameOfFood_TextField.resignFirstResponder()
+        priceOfFood_TextField.resignFirstResponder()
+        otherInfo.isEditable = false
     }
     //  Thêm Action khi ẩn/hiện bàn phím
     func keyboardWillShow(_ notification: NSNotification){
@@ -86,8 +112,10 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
             keyboardHeight = Float(keyboardSize.height)
         }
         
-        if otherInfo.isEditable{
-            self.view.frame.origin.y = 0
+        self.view.frame.origin.y = 0
+        if nameOfFood_TextField.isEditing || priceOfFood_TextField.isEditing{
+            view.frame.origin.y -= 20
+        }else if otherInfo.isEditable{
             view.frame.origin.y -= CGFloat(keyboardHeight)
         }
     }
@@ -126,18 +154,24 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
             Show_Hide_PickerView_Button.isEnabled = true
         kind_selected = Kinds[row].Ma
         NameKindFood_Label.text = " " + Kinds[row].Ten
+        otherInfo.isEditable = true
     }
     // MARK: *** Data
     
-    func saveToDB(){
-        let food = Food(MaMon: -1, TenMon: nameOfFood_TextField.text!, Gia: Double(priceOfFood_TextField.text!)!, HinhAnh: "Chưa có", MoTa: otherInfo.text, Loai: kind_selected!, Icon: "Chưa có")
-        if indexSelected_foods > -1{
-            food.MaMon = Foods[indexSelected_foods].MaMon
-            food.HinhAnh = Foods[indexSelected_foods].HinhAnh
-            food.Icon = Foods[indexSelected_foods].Icon
-            updateRow(food)
+    func saveToDB() -> Bool{
+        if nameOfFood_TextField.isEmpty() || priceOfFood_TextField.isEmpty() || NameKindFood_Label.isEmpty(){
+            return false
         }else{
-            addRow(food)
+            let food = Food(MaMon: -1, TenMon: nameOfFood_TextField.text!, Gia: Double(priceOfFood_TextField.text!)!, HinhAnh: "Chưa có", MoTa: otherInfo.text, Loai: kind_selected!, Icon: "Chưa có")
+            if indexSelected_foods > -1{
+                food.MaMon = Foods[indexSelected_foods].MaMon
+                food.HinhAnh = Foods[indexSelected_foods].HinhAnh
+                food.Icon = Foods[indexSelected_foods].Icon
+                updateRow(food)
+            }else{
+                addRow(food)
+            }
+            return true
         }
     }
     /*

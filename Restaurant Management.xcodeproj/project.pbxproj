@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2A886D1EA9D4F00054E556 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2A886C1EA9D4F00054E556 /* FileManagerExtension.swift */; };
 		0A4F84701EA72E8F004AEFCA /* UIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4F846F1EA72E8F004AEFCA /* UIExtension.swift */; };
 		0A4F84741EA73C07004AEFCA /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4F84731EA73C07004AEFCA /* NotificationExtension.swift */; };
 		0A4F84761EA73DF0004AEFCA /* SimpleTypeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4F84751EA73DF0004AEFCA /* SimpleTypeExtension.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A2A886C1EA9D4F00054E556 /* FileManagerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtension.swift; sourceTree = "<group>"; };
 		0A4F846F1EA72E8F004AEFCA /* UIExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtension.swift; sourceTree = "<group>"; };
 		0A4F84731EA73C07004AEFCA /* NotificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		0A4F84751EA73DF0004AEFCA /* SimpleTypeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTypeExtension.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				0A4F846F1EA72E8F004AEFCA /* UIExtension.swift */,
 				0A4F84731EA73C07004AEFCA /* NotificationExtension.swift */,
 				0A4F84751EA73DF0004AEFCA /* SimpleTypeExtension.swift */,
+				0A2A886C1EA9D4F00054E556 /* FileManagerExtension.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				0AF579981EA893FF0001DC58 /* Kind.swift in Sources */,
 				0A6B2ABD1EA3963600876B02 /* food_Detail_ViewController.swift in Sources */,
 				0AF261281EA4B2BA00AF41BA /* Table.swift in Sources */,
+				0A2A886D1EA9D4F00054E556 /* FileManagerExtension.swift in Sources */,
 				0A4F84741EA73C07004AEFCA /* NotificationExtension.swift in Sources */,
 				0A7B08841EA12CC9002B068E /* TableInfo_ViewController.swift in Sources */,
 				0AF2612A1EA4B38200AF41BA /* Area.swift in Sources */,
@@ -406,6 +410,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "Restaurant Management/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "M1412132.Restaurant-Management";
@@ -419,6 +426,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "Restaurant Management/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "M1412132.Restaurant-Management";

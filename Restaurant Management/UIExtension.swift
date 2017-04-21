@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import ImageIO
 // MARK: *** extension
 
 extension UIViewController {
@@ -41,15 +41,17 @@ extension UIViewController {
     }
     
     func addDoneButton(_ textview: UITextView){
-        let toolbar = UIToolbar()
-        toolbar.items = [
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
-            UIBarButtonItem(title: "Done", style: .done, target: textview,
-                            action: #selector(UITextField.resignFirstResponder))
-        ]
-        
-        toolbar.sizeToFit()
-        textview.inputAccessoryView = toolbar
+        if textview.isEditable{
+            let toolbar = UIToolbar()
+            toolbar.items = [
+                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
+                UIBarButtonItem(title: "Done", style: .done, target: textview,
+                                action: #selector(UITextField.resignFirstResponder))
+            ]
+            
+            toolbar.sizeToFit()
+            textview.inputAccessoryView = toolbar
+        }
     }
     
     func addDoneButton(tos controls: [UITextField]){
@@ -94,6 +96,11 @@ extension UITextView {
         return self.text?.characters.count == 0
     }
 }
+extension UILabel{
+    func isEmpty() -> Bool {
+        return self.text?.characters.count == 0
+    }
+}
 func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
         nextField.becomeFirstResponder()
@@ -102,5 +109,58 @@ func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
     }
     return true
+}
+
+extension UIImage{
+    // Lưu ảnh vào dicectory
+    func saveImageToDir(at url: URL,name: String){
+        // Kiểm tra định dạng file: or print("Formart: \(name.hasSuffix(".png"))")
+        let format:String = String(name.characters.suffix(4))   //Lấy 4 ký tự cuối
+        do{
+            if format == ".png"{
+                try UIImagePNGRepresentation(self)?.write(to: url.appendingPathComponent(name))
+            }else if format == ".jpg"{
+                try UIImageJPEGRepresentation(self, 1.0)?.write(to: url.appendingPathComponent(name))
+            }
+        }catch{
+            print("Can not save image: \(name)")
+        }
+    }
+}
+
+//Kiểm tra định dạng ảnh
+
+struct ImageHeaderData{
+    static var PNG: [UInt8] = [0x89]
+    static var JPEG: [UInt8] = [0xFF]
+    static var GIF: [UInt8] = [0x47]
+    static var TIFF_01: [UInt8] = [0x49]
+    static var TIFF_02: [UInt8] = [0x4D]
+}
+
+enum ImageFormat{
+    case Unknown, PNG, JPEG, GIF, TIFF
+}
+
+
+extension NSData{
+    var imageFormat: ImageFormat{
+        var buffer = [UInt8](repeating: 0, count: 1)
+        self.getBytes(&buffer, range: NSRange(location: 0,length: 1))
+        if buffer == ImageHeaderData.PNG
+        {
+            return .PNG
+        } else if buffer == ImageHeaderData.JPEG
+        {
+            return .JPEG
+        } else if buffer == ImageHeaderData.GIF
+        {
+            return .GIF
+        } else if buffer == ImageHeaderData.TIFF_01 || buffer == ImageHeaderData.TIFF_02{
+            return .TIFF
+        } else{
+            return .Unknown
+        }
+    }
 }
 

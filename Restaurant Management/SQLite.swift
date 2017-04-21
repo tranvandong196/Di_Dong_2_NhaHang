@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import  UIKit
 // MARK: *** Global Variable
 
 var database:OpaquePointer?
@@ -16,6 +16,8 @@ var Tables = [Table]()
 var Foods = [Food]()
 var Areas = [Area]()
 
+var Parent_dir_data:String = "Resources"
+var Sub_folder_data:[String] = ["Table","Food","Area"]
 let DBName = "QuanLyNhaHang"
 let DBType = "sqlite"
 
@@ -31,7 +33,7 @@ func Connect_DB_SQLite( dbName:String, type:String)->OpaquePointer{
     } catch{
         //print("File exists! Can not copy file")
     }
-    if sqlite3_open(storePath as String, &database) == SQLITE_OK{
+    if sqlite3_open(storePath, &database) == SQLITE_OK{
         print("Opened < \(dbName).\(type) > from storePath")
     }else{
         sqlite3_close(database)
@@ -165,7 +167,7 @@ func addRow(_ T: Table){
 }
 func addRow(_ F: Food){
     database = Connect_DB_SQLite(dbName: DBName, type: DBType)
-    let query = "INSERT INTO MonAn VALUES(12,'\(F.TenMon!)', \(F.Gia!), '\(F.HinhAnh!)','\(F.MoTa!)', \(F.Loai!), '\(F.Icon!)')"
+    let query = "INSERT INTO MonAn VALUES(null,'\(F.TenMon!)', \(F.Gia!), '\(F.HinhAnh!)','\(F.MoTa!)', \(F.Loai!), '\(F.Icon!)')"
     print(query)
     if edit(query: query){
         print("Thêm món: \(F.TenMon!)")
@@ -196,6 +198,66 @@ func updateRow( _ F: Food){
     }
     sqlite3_close(database)
 }
+func createDirectoryStoreData(ParentDir: String,SubFolder:[String]) -> Bool{
+    let fileManager = FileManager.default
+    let ParentDirURL = DocURL().appendingPathComponent(ParentDir)
+    print("\nDataStoreURL: \(ParentDirURL.path)\n")
+    
+    if !fileManager.fileExists(atPath: ParentDirURL.path){
+        // Tạo các thư mục chứa data vào DocURL
+        fileManager.createDirectory(at: DocURL(), withName: ParentDir)
+        for i in 0..<SubFolder.count{
+            fileManager.createDirectory(at: ParentDirURL, withName: SubFolder[i])
+        }
+        return true
+    }else{
+        print("Directory Database is exists!")
+        return false
+    }
+    
+}
+func copyDataToDocumentURL(ParentDir: String,SubFolder:[String]){
+    let ParentDirURL = DocURL().appendingPathComponent(ParentDir)
+    let result = createDirectoryStoreData(ParentDir: Parent_dir_data,SubFolder: Sub_folder_data)
+    if result{
+        Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
+        Foods = GetFoodsFromSQLite(query: "SELECT * FROM MonAn")
+        Areas = GetAreasFromSQLite(query: "SELECT * FROM KhuVuc")
+        for i in 0..<Tables.count{
+            let iName:String = Tables[i].HinhAnh
+            let img:UIImage = UIImage(named: iName) ?? #imageLiteral(resourceName: "Ban")
+            img.saveImageToDir(at: ParentDirURL.appendingPathComponent(Sub_folder_data[0]), name: iName)
+        }
+        for i in 0..<Foods.count{
+            let imName:String = Foods[i].HinhAnh
+            let icName:String = Foods[i].Icon
+            let img:UIImage = UIImage(named: imName) ?? #imageLiteral(resourceName: "Not-Found-icon")
+            let icon:UIImage = UIImage(named: icName) ?? #imageLiteral(resourceName: "Not-Found-icon")
+            img.saveImageToDir(at: ParentDirURL.appendingPathComponent(Sub_folder_data[1]), name: imName)
+            icon.saveImageToDir(at: ParentDirURL.appendingPathComponent(Sub_folder_data[1]), name: icName)
+        }
+        for i in 0..<Areas.count{
+            let iName:String = Areas[i].HinhAnh
+            let img:UIImage = UIImage(named: Areas[i].HinhAnh) ?? #imageLiteral(resourceName: "tang1")
+            img.saveImageToDir(at: ParentDirURL.appendingPathComponent(Sub_folder_data[2]), name: iName)
+        }
+    }
+    
+
+    
+}
+//func saveImageToDir(image: UIImage,at: URL,name: String){
+//    do{
+//        
+//        if name.characters.count == name.trim(".png").characters.count + 3{
+//            try UIImagePNGRepresentation(image)?.write(to: ParentDirURL.appendingPathComponent("/Area/" + name))
+//        }else{
+//            try UIImageJPEGRepresentation(img, 1.0)?.write(to: ParentDirURL.appendingPathComponent("/Area/" + iName))
+//        }
+//    }catch{
+//        print("Can not save image: \(iName)")
+//    }
+//}
 // END DONG
 
 //====================Nguyễn Đình Sơn
