@@ -34,5 +34,5 @@ extension String {
         let cs = CharacterSet.init(charactersIn: characterSetIn)
         return self.trimmingCharacters(in: cs)
     }
-  
+    
 }

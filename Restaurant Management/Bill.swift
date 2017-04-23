@@ -21,5 +21,7 @@ class Bill{
 //    func update(MaHD: Int,ThoiGian:Date,SoBan:Int,Bill_details:[Detail]){
 //        MaHD
 //    }
-    
+    init(){
+        
+    }
 }

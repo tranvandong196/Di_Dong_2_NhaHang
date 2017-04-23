@@ -9,10 +9,12 @@
 import UIKit
 // MARK: *** Global Variable
 var indexSelected_foods = 0
-var list_BookedFoods = [Food]()
 
-class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
-    var isAdded2 = false
+class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+    var newImage:UIImage?
+    var priceTotal:Double = 0
+    let localURLtable = DocURL().appendingPathComponent(Parent_dir_data + "/\(Sub_folder_data[0])")
+    let localURL = DocURL().appendingPathComponent(Parent_dir_data + "/\(Sub_folder_data[1])")
     // MARK: *** IBOutlet
     @IBOutlet weak var title_navi: UINavigationItem!
     @IBOutlet weak var listFoods_View: UIView!
@@ -23,150 +25,123 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     @IBOutlet var viewMain_View: UIView!
     @IBOutlet weak var ChangePosition_Button: UIButton!
     @IBOutlet weak var PositionTable_Button: UIButton!
-    @IBOutlet weak var saveChanged_Button: UIBarButtonItem!
     @IBOutlet weak var otherInfo: UITextView!
     @IBOutlet weak var payTable_Button: UIButton!
     // MARK: *** Display view
     override func viewDidLoad() {
         super.viewDidLoad()
-        isAdded2 = isAdded
         addDoneButton(otherInfo)
         KeyboardShow(self,open_Func:  #selector(self.keyboardWillShow(_:)))
         KeyboardHide(self, open_Func: #selector(self.keyboardWillHide(_:)))
         
         Foods = GetFoodsFromSQLite(query: "SELECT * FROM MonAn")
-        print("ViewDidLoad")
+        TotalPrice_Label.text = "0đ"
     }
     override func viewWillAppear(_ animated: Bool) {
         foods_TableView.delegate = self
         foods_TableView.dataSource = self
         
+        priceTotal = 0
         
+        print("\n 💛 Thông tin bàn =========================")
         
         Areas = GetAreasFromSQLite(query: "SELECT * FROM KhuVuc WHERE MaKV = \(Tables[indexSelected_tables].MaKV!)")
         
         
         if(Tables[indexSelected_tables].MaHD != nil){
-            let str = "SELECT * FROM MonAn NATURAL JOIN (SELECT * FROM ChiTietHoaDon WHERE MaHD = " + "\(Tables[indexSelected_tables].MaHD!)" + ")"
-            
-            //list_BookedFoods = GetFoodsFromSQLite(query:  str)
-            
-            list_BookedFoods.removeAll()
-            
-            //sqlite
-            database = Connect_DB_SQLite(dbName: DBName, type: DBType)
-            
-            //Lay data
-            let statement:OpaquePointer = Select(query: str, database: database!)
-            
-            // Do du lieu vao mang
-            while sqlite3_step(statement) == SQLITE_ROW {
-                // Do ra tung cot tuong ung voi no
-                let food = Food()
-                
-                if(sqlite3_column_text(statement, 0) != nil)
-                {
-                    food.MaMon = Int(sqlite3_column_int(statement, 0))
-                    if(sqlite3_column_text(statement, 1) != nil)
-                    {
-                        food.TenMon = String(cString: sqlite3_column_text(statement, 1))
-                    }
-                    if(sqlite3_column_text(statement, 2) != nil)
-                    {
-                        food.Gia = Double(sqlite3_column_double(statement, 2))
-                    }
-                    if(sqlite3_column_text(statement, 3) != nil)
-                    {
-                        food.HinhAnh = String(cString: sqlite3_column_text(statement, 3))
-                        
-                    }
-                    if(sqlite3_column_text(statement, 3) != nil)
-                    {
-                        food.HinhAnh = String(cString: sqlite3_column_text(statement, 3))
-                    }
-                    if(sqlite3_column_text(statement, 4) != nil)
-                    {
-                        food.MoTa = String(cString: sqlite3_column_text(statement, 4))
-                    }
-                    if(sqlite3_column_text(statement, 5) != nil)
-                    {
-                        food.Loai = Int(sqlite3_column_int(statement, 5))
-                    }
-                    if(sqlite3_column_text(statement, 6) != nil)
-                    {
-                        food.Icon = String(cString: sqlite3_column_text(statement, 6))
-                    }
-                    if(sqlite3_column_text(statement, 8) != nil)
-                    {
-                        food.SoLuong = Int(sqlite3_column_int(statement, 8))
-                    }
-                }
-                
-                list_BookedFoods.append(food)
-                
-                
-                //let rowData = sqlite3_column_text(statement, 1)
-                // Neu cot nao co dau tieng viet thi can phai lam them buoc nay
-                //let fieldValue = String(cString: rowData!)
-                // Them Vao mang da co
-                //mang.append(fieldValue!)
-            }
-            sqlite3_finalize(statement)
-            sqlite3_close(database)
-            
-            
+            let str = "SELECT * FROM MonAn NATURAL JOIN (SELECT * FROM ChiTietHoaDon WHERE MaHD = \(Tables[indexSelected_tables].MaHD!))"
+            Foods.removeAll()
+            Foods = GetFoodsFromSQLite(query: str)
+            //let rowData = sqlite3_column_text(statement, 1)
+            // Neu cot nao co dau tieng viet thi can phai lam them buoc nay
+            //let fieldValue = String(cString: rowData!)
+            // Them Vao mang da co
+            //mang.append(fieldValue!)
         }
         
         foods_TableView.reloadData()
         setup_displayBegin()
-        print("ViewWillAppear")
     }
     
     func setup_displayBegin(){
         setupUI_PositionTable()
         setupUI_foodsList()
-        if isAdded{
-            self.picture_UIImageView.image = #imageLiteral(resourceName: "Add_image_icon")
-            TotalPrice_Label.text = "Ko hoá đơn"
-            payTable_Button.isEnabled = false
-            PositionTable_Button.setTitle(Areas[0].TenKV, for: .normal)
-            
-        }else{
-            //self.navigationItem.rightBarButtonItem = nil
-            otherInfo.text = Tables[indexSelected_tables].GhiChu
-            self.picture_UIImageView.image = UIImage(named: Tables[indexSelected_tables].HinhAnh)
-            TotalPrice_Label.text = "Ko hoá đơn"
-            title_navi.title = "Bàn số \(Tables[indexSelected_tables].SoBan!)"
-            PositionTable_Button.setTitle(Areas[0].TenKV, for: .normal)
-        }
-        
-        
-        self.navigationItem.rightBarButtonItem?.customView?.isHidden = isAdded ? false:true
+        //self.navigationItem.rightBarButtonItem = nil
+        self.picture_UIImageView.image = newImage ?? UIImage(contentsOfFile: localURLtable.appendingPathComponent(Tables[indexSelected_tables].HinhAnh).path) ?? #imageLiteral(resourceName: "Add_image_icon")
+        otherInfo.text = Tables[indexSelected_tables].GhiChu
+        title_navi.title = "Bàn số \(Tables[indexSelected_tables].SoBan!)"
+        PositionTable_Button.setTitle(Areas[0].TenKV, for: .normal)
     }
-    // MARK: *** UIEvent
+    // MARK: *** IBAction
     
-    @IBAction func Save_Button_Clicked(_ sender: Any, forEvent event: UIEvent) {
-        saveToDB()
-        self.navigationController?.popViewController(animated: true)
-    }
-    func saveToDB(){
-        if isAdded2 {
-            var num:Int = Tables.count + 1
-            for i in 1...Tables.count{
-                if Tables[i - 1].SoBan != i{
-                    num = i
-                    break;
+    @IBAction func PicturePickerTapped_TapGesture(_ sender: UITapGestureRecognizer) {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: .default){
+            (ACTION) in pickerController.sourceType = .camera
+            self.present(pickerController, animated: true, completion: nil)
+        }
+        let photosLibraryAction = UIAlertAction(title: "Photo Library", style: .default){
+            (ACTION) in pickerController.sourceType = .photoLibrary
+            self.present(pickerController, animated: true, completion: nil)
+        }
+        
+        let deletePhoto = UIAlertAction(title: "Delete", style: .default){ (ACTION) in
+            let alert = UIAlertController(title: "❌", message: "Delete this photo?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "YES", style: .default){_ in
+                _ = self.picture_UIImageView.image = #imageLiteral(resourceName: "Add_image_icon")
+                _ = self.newImage = nil
+                if Tables[indexSelected_tables].HinhAnh != ""{
+                    FileManager.default.remoremoveItem(at: self.localURLtable, withName: Tables[indexSelected_tables].HinhAnh!)
+                    Tables[indexSelected_tables].HinhAnh = ""
                 }
+            })
+            alert.addAction(UIAlertAction(title: "NO", style: .default){_ in
+                
+            })
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+        
+        alertController.addAction(cameraAction)
+        alertController.addAction(photosLibraryAction)
+        if picture_UIImageView.image != #imageLiteral(resourceName: "Add_image_icon"){
+            alertController.addAction(deletePhoto)
+        }
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    // MARKL: *** functions
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        self.dismiss(animated: true, completion: nil)
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            let pickerImageName:String = (info[UIImagePickerControllerReferenceURL] as! NSURL).lastPathComponent!
+            
+            let newImageName:String = "Ban\(Tables[indexSelected_tables].SoBan!)\(String(pickerImageName.characters.suffix(4)))"
+            
+            if Tables[indexSelected_tables].HinhAnh != ""{
+                FileManager.default.remoremoveItem(at: localURLtable, withName: Tables[indexSelected_tables].HinhAnh!)
             }
-            let T = Table(SoBan: num, TinhTrang: 1, HinhAnh: "Ban.png", GhiChu: otherInfo.text, MaKV: 1, MaHD: 0)
-            addRow(T)
-            Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
-            isAdded2 = false
-        }else{
-            Tables[indexSelected_tables].GhiChu = otherInfo.text
+            
+            image.saveImageToDir(at: localURLtable, name:newImageName)
+            Tables[indexSelected_tables].HinhAnh = newImageName
+            
+            newImage = image
             updateRow(Tables[indexSelected_tables])
+            
         }
     }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    
     // MARK: *** UIDesign
     func setupUI_foodsList(){
         listFoods_View.layer.cornerRadius = 5
@@ -182,26 +157,30 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isAdded2 || Tables[indexSelected_tables].TinhTrang == 0{
-            isAdded = false
-            return 0
+        if Foods.count == 0 && Tables[indexSelected_tables].TinhTrang == 1{
+            TotalPrice_Label.text = "0đ"
+            Tables[indexSelected_tables].TinhTrang = 0
+            updateRow(Tables[indexSelected_tables])
         }
-        else{
-            return list_BookedFoods.count
+        if Foods.count != 0 && Tables[indexSelected_tables].TinhTrang == 0{
+            Tables[indexSelected_tables].TinhTrang = 1
+            updateRow(Tables[indexSelected_tables])
         }
+        return Foods.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! foods_TableViewCell
         
-        cell.nameOfFood_Label.text = "\(list_BookedFoods[indexPath.row].SoLuong!)‣ " + list_BookedFoods[indexPath.row].TenMon
-        let IconURL = DocURL().appendingPathComponent("\(Parent_dir_data)/\(Sub_folder_data[1])/\(list_BookedFoods[indexPath.row].Icon!)")
+        cell.nameOfFood_Label.text = "\(Foods[indexPath.row].SoLuong!)‣ " + Foods[indexPath.row].TenMon
+        let ImgURL = localURL.appendingPathComponent(Foods[indexPath.row].Icon!)
         //print("IconURL: \(IconURL.path)")
-        cell.food_ImageView.image = UIImage(contentsOfFile: IconURL.path )
-        cell.priceOfFood.text = "\(Int((list_BookedFoods[indexPath.row].Gia)!).stringFormattedWithSeparator)đ"
+        cell.food_ImageView.image = UIImage(contentsOfFile: ImgURL.path)  ?? #imageLiteral(resourceName: "Image-Not-Found-icon")
+        cell.priceOfFood.text = "\(Int((Foods[indexPath.row].Gia)!).stringFormattedWithSeparator)đ"
         
-        
+        priceTotal += (Double(Foods[indexPath.row].SoLuong!))*(Foods[indexPath.row].Gia!)
+        TotalPrice_Label.text = Int(priceTotal).stringFormattedWithSeparator + "đ"
         return cell
     }
     
@@ -210,24 +189,28 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         //performSegue(withIdentifier: "seque_foodDetal", sender: nil)
     }
     
-    //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    //
-    //        if editingStyle == .delete {
-    //                // Xoá món trong hoá đơn (Ko phải trong Database)
-    //            /*
-    //                //Xoá trong database
-    //                let tenmon:String = Foods[indexPath.row].TenMon
-    //                if edit(query: "DELETE FROM MonAn WHERE MaMon = \(Foods[indexPath.row].MaMon!)"){
-    //                    Foods.remove(at: indexPath.row)
-    //                    print("Đã xoá \(tenmon)")
-    //                    self.foods_TableView.reloadData()
-    //                }
-    //            */
-    //
-    //        }
-    //    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            // Xoá món trong hoá đơn của bàn này
+            let tenmon:String = Foods[indexPath.row].TenMon
+            if edit(query: "DELETE FROM ChiTietHoaDon WHERE MaMon = \(Foods[indexPath.row].MaMon!)"){
+                Foods.remove(at: indexPath.row)
+                print("Đã huỷ < \(tenmon) > từ bàn số \(Tables[indexSelected_tables].SoBan!)")
+                priceTotal = 0
+                self.foods_TableView.reloadData()
+            }
+            
+            
+        }
+    }
     
     // MARK: *** Function
+    func saveToDB(){
+        Tables[indexSelected_tables].GhiChu = otherInfo.text
+        updateRow(Tables[indexSelected_tables])
+    }
+    
     
     //Hide keyboard when user touches outside keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -248,7 +231,7 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     }
     func keyboardWillHide(_ notification: NSNotification){
         self.view.frame.origin.y = 0
-        if !isAdded2 && otherInfo.text != Tables[indexSelected_tables].GhiChu{
+        if otherInfo.text != Tables[indexSelected_tables].GhiChu{
             saveToDB()
         }
     }

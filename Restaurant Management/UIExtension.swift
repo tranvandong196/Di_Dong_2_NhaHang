@@ -82,8 +82,8 @@ extension UIViewController {
         // If you want to present the new ViewController then use this - animated: Hiệu ứng chuyển cảnh
         self.navigationController?.pushViewController(objSomeViewController, animated: true)
     }
-
 }
+
 //Kiểm tra TextField & TextView trống
 extension UITextField {
     func isEmpty() -> Bool {
@@ -117,13 +117,14 @@ extension UIImage{
         // Kiểm tra định dạng file: or print("Formart: \(name.hasSuffix(".png"))")
         let format:String = String(name.characters.suffix(4))   //Lấy 4 ký tự cuối
         do{
-            if format == ".png"{
+            if format == ".png" || format == ".PNG"{
                 try UIImagePNGRepresentation(self)?.write(to: url.appendingPathComponent(name))
-            }else if format == ".jpg"{
-                try UIImageJPEGRepresentation(self, 1.0)?.write(to: url.appendingPathComponent(name))
+            }else if format == ".jpg" || format == ".JPG"{
+                try UIImageJPEGRepresentation(self, 0.8)?.write(to: url.appendingPathComponent(name))
             }
+            print("Saved image: \(name) to .../\(url.lastPathComponent)")
         }catch{
-            print("Can not save image: \(name)")
+            print("Can not save image: \(name) to .../\(url.lastPathComponent)")
         }
     }
 }

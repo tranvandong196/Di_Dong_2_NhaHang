@@ -25,6 +25,9 @@ class Table{
         self.MaHD = MaHD
         //update(SoBan: SoBan, TinhTrang: TinhTrang, HinhAnh: HinhAnh, GhiChu: GhiChu, MaKV: MaKV, MaHD: MaHD)
     }
+    init(){
+        
+    }
     func update(SoBan:Int,TinhTrang:Int,HinhAnh:String,GhiChu:String,MaKV:Int,MaHD:Int) {
         self.SoBan = SoBan
         self.TinhTrang = TinhTrang

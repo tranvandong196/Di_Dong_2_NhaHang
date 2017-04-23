@@ -24,12 +24,22 @@ func listFilesFromFolder(fromPath: String)->[String]?{
     return try? FileManager.default.contentsOfDirectory(atPath:fromPath)
 }
 extension FileManager{
-    func createDirectory(at MainURL: URL,withName: String){
+    func createDirectory(at url: URL,withName: String){
         do{
-            try FileManager.default.createDirectory(atPath: MainURL.appendingPathComponent(withName).path, withIntermediateDirectories: false, attributes: nil)
+            try FileManager.default.createDirectory(atPath: url.appendingPathComponent(withName).path, withIntermediateDirectories: false, attributes: nil)
         }catch {
-            print("Can not create folder < \(withName) >")
+            print("Can not create folder < \(withName) > at .../\(url.lastPathComponent)")
         }
+    }
+    func remoremoveItem(at url: URL, withName: String){
+        do{
+            try FileManager.default.removeItem(at: url.appendingPathComponent(withName))
+            
+            print("Removed \(withName) from .../\(url.lastPathComponent)")
+        }catch{
+            print("Can not remove \(withName) from .../\(url.lastPathComponent)")
+        }
+        
     }
 }
 

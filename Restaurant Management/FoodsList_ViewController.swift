@@ -14,7 +14,7 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
     public static var Add_New_Item = false;
     var Edit_Mode = true //0=hide_nav_btn    1=edit
     var listFoodTypes:[String]! = ["Tất cả", "Đồ ăn", "Đồ uống"]
-    
+    let localURL = DocURL().appendingPathComponent(Parent_dir_data + "/\(Sub_folder_data[1])")
     
     @IBOutlet weak var pickerFoodType: UIPickerView!
     @IBOutlet weak var FoodsList_TableView: UITableView!
@@ -248,7 +248,9 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
         cell.Name.text = Foods[indexPath.row].TenMon
         cell.Price.text = String(format:"%.1f", Foods[indexPath.row].Gia)
         cell.Description.text = Foods[indexPath.row].MoTa
-        cell._Image.image = UIImage(named: Foods[indexPath.row].HinhAnh)
+        
+        let ImgURL = localURL.appendingPathComponent(Foods[indexPath.row].HinhAnh!)
+        cell._Image.image = UIImage(contentsOfFile: ImgURL.path)  ?? #imageLiteral(resourceName: "Image-Not-Found-icon")
         
         return cell
     }

@@ -1,18 +1,24 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++DDB250C",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++55B9286",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++AEBB0A7" : 9223372036854775807,
+    "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++55B9286" : 9223372036854775807,
+    "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++49C15AE" : 9223372036854775807,
+    "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++C92DADA" : 9223372036854775807,
     "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++DDB250C" : 9223372036854775807,
-    "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++D1B542E" : 9223372036854775807,
-    "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++932E7FC" : 9223372036854775807
+    "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++0537372" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "74758A2F-DBD6-4441-89C7-BF403B11322A",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++DDB250C" : "Di_Dong_2_NhaHang_clone_addNewDatabase_addNavibarDSBan\/",
-    "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++D1B542E" : "",
-    "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++932E7FC" : ""
+    "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++AEBB0A7" : "..",
+    "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++55B9286" : "Di_Dong_2_NhaHang\/",
+    "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++49C15AE" : "Di_Dong_2_NhaHang\/",
+    "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++C92DADA" : "",
+    "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++DDB250C" : "Di_Dong_2_NhaHang\/",
+    "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++0537372" : ""
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Restaurant Management",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -21,12 +27,27 @@
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tranvandong196\/Restaurant-Management.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++932E7FC"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++0537372"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tranvandong196\/Di_Dong_2_NhaHang.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++D1B542E"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++49C15AE"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tranvandong196\/Di_Dong_2_NhaHang.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++55B9286"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tranvandong196\/Restaurant-Management.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++AEBB0A7"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tranvandong196\/Di_Dong_2_NhaHang.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "18D3523CBB75463FCA6FCE0CDCB6B97C9EAD232D+++C92DADA"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tranvandong196\/Di_Dong_2_NhaHang.git",

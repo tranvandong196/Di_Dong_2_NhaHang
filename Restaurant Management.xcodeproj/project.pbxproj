@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0690891EAC318B00A205E2 /* QuanLyNhaHang.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0A0690881EAC318B00A205E2 /* QuanLyNhaHang.sqlite */; };
+		0A06908B1EAC31F700A205E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A06908A1EAC31F700A205E2 /* Main.storyboard */; };
 		0A2A886D1EA9D4F00054E556 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2A886C1EA9D4F00054E556 /* FileManagerExtension.swift */; };
 		0A4F84701EA72E8F004AEFCA /* UIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4F846F1EA72E8F004AEFCA /* UIExtension.swift */; };
 		0A4F84741EA73C07004AEFCA /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4F84731EA73C07004AEFCA /* NotificationExtension.swift */; };
@@ -21,13 +23,11 @@
 		0A7B08861EA13C5C002B068E /* food_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7B08851EA13C5C002B068E /* food_TableViewCell.swift */; };
 		0AF261191EA49B3F00AF41BA /* SQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF261181EA49B3F00AF41BA /* SQLite.swift */; };
 		0AF2611E1EA4A01B00AF41BA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF2611D1EA4A01B00AF41BA /* libsqlite3.tbd */; };
-		0AF261211EA4A64F00AF41BA /* QuanLyNhaHang.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0AF261201EA4A64F00AF41BA /* QuanLyNhaHang.sqlite */; };
 		0AF261281EA4B2BA00AF41BA /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF261271EA4B2BA00AF41BA /* Table.swift */; };
 		0AF2612A1EA4B38200AF41BA /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF261291EA4B38200AF41BA /* Area.swift */; };
 		0AF2612E1EA4B45800AF41BA /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF2612D1EA4B45800AF41BA /* Bill.swift */; };
 		0AF579961EA878230001DC58 /* newFood_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF579951EA878230001DC58 /* newFood_ViewController.swift */; };
 		0AF579981EA893FF0001DC58 /* Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF579971EA893FF0001DC58 /* Kind.swift */; };
-		0AF5799C1EA8B76C0001DC58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AF5799B1EA8B76C0001DC58 /* Main.storyboard */; };
 		23752F9B1EA63D28007AB0AD /* Manager_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23752F9A1EA63D28007AB0AD /* Manager_ViewController.swift */; };
 		2394DCED1EA8D8B800F8D595 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394DCEC1EA8D8B800F8D595 /* Food.swift */; };
 		23CC7AB61EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CC7AB51EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift */; };
@@ -40,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A0690881EAC318B00A205E2 /* QuanLyNhaHang.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = QuanLyNhaHang.sqlite; sourceTree = "<group>"; };
+		0A06908A1EAC31F700A205E2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0A2A886C1EA9D4F00054E556 /* FileManagerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtension.swift; sourceTree = "<group>"; };
 		0A4F846F1EA72E8F004AEFCA /* UIExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtension.swift; sourceTree = "<group>"; };
 		0A4F84731EA73C07004AEFCA /* NotificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
@@ -57,13 +59,11 @@
 		0AF261181EA49B3F00AF41BA /* SQLite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLite.swift; sourceTree = "<group>"; };
 		0AF2611D1EA4A01B00AF41BA /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		0AF2611F1EA4A08100AF41BA /* SQLite_Briding_header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SQLite_Briding_header.h; sourceTree = "<group>"; };
-		0AF261201EA4A64F00AF41BA /* QuanLyNhaHang.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = QuanLyNhaHang.sqlite; sourceTree = "<group>"; };
 		0AF261271EA4B2BA00AF41BA /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		0AF261291EA4B38200AF41BA /* Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
 		0AF2612D1EA4B45800AF41BA /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		0AF579951EA878230001DC58 /* newFood_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newFood_ViewController.swift; sourceTree = "<group>"; };
 		0AF579971EA893FF0001DC58 /* Kind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kind.swift; sourceTree = "<group>"; };
-		0AF5799B1EA8B76C0001DC58 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		23752F9A1EA63D28007AB0AD /* Manager_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager_ViewController.swift; sourceTree = "<group>"; };
 		2394DCEC1EA8D8B800F8D595 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		23CC7AB51EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area_Add_Edit_ViewController.swift; sourceTree = "<group>"; };
@@ -101,9 +101,9 @@
 		0A4F84721EA73255004AEFCA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0A0690881EAC318B00A205E2 /* QuanLyNhaHang.sqlite */,
 				0AF261181EA49B3F00AF41BA /* SQLite.swift */,
 				0AF2611F1EA4A08100AF41BA /* SQLite_Briding_header.h */,
-				0AF261201EA4A64F00AF41BA /* QuanLyNhaHang.sqlite */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -155,7 +155,7 @@
 				0AF2612F1EA4B5B400AF41BA /* Class */,
 				23EDCFFB1EA47F6A005D23F0 /* Nguyen Dinh Son */,
 				0A7B08781EA11F7D002B068E /* Assets.xcassets */,
-				0AF5799B1EA8B76C0001DC58 /* Main.storyboard */,
+				0A06908A1EAC31F700A205E2 /* Main.storyboard */,
 				0A7B087A1EA11F7D002B068E /* LaunchScreen.storyboard */,
 				0A7B087D1EA11F7D002B068E /* Info.plist */,
 			);
@@ -259,8 +259,8 @@
 			files = (
 				0A7B087C1EA11F7D002B068E /* LaunchScreen.storyboard in Resources */,
 				0A7B08791EA11F7D002B068E /* Assets.xcassets in Resources */,
-				0AF261211EA4A64F00AF41BA /* QuanLyNhaHang.sqlite in Resources */,
-				0AF5799C1EA8B76C0001DC58 /* Main.storyboard in Resources */,
+				0A0690891EAC318B00A205E2 /* QuanLyNhaHang.sqlite in Resources */,
+				0A06908B1EAC31F700A205E2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

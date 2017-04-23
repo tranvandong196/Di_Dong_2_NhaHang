@@ -15,4 +15,7 @@ class Kind{
         self.Ma = Ma
         self.Ten = Ten
     }
+    init(){
+        
+    }
 }

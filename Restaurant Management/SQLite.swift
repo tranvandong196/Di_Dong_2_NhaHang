@@ -75,27 +75,43 @@ func edit(query: String)-> Bool{
 }
 
 // MARK: *** Tran Van Dong
-func GetTablesFromSQLite(query: String) -> [Table]{
-     database = Connect_DB_SQLite(dbName: DBName, type: DBType)
-    var Tables = [Table]()
+func getQueryStament(query: String)->OpaquePointer?{
+    database = Connect_DB_SQLite(dbName: DBName, type: DBType)
     var queryStatement:OpaquePointer? = nil
     if sqlite3_prepare_v2(database, query, -1, &queryStatement, nil) == SQLITE_OK{
-        while sqlite3_step(queryStatement) == SQLITE_ROW{sqlite3_column_text(queryStatement, 1)
-            let queryResultCol2 = sqlite3_column_text(queryStatement, 2)
-             let queryResultCol3 = sqlite3_column_text(queryStatement, 3)
-            let SoBan = Int(sqlite3_column_int(queryStatement, 0))
-            let TinhTrang = Int(sqlite3_column_int(queryStatement, 1))
-            let HinhAnh = String(cString: queryResultCol2!)
-            let GhiChu = String(cString: queryResultCol3!)
-            let MaKV = Int(sqlite3_column_int(queryStatement, 4))
-            let MaHD = Int(sqlite3_column_int(queryStatement, 5))
-            let table = Table(SoBan: SoBan, TinhTrang: TinhTrang, HinhAnh: HinhAnh, GhiChu: GhiChu, MaKV: MaKV, MaHD: MaHD)
-            Tables.append(table)
-            //print("Query result: \(mssv): \(fname) \(lname) - \(classID) - \(birthday) - \(otherInfo)")
-
-        }
+        return queryStatement
     }
     sqlite3_close(database)
+    return nil
+}
+func GetTablesFromSQLite(query: String) -> [Table]{
+    var Tables = [Table]()
+    
+    if let queryStatement = getQueryStament(query: query){
+        while sqlite3_step(queryStatement) == SQLITE_ROW{sqlite3_column_text(queryStatement, 1)
+            let table = Table(SoBan: -1, TinhTrang: 0, HinhAnh: "", GhiChu: "", MaKV: 0, MaHD: 0)
+            if sqlite3_column_text(queryStatement, 0) != nil {
+                table.SoBan = Int(sqlite3_column_int(queryStatement, 0))
+            }
+            if sqlite3_column_text(queryStatement, 1) != nil {
+                table.TinhTrang = Int(sqlite3_column_int(queryStatement, 1))
+            }
+            if sqlite3_column_text(queryStatement, 2) != nil {
+                table.HinhAnh = String(cString: sqlite3_column_text(queryStatement, 2))
+            }
+            if sqlite3_column_text(queryStatement, 3) != nil {
+                table.GhiChu = String(cString: sqlite3_column_text(queryStatement, 3))
+            }
+            if sqlite3_column_text(queryStatement, 4) != nil {
+                table.MaKV = Int(sqlite3_column_int(queryStatement, 4))
+            }
+            if sqlite3_column_text(queryStatement, 5) != nil {
+                table.MaHD = Int(sqlite3_column_int(queryStatement, 5))
+            }
+            
+            Tables.append(table)
+        }
+    }
     return Tables
 }
 func GetFoodsFromSQLite(query: String) -> [Food]{
@@ -104,16 +120,32 @@ func GetFoodsFromSQLite(query: String) -> [Food]{
     var queryStatement:OpaquePointer? = nil
     if sqlite3_prepare_v2(database, query, -1, &queryStatement, nil) == SQLITE_OK{
         while sqlite3_step(queryStatement) == SQLITE_ROW{sqlite3_column_text(queryStatement, 1)
-            let MaMon = Int(sqlite3_column_int(queryStatement, 0))
-            let TenMon = String(cString: sqlite3_column_text(queryStatement, 1))
-            let Gia = Double(sqlite3_column_double(queryStatement, 2))
-            let HinhAnh = String(cString: sqlite3_column_text(queryStatement, 3))
-            let MoTa = String(cString: sqlite3_column_text(queryStatement, 4))
-             let Loai = Int(sqlite3_column_int(queryStatement, 5))
-            let Icon = String(cString: sqlite3_column_text(queryStatement, 6))
-            let food = Food(MaMon: MaMon, TenMon: TenMon, Gia: Gia, HinhAnh: HinhAnh, MoTa: MoTa, Loai: Loai, Icon: Icon)
+            let food = Food(MaMon: -1, TenMon: "", Gia: 0, HinhAnh: "", MoTa: "", Loai: 0, Icon: "")
+            if sqlite3_column_text(queryStatement, 0) != nil {
+                food.MaMon = Int(sqlite3_column_int(queryStatement, 0))
+            }
+            if sqlite3_column_text(queryStatement, 1) != nil {
+                food.TenMon = String(cString: sqlite3_column_text(queryStatement, 1))
+            }
+            if sqlite3_column_text(queryStatement, 2) != nil {
+                food.Gia = Double(sqlite3_column_double(queryStatement, 2))
+            }
+            if sqlite3_column_text(queryStatement, 3) != nil {
+                food.HinhAnh = String(cString: sqlite3_column_text(queryStatement, 3))
+            }
+            if sqlite3_column_text(queryStatement, 4) != nil {
+                food.MoTa = String(cString: sqlite3_column_text(queryStatement, 4))
+            }
+            if sqlite3_column_text(queryStatement, 5) != nil {
+                food.Loai = Int(sqlite3_column_int(queryStatement, 5))
+            }
+            if sqlite3_column_text(queryStatement, 6) != nil {
+                food.Icon = String(cString: sqlite3_column_text(queryStatement, 6))
+            }
+            if sqlite3_column_text(queryStatement, 8) != nil {
+                food.SoLuong = Int(sqlite3_column_int(queryStatement, 8))
+            }
             Foods.append(food)
-            //print("Query result: \(mssv): \(fname) \(lname) - \(classID) - \(birthday) - \(otherInfo)")
             
         }
     }
@@ -127,14 +159,21 @@ func GetAreasFromSQLite(query: String) -> [Area]{
     var queryStatement:OpaquePointer? = nil
     if sqlite3_prepare_v2(database, query, -1, &queryStatement, nil) == SQLITE_OK{
         while sqlite3_step(queryStatement) == SQLITE_ROW{sqlite3_column_text(queryStatement, 1)
-            let MaKV = Int(sqlite3_column_int(queryStatement, 0))
-            let TenKV = String(cString: sqlite3_column_text(queryStatement, 1))
+            let area = Area(MaKV: -1, TenKV: "", MoTa: "", HinhAnh: "")
+            if sqlite3_column_text(queryStatement, 0) != nil {
+                area.MaKV = Int(sqlite3_column_int(queryStatement, 0))
+            }
+            if sqlite3_column_text(queryStatement, 1) != nil {
+                area.TenKV = String(cString: sqlite3_column_text(queryStatement, 1))
+            }
+            if sqlite3_column_text(queryStatement, 2) != nil {
+                area.MoTa = String(cString: sqlite3_column_text(queryStatement, 2))
+            }
+            if sqlite3_column_text(queryStatement, 3) != nil {
+                area.HinhAnh = String(cString: sqlite3_column_text(queryStatement, 3))
+            }
             
-            let MoTa = String(cString: sqlite3_column_text(queryStatement, 2))
-            let HinhAnh = String(cString: sqlite3_column_text(queryStatement, 3))
-            let area = Area(MaKV: MaKV, TenKV: TenKV, MoTa: MoTa, HinhAnh: HinhAnh)
             Areas.append(area)
-            //print("Query result: \(mssv): \(fname) \(lname) - \(classID) - \(birthday) - \(otherInfo)")
         }
     }
     sqlite3_close(database)
@@ -146,16 +185,22 @@ func GetKindsFromSQLite(query: String) -> [Kind]{
     var queryStatement:OpaquePointer? = nil
     if sqlite3_prepare_v2(database, query, -1, &queryStatement, nil) == SQLITE_OK{
         while sqlite3_step(queryStatement) == SQLITE_ROW{sqlite3_column_text(queryStatement, 1)
-            let Ma = Int(sqlite3_column_int(queryStatement, 0))
-            let Ten = String(cString: sqlite3_column_text(queryStatement, 1))
-            Kinds.append(Kind(Ma: Ma,Ten: Ten))
+            let kind = Kind(Ma: -1, Ten: "")
+            if sqlite3_column_text(queryStatement, 0) != nil {
+                kind.Ma = Int(sqlite3_column_int(queryStatement, 0))
+            }
+            if sqlite3_column_text(queryStatement, 1) != nil {
+                kind.Ten = String(cString: sqlite3_column_text(queryStatement, 1))
+            }
+            
+            Kinds.append(kind)
         }
     }
     sqlite3_close(database)
     return Kinds
 }
 func addRow(_ T: Table){
-     database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+    database = Connect_DB_SQLite(dbName: DBName, type: DBType)
     let query = "INSERT INTO BanAn VALUES(\(T.SoBan!),\(T.TinhTrang!),'\(T.HinhAnh!)','\(T.GhiChu!)',\(T.MaKV!),\(T.MaHD!))"
     print(query)
     if edit(query: query){
@@ -231,10 +276,12 @@ func copyDataToDocumentURL(ParentDir: String,SubFolder:[String]){
         for i in 0..<Foods.count{
             let imName:String = Foods[i].HinhAnh
             let icName:String = Foods[i].Icon
-            let img:UIImage = UIImage(named: imName) ?? #imageLiteral(resourceName: "Not-Found-icon")
-            let icon:UIImage = UIImage(named: icName) ?? #imageLiteral(resourceName: "Not-Found-icon")
-            img.saveImageToDir(at: ParentDirURL.appendingPathComponent(Sub_folder_data[1]), name: imName)
-            icon.saveImageToDir(at: ParentDirURL.appendingPathComponent(Sub_folder_data[1]), name: icName)
+            if let img:UIImage = UIImage(named: imName){
+                img.saveImageToDir(at: ParentDirURL.appendingPathComponent(Sub_folder_data[1]), name: imName)
+            }
+            if let icon:UIImage = UIImage(named: icName){
+                icon.saveImageToDir(at: ParentDirURL.appendingPathComponent(Sub_folder_data[1]), name: icName)
+            }
         }
         for i in 0..<Areas.count{
             let iName:String = Areas[i].HinhAnh
@@ -243,21 +290,9 @@ func copyDataToDocumentURL(ParentDir: String,SubFolder:[String]){
         }
     }
     
-
+    
     
 }
-//func saveImageToDir(image: UIImage,at: URL,name: String){
-//    do{
-//        
-//        if name.characters.count == name.trim(".png").characters.count + 3{
-//            try UIImagePNGRepresentation(image)?.write(to: ParentDirURL.appendingPathComponent("/Area/" + name))
-//        }else{
-//            try UIImageJPEGRepresentation(img, 1.0)?.write(to: ParentDirURL.appendingPathComponent("/Area/" + iName))
-//        }
-//    }catch{
-//        print("Can not save image: \(iName)")
-//    }
-//}
 // END DONG
 
 //====================Nguyễn Đình Sơn
@@ -323,7 +358,7 @@ func Query( sql:String, database:OpaquePointer){
 //                MSSV_last = mssv
 //            }
 //            //print("Query result: \(mssv): \(fname) \(lname) - \(classID) - \(birthday) - \(otherInfo)")
-//            
+//
 //        }
 //    }
 //    if Studentsx.count != 0{
