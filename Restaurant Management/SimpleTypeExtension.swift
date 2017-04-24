@@ -23,7 +23,35 @@ extension Integer {
         return Number.formatterWithSeparator.string(for: self) ?? ""
     }
 }
-
+extension Double{
+    var VNDToUSD:Double{
+        return (self/22667.99).roundTo(places: 1)
+    }
+    var USDToVND:Double{
+        return (self*22667.99/1000).roundTo(places: 0)*1000
+    }
+    /// Rounds the double to decimal places value
+    func roundTo(places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
+    func getCurrencyValue(Currency: String)->(Double,String){
+        switch Currency {
+        case "USD":
+            return (self.VNDToUSD,"$")
+        case "USDVND":
+            return (self.USDToVND,"đ")
+        default:
+            return (self,"đ")
+        }
+    }
+    func toCurrencyString(Currency: String)->String{
+        if Currency == "VNĐ"{
+            return Int(self).stringFormattedWithSeparator
+        }
+        return String(self)
+    }
+}
 
 // MARK: *** String
 extension String {
@@ -36,3 +64,4 @@ extension String {
     }
     
 }
+

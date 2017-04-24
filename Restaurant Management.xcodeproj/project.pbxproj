@@ -117,6 +117,7 @@
 				0A7B08851EA13C5C002B068E /* food_TableViewCell.swift */,
 				0A6B2ABC1EA3963600876B02 /* food_Detail_ViewController.swift */,
 				0AF579951EA878230001DC58 /* newFood_ViewController.swift */,
+				23752F9A1EA63D28007AB0AD /* Manager_ViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -193,7 +194,6 @@
 				23EDD0041EA4942B005D23F0 /* FoodDetail_ViewController.swift */,
 				23F0AF231EA4A19D006C64F6 /* AreaDetail_ViewController.swift */,
 				23CC7AB51EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift */,
-				23752F9A1EA63D28007AB0AD /* Manager_ViewController.swift */,
 			);
 			name = "Nguyen Dinh Son";
 			sourceTree = "<group>";

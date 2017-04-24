@@ -8,7 +8,7 @@
 
 import UIKit
 var indexSelected_tables = 0
-
+var Currency:String = "VNĐ"
 class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     let localURL = DocURL().appendingPathComponent(Parent_dir_data + "/\(Sub_folder_data[0])")
     @IBOutlet var Tables_TableView: UITableView!
@@ -17,6 +17,11 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
         Tables_TableView.delegate = self
         Tables_TableView.dataSource = self
         copyDataToDocumentURL(ParentDir: Parent_dir_data, SubFolder: Sub_folder_data)
+        
+        if UserDefaults.standard.value(forKey: "Currency") != nil{
+            Currency = UserDefaults.standard.value(forKey: "Currency") as! String
+            print("Lấy loại tiền tệ: \(Currency)")
+        }
         
     }
     override func viewWillAppear(_ animated: Bool) {

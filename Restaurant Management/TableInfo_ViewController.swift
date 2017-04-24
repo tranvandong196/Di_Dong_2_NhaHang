@@ -35,7 +35,7 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         KeyboardHide(self, open_Func: #selector(self.keyboardWillHide(_:)))
         
         Foods = GetFoodsFromSQLite(query: "SELECT * FROM MonAn")
-        TotalPrice_Label.text = "0đ"
+        TotalPrice_Label.text = Currency == "VNĐ" ? "0đ":"0$"
     }
     override func viewWillAppear(_ animated: Bool) {
         foods_TableView.delegate = self
@@ -158,7 +158,7 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if Foods.count == 0 && Tables[indexSelected_tables].TinhTrang == 1{
-            TotalPrice_Label.text = "0đ"
+            TotalPrice_Label.text = Currency == "VNĐ" ? "0đ":"0$"
             Tables[indexSelected_tables].TinhTrang = 0
             updateRow(Tables[indexSelected_tables])
         }
@@ -177,10 +177,11 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         let ImgURL = localURL.appendingPathComponent(Foods[indexPath.row].Icon!)
         //print("IconURL: \(IconURL.path)")
         cell.food_ImageView.image = UIImage(contentsOfFile: ImgURL.path)  ?? #imageLiteral(resourceName: "Image-Not-Found-icon")
-        cell.priceOfFood.text = "\(Int((Foods[indexPath.row].Gia)!).stringFormattedWithSeparator)đ"
+        let p = (Foods[indexPath.row].Gia)!.getCurrencyValue(Currency: Currency)
+        cell.priceOfFood.text = p.0.toCurrencyString(Currency: Currency) + p.1
         
-        priceTotal += (Double(Foods[indexPath.row].SoLuong!))*(Foods[indexPath.row].Gia!)
-        TotalPrice_Label.text = Int(priceTotal).stringFormattedWithSeparator + "đ"
+        priceTotal += (Double(Foods[indexPath.row].SoLuong!))*p.0
+        TotalPrice_Label.text = priceTotal.toCurrencyString(Currency: Currency) + p.1
         return cell
     }
     

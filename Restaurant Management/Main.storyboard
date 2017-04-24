@@ -572,10 +572,10 @@
             </objects>
             <point key="canvasLocation" x="2657" y="1001"/>
         </scene>
-        <!--View Controller-->
+        <!--Manager View Controller-->
         <scene sceneID="2vX-aS-tty">
             <objects>
-                <viewController storyboardIdentifier="Manager_VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jvX-RK-JAj" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Manager_VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jvX-RK-JAj" customClass="Manager_ViewController" customModule="Restaurant_Management" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O7K-hn-ZXO"/>
                         <viewControllerLayoutGuide type="bottom" id="hC0-7L-xNS"/>
@@ -621,6 +621,14 @@
                                 </constraints>
                                 <state key="normal" title="Tiền tệ mặc định"/>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tOE-3b-70Z">
+                                <rect key="frame" x="121" y="335" width="85" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="VNĐ"/>
+                                    <segment title="USD"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -635,6 +643,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="w6K-TV-OgE"/>
+                    <connections>
+                        <outlet property="Currency_Segment" destination="tOE-3b-70Z" id="u8p-1W-E65"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fou-ZC-cIV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -756,7 +767,7 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="237"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b7Z-Xe-jj0" id="mt9-Kd-9yW">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="236"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="237"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gà Đông Tảo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXs-cP-TKR">
@@ -1060,11 +1071,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="6oW-gm-LvJ">
-                                        <rect key="frame" x="86" y="61" width="204" height="36"/>
+                                        <rect key="frame" x="86" y="61" width="164" height="36"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VNĐ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s56-Sb-Wr8">
+                                        <rect key="frame" x="253" y="61" width="37" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loại:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsT-xl-CtT">
                                         <rect key="frame" x="1" y="117" width="60" height="36"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
@@ -1107,16 +1124,13 @@
                                 <constraints>
                                     <constraint firstItem="WTL-XZ-gHd" firstAttribute="height" secondItem="IsT-xl-CtT" secondAttribute="height" id="1rT-px-QJb"/>
                                     <constraint firstItem="lWk-DS-19i" firstAttribute="leading" secondItem="ux0-lk-ZiB" secondAttribute="leading" id="4N4-O2-lKx"/>
-                                    <constraint firstItem="6oW-gm-LvJ" firstAttribute="width" secondItem="vD9-4H-Uao" secondAttribute="width" id="56N-9w-qUw"/>
                                     <constraint firstItem="vD9-4H-Uao" firstAttribute="leading" secondItem="ux0-lk-ZiB" secondAttribute="trailing" constant="25" id="5Fc-uz-cSN"/>
                                     <constraint firstItem="6oW-gm-LvJ" firstAttribute="height" secondItem="vD9-4H-Uao" secondAttribute="height" id="5IQ-00-vBd"/>
                                     <constraint firstItem="WTL-XZ-gHd" firstAttribute="top" secondItem="IsT-xl-CtT" secondAttribute="bottom" constant="20" id="5gN-tT-FC6"/>
                                     <constraint firstItem="WTL-XZ-gHd" firstAttribute="leading" secondItem="IsT-xl-CtT" secondAttribute="leading" id="9X8-H8-WKt"/>
-                                    <constraint firstItem="I2S-SS-43b" firstAttribute="width" secondItem="6oW-gm-LvJ" secondAttribute="width" id="9rr-bo-vcg"/>
                                     <constraint firstItem="IsT-xl-CtT" firstAttribute="top" secondItem="lWk-DS-19i" secondAttribute="bottom" constant="20" id="AZK-U4-5yL"/>
                                     <constraint firstItem="DAP-0C-A0Z" firstAttribute="top" secondItem="WTL-XZ-gHd" secondAttribute="bottom" constant="5" id="C8V-Ka-zLu"/>
                                     <constraint firstItem="lWk-DS-19i" firstAttribute="width" secondItem="ux0-lk-ZiB" secondAttribute="width" id="Emx-Y8-FHU"/>
-                                    <constraint firstItem="I2S-SS-43b" firstAttribute="centerX" secondItem="6oW-gm-LvJ" secondAttribute="centerX" id="FIC-bX-dTX"/>
                                     <constraint firstItem="ux0-lk-ZiB" firstAttribute="leading" secondItem="aTZ-zr-SX5" secondAttribute="leading" constant="1" id="GS5-1c-QRJ"/>
                                     <constraint firstItem="IsT-xl-CtT" firstAttribute="leading" secondItem="lWk-DS-19i" secondAttribute="leading" id="JdC-k2-xSj"/>
                                     <constraint firstAttribute="bottom" secondItem="DAP-0C-A0Z" secondAttribute="bottom" constant="2" id="KSI-Y6-mdU"/>
@@ -1124,25 +1138,32 @@
                                     <constraint firstItem="25K-Kx-rL4" firstAttribute="height" secondItem="UPC-ay-sgh" secondAttribute="height" multiplier="7" id="NFQ-Iu-skT"/>
                                     <constraint firstItem="IsT-xl-CtT" firstAttribute="height" secondItem="lWk-DS-19i" secondAttribute="height" id="NcB-Hm-uBQ"/>
                                     <constraint firstItem="UPC-ay-sgh" firstAttribute="centerX" secondItem="I2S-SS-43b" secondAttribute="centerX" id="NoL-tp-9I9"/>
+                                    <constraint firstItem="I2S-SS-43b" firstAttribute="width" secondItem="vD9-4H-Uao" secondAttribute="width" id="PaV-U4-vZJ"/>
                                     <constraint firstItem="IsT-xl-CtT" firstAttribute="width" secondItem="lWk-DS-19i" secondAttribute="width" id="Pfj-xY-2um"/>
+                                    <constraint firstItem="I2S-SS-43b" firstAttribute="centerX" secondItem="vD9-4H-Uao" secondAttribute="centerX" id="R1E-Y7-nAE"/>
                                     <constraint firstItem="25K-Kx-rL4" firstAttribute="centerY" secondItem="UPC-ay-sgh" secondAttribute="centerY" id="TrZ-cg-syc"/>
                                     <constraint firstItem="lWk-DS-19i" firstAttribute="height" secondItem="ux0-lk-ZiB" secondAttribute="height" id="WmS-LD-mrE"/>
                                     <constraint firstItem="vD9-4H-Uao" firstAttribute="height" secondItem="ux0-lk-ZiB" secondAttribute="height" id="XIi-Jm-zNv"/>
                                     <constraint firstItem="6oW-gm-LvJ" firstAttribute="centerY" secondItem="lWk-DS-19i" secondAttribute="centerY" id="Xg1-5q-jtQ"/>
+                                    <constraint firstItem="s56-Sb-Wr8" firstAttribute="trailing" secondItem="vD9-4H-Uao" secondAttribute="trailing" id="YOV-D6-KAI"/>
+                                    <constraint firstItem="I2S-SS-43b" firstAttribute="height" secondItem="vD9-4H-Uao" secondAttribute="height" id="ZrH-GI-5J4"/>
                                     <constraint firstItem="25K-Kx-rL4" firstAttribute="centerX" secondItem="UPC-ay-sgh" secondAttribute="centerX" id="bLj-I4-Q0t"/>
                                     <constraint firstItem="UPC-ay-sgh" firstAttribute="centerY" secondItem="I2S-SS-43b" secondAttribute="centerY" id="dbj-aA-nir"/>
                                     <constraint firstItem="I2S-SS-43b" firstAttribute="centerY" secondItem="IsT-xl-CtT" secondAttribute="centerY" id="epR-cC-1tQ"/>
                                     <constraint firstItem="UPC-ay-sgh" firstAttribute="height" secondItem="I2S-SS-43b" secondAttribute="height" id="eyJ-3I-8d2"/>
+                                    <constraint firstAttribute="trailing" secondItem="6oW-gm-LvJ" secondAttribute="trailing" constant="50" id="fH2-dn-hFt"/>
                                     <constraint firstItem="UPC-ay-sgh" firstAttribute="width" secondItem="I2S-SS-43b" secondAttribute="width" id="gan-Dv-54i"/>
                                     <constraint firstAttribute="trailing" secondItem="DAP-0C-A0Z" secondAttribute="trailing" constant="5" id="gbl-2c-QkP"/>
                                     <constraint firstItem="lWk-DS-19i" firstAttribute="top" secondItem="ux0-lk-ZiB" secondAttribute="bottom" constant="20" id="hOp-k0-K1z"/>
-                                    <constraint firstItem="I2S-SS-43b" firstAttribute="height" secondItem="6oW-gm-LvJ" secondAttribute="height" id="igL-HY-npn"/>
+                                    <constraint firstItem="s56-Sb-Wr8" firstAttribute="leading" secondItem="6oW-gm-LvJ" secondAttribute="trailing" constant="3" id="k3R-uv-i6l"/>
                                     <constraint firstItem="DAP-0C-A0Z" firstAttribute="leading" secondItem="WTL-XZ-gHd" secondAttribute="leading" id="lEl-90-Snq"/>
                                     <constraint firstItem="vD9-4H-Uao" firstAttribute="centerY" secondItem="ux0-lk-ZiB" secondAttribute="centerY" id="mQz-Dp-UU0"/>
                                     <constraint firstItem="WTL-XZ-gHd" firstAttribute="width" secondItem="IsT-xl-CtT" secondAttribute="width" id="qNW-6l-Fi2"/>
+                                    <constraint firstItem="s56-Sb-Wr8" firstAttribute="height" secondItem="6oW-gm-LvJ" secondAttribute="height" id="qqv-hM-3i4"/>
                                     <constraint firstItem="ux0-lk-ZiB" firstAttribute="top" secondItem="aTZ-zr-SX5" secondAttribute="top" constant="5" id="sku-Dn-cDG"/>
-                                    <constraint firstItem="6oW-gm-LvJ" firstAttribute="centerX" secondItem="vD9-4H-Uao" secondAttribute="centerX" id="upd-VW-zuf"/>
+                                    <constraint firstItem="6oW-gm-LvJ" firstAttribute="leading" secondItem="vD9-4H-Uao" secondAttribute="leading" id="w7n-HZ-KaE"/>
                                     <constraint firstAttribute="trailing" secondItem="vD9-4H-Uao" secondAttribute="trailing" constant="10" id="xiB-Nr-ZQs"/>
+                                    <constraint firstItem="s56-Sb-Wr8" firstAttribute="top" secondItem="6oW-gm-LvJ" secondAttribute="top" id="yIb-ym-Mhu"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1166,6 +1187,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="Currency_Label" destination="s56-Sb-Wr8" id="phT-B4-TvE"/>
                         <outlet property="KindofFood_PickerView" destination="25K-Kx-rL4" id="RSi-UN-0yV"/>
                         <outlet property="NameKindFood_Label" destination="UPC-ay-sgh" id="YSd-nQ-UXt"/>
                         <outlet property="Show_Hide_PickerView_Button" destination="I2S-SS-43b" id="ni7-RQ-6Qw"/>

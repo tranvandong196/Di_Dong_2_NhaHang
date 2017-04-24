@@ -245,8 +245,10 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FoodCell_TableViewCell
         
+        let sPrice =  Foods[indexPath.row].Gia!.getCurrencyValue(Currency: Currency)
+        
         cell.Name.text = Foods[indexPath.row].TenMon
-        cell.Price.text = String(format:"%.1f", Foods[indexPath.row].Gia)
+        cell.Price.text = sPrice.0.toCurrencyString(Currency: Currency) + sPrice.1
         cell.Description.text = Foods[indexPath.row].MoTa
         
         let ImgURL = localURL.appendingPathComponent(Foods[indexPath.row].HinhAnh!)

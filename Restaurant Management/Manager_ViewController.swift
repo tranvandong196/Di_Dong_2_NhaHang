@@ -7,20 +7,27 @@
 //
 
 import UIKit
+class Manager_ViewController: UIViewController,UISearchControllerDelegate {
 
-class Manager_ViewController: UIViewController {
-
+    @IBOutlet weak var Currency_Segment: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        Currency_Segment.selectedSegmentIndex = Currency == "VNĐ" ? 0:1
+        
+        
+        Currency_Segment.addTarget(self, action: #selector(CurrencySegmentDidChange(segment:)), for: .valueChanged)
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
+    func CurrencySegmentDidChange(segment: UISegmentedControl){
+        if segment.selectedSegmentIndex == 0{
+            Currency = "VNĐ"
+        }else if segment.selectedSegmentIndex == 1{
+            Currency = "USD"
+        }
+        UserDefaults.standard.setValue(Currency, forKey: "Currency")
+        print(Currency)
+    }
 
     /*
     // MARK: - Navigation

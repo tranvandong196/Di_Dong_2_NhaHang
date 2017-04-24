@@ -30,6 +30,7 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     
     @IBOutlet weak var priceOfFood_TextField: UITextField!
     
+    @IBOutlet weak var Currency_Label: UILabel!
     // MARK: *** Display show
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,13 +58,15 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         }
         setupDisplayBegin()
         
+        Currency_Label.text = Currency
     }
     func setupDisplayBegin(){
         if indexSelected_foods > -1{
             let kind_tmp = GetKindsFromSQLite(query: "SELECT * FROM Loai WHERE Ma = \(Foods[indexSelected_foods].Loai!)")
             imageFood_ImageView.image = newImage ?? UIImage(contentsOfFile: localURL.appendingPathComponent(Foods[indexSelected_foods].HinhAnh).path) ?? #imageLiteral(resourceName: "Add_image_icon")
             nameOfFood_TextField.text = Foods[indexSelected_foods].TenMon
-            priceOfFood_TextField.text = String(Foods[indexSelected_foods].Gia!)
+            let p = Foods[indexSelected_foods].Gia!.getCurrencyValue(Currency: Currency)
+            priceOfFood_TextField.text = p.0.toCurrencyString(Currency: Currency)
             NameKindFood_Label.text = " " + kind_tmp[0].Ten
             
             let number: Int = Kinds.count
@@ -228,8 +231,11 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
             return false
         }else{
             let newImageName = newImage == nil ? nil:nameOfFood_TextField.text! + newImageFormat!
-
-            let newfood = Food(MaMon: -1, TenMon: nameOfFood_TextField.text!, Gia: Double(priceOfFood_TextField.text!)!, HinhAnh: "", MoTa: otherInfo.text, Loai: kind_selected!, Icon: "")
+            var price = Double(priceOfFood_TextField.text!)!
+            if Currency == "USD"{
+                price = price.getCurrencyValue(Currency: "USDVND").0
+            }
+            let newfood = Food(MaMon: -1, TenMon: nameOfFood_TextField.text!, Gia: price, HinhAnh: "", MoTa: otherInfo.text, Loai: kind_selected!, Icon: "")
             
             if indexSelected_foods > -1{
                 newfood.MaMon = Foods[indexSelected_foods].MaMon
