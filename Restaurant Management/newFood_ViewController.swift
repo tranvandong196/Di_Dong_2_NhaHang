@@ -258,6 +258,7 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
             }
             
             if indexSelected_foods > -1{
+                Foods[indexSelected_foods] = newfood
                 updateRow(newfood)
             }else{
                 addRow(newfood)

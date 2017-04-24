@@ -763,15 +763,15 @@
                                 <rect key="frame" x="16" y="152" width="288" height="396"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="237" id="b7Z-Xe-jj0" customClass="FoodCell_TableViewCell" customModule="Restaurant_Management" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="237" id="b7Z-Xe-jj0" customClass="FoodCell_TableViewCell" customModule="Restaurant_Management" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="288" height="237"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b7Z-Xe-jj0" id="mt9-Kd-9yW">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="237"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="255" height="236.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gà Đông Tảo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXs-cP-TKR">
-                                                    <rect key="frame" x="8" y="8" width="272" height="35"/>
+                                                    <rect key="frame" x="8" y="8" width="239" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="012-Pd-hKV"/>
                                                     </constraints>
@@ -780,7 +780,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="190.000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMc-bM-a7L">
-                                                    <rect key="frame" x="8" y="44" width="272" height="32"/>
+                                                    <rect key="frame" x="8" y="44" width="239" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32" id="voe-u9-kQf"/>
                                                     </constraints>
@@ -796,7 +796,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Mô tả...." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eM1-c2-ulz">
-                                                    <rect key="frame" x="151" y="84" width="129" height="144"/>
+                                                    <rect key="frame" x="151" y="84" width="96" height="144"/>
                                                     <color key="backgroundColor" red="0.94192057849999999" green="0.89884644749999998" blue="0.76796823739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -823,6 +823,7 @@
                                             <outlet property="Name" destination="rXs-cP-TKR" id="e61-DW-7WA"/>
                                             <outlet property="Price" destination="NMc-bM-a7L" id="QXT-cC-KlW"/>
                                             <outlet property="_Image" destination="QOX-XF-YAV" id="abu-he-QCf"/>
+                                            <segue destination="AOI-UW-k9a" kind="push" id="swA-bd-cIt"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1214,5 +1215,6 @@
         <segue reference="aIX-TG-9zk"/>
         <segue reference="HeH-SZ-5Io"/>
         <segue reference="rsf-gB-Wc8"/>
+        <segue reference="swA-bd-cIt"/>
     </inferredMetricsTieBreakers>
 </document>
