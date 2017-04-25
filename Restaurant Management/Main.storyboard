@@ -261,7 +261,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tjc-ik-s18" userLabel="Picture">
-                                <rect key="frame" x="10" y="45" width="300" height="189.5"/>
+                                <rect key="frame" x="10" y="89" width="300" height="189.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="spM-0C-9pL">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="189.5"/>
@@ -275,7 +275,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXU-3X-mIn" userLabel="Info">
-                                <rect key="frame" x="10" y="249.5" width="300" height="308.5"/>
+                                <rect key="frame" x="10" y="293.5" width="300" height="220.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTK-Di-MnL">
                                         <rect key="frame" x="1" y="5" width="60" height="25"/>
@@ -309,7 +309,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Món ăn có chưa nhiều đường" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nd-hv-Gqa">
-                                        <rect key="frame" x="1" y="146" width="294" height="160.5"/>
+                                        <rect key="frame" x="1" y="146" width="294" height="72.5"/>
                                         <color key="backgroundColor" red="0.94192057847976685" green="0.89884644746780396" blue="0.76796823740005493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -418,25 +418,36 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bàn số 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kzb-6y-KSH">
-                                            <rect key="frame" x="84" y="4" width="130" height="66"/>
+                                            <rect key="frame" x="84" y="4" width="130" height="35"/>
                                             <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="keF-5L-wIf"/>
                                                 <constraint firstAttribute="width" constant="130" id="xS9-vN-nvr"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vị trí" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxg-7Y-7Gb">
+                                            <rect key="frame" x="84" y="45" width="130" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="T2s-zG-OBI" firstAttribute="top" secondItem="LJR-IH-ZHp" secondAttribute="top" constant="4" id="0Pn-Gx-Ep1"/>
                                         <constraint firstItem="Kzb-6y-KSH" firstAttribute="top" secondItem="LJR-IH-ZHp" secondAttribute="top" constant="4" id="C1r-Sb-wPg"/>
-                                        <constraint firstAttribute="bottom" secondItem="Kzb-6y-KSH" secondAttribute="bottom" constant="4" id="DV8-oN-8wf"/>
+                                        <constraint firstItem="Xxg-7Y-7Gb" firstAttribute="leading" secondItem="Kzb-6y-KSH" secondAttribute="leading" id="Eft-sH-XnC"/>
                                         <constraint firstItem="Kzb-6y-KSH" firstAttribute="leading" secondItem="T2s-zG-OBI" secondAttribute="trailing" constant="10" id="JJa-p6-dp4"/>
                                         <constraint firstItem="T2s-zG-OBI" firstAttribute="leading" secondItem="LJR-IH-ZHp" secondAttribute="leading" constant="4" id="bYj-KL-hIy"/>
+                                        <constraint firstAttribute="bottom" secondItem="Xxg-7Y-7Gb" secondAttribute="bottom" constant="8" id="f2v-Uc-2of"/>
                                         <constraint firstAttribute="bottom" secondItem="T2s-zG-OBI" secondAttribute="bottom" constant="4" id="hR5-um-xo6"/>
+                                        <constraint firstItem="Xxg-7Y-7Gb" firstAttribute="width" secondItem="Kzb-6y-KSH" secondAttribute="width" id="v8T-Jx-LgY"/>
+                                        <constraint firstItem="Xxg-7Y-7Gb" firstAttribute="top" secondItem="Kzb-6y-KSH" secondAttribute="bottom" constant="6" id="wEv-pW-lCi"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="Position_Label" destination="Xxg-7Y-7Gb" id="GMP-ma-Hfw"/>
                                     <outlet property="TableName_Label" destination="Kzb-6y-KSH" id="R5m-cu-HGb"/>
                                     <outlet property="TableThumnail_ImageView" destination="T2s-zG-OBI" id="3Ru-aX-noq"/>
                                     <outlet property="contentCell_View" destination="LJR-IH-ZHp" id="24L-82-1BL"/>
@@ -467,7 +478,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vdw-FW-FUB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="846" y="189"/>
+            <point key="canvasLocation" x="845.625" y="188.02816901408451"/>
         </scene>
         <!--Area Add Edit View Controller-->
         <scene sceneID="aEG-4R-mUu">
@@ -767,7 +778,7 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="237"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b7Z-Xe-jj0" id="mt9-Kd-9yW">
-                                            <rect key="frame" x="0.0" y="0.0" width="255" height="236.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="255" height="237"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gà Đông Tảo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXs-cP-TKR">
@@ -1029,7 +1040,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Xm-n8-m5a" userLabel="Picture">
-                                <rect key="frame" x="10" y="45" width="300" height="190"/>
+                                <rect key="frame" x="10" y="89" width="300" height="190"/>
                                 <subviews>
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ykg-dz-Oa0">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="190"/>
@@ -1047,7 +1058,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aTZ-zr-SX5" userLabel="Info">
-                                <rect key="frame" x="10" y="250" width="300" height="308"/>
+                                <rect key="frame" x="10" y="294" width="300" height="220"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ux0-lk-ZiB">
                                         <rect key="frame" x="1" y="5" width="60" height="36"/>
@@ -1116,7 +1127,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DAP-0C-A0Z">
-                                        <rect key="frame" x="1" y="214" width="294" height="92"/>
+                                        <rect key="frame" x="1" y="214" width="294" height="4"/>
                                         <color key="backgroundColor" red="0.94192057849999999" green="0.89884644749999998" blue="0.76796823739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

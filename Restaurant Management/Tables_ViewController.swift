@@ -9,13 +9,23 @@
 import UIKit
 var indexSelected_tables = 0
 var Currency:String = "VNĐ"
-class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+
+class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate {
+    enum selectedScope:Int{
+        case all = 0
+        case set = 1
+        case notset = 2
+    }
+    var tablesOrigial = [Table]()
     let localURL = DocURL().appendingPathComponent(Parent_dir_data + "/\(Sub_folder_data[0])")
+    
     @IBOutlet var Tables_TableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         Tables_TableView.delegate = self
         Tables_TableView.dataSource = self
+        
+        
         copyDataToDocumentURL(ParentDir: Parent_dir_data, SubFolder: Sub_folder_data)
         
         if UserDefaults.standard.value(forKey: "Currency") != nil{
@@ -23,22 +33,90 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
             print("Lấy loại tiền tệ: \(Currency)")
         }
         
+        
     }
+    // MARK: *** SearchBar
+    func searchBarSetup(){
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: (UIScreen.main.bounds.width), height: 70))
+        searchBar.showsScopeBar = true
+        searchBar.scopeButtonTitles = ["Tất cả","Đã đặt","Chưa đặt"]
+        searchBar.delegate = self
+        searchBar.returnKeyType = .search
+        searchBar.selectedScopeButtonIndex = 0
+        self.Tables_TableView.tableHeaderView = searchBar
+    }
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterTableView(ind: selectedScope,searchText: nil)
+        
+        print(selectedScope)
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        searchBar.setShowsCancelButton(false, animated: true)
+        filterTableView(ind: searchBar.selectedScopeButtonIndex, searchText: nil)
+        searchBar.text = nil
+        searchBar.resignFirstResponder()
+        //self.searchDisplayController?.setActive(false, animated: true)
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterTableView(ind: searchBar.selectedScopeButtonIndex,searchText: searchBar.text)
+    }
+    func filterTableView(ind:Int,searchText: String?){
+            switch ind {
+            case selectedScope.all.rawValue:
+                Tables = tablesOrigial
+                break
+            case selectedScope.set.rawValue:
+                Tables = tablesOrigial.filter({(mod) -> Bool in
+                    return mod.TinhTrang == 1
+                })
+            case selectedScope.notset.rawValue:
+                Tables = tablesOrigial.filter({(mod) -> Bool in
+                    return mod.TinhTrang == 0
+                })
+            default:
+                print("Search...")
+            }
+        if searchText != nil{
+            Tables = Tables.filter({(mod) -> Bool in
+                let x = String(mod.SoBan!).contains(searchText!) ? true:searchText!.lowercased().contains(String(mod.SoBan!))
+                let y = mod.GhiChu!.lowercased().contains(searchText!.lowercased()) ? true:searchText!.lowercased().contains(mod.GhiChu!.lowercased())
+                var z = false
+                for i in 0..<Areas.count{
+                    if Areas[i].MaKV! == mod.MaKV!{
+                        z = Areas[i].TenKV!.lowercased().contains(searchText!.lowercased()) ? true:searchText!.lowercased().contains(Areas[i].TenKV!.lowercased())
+                        break;
+                    }
+                }
+                
+                return (x || y || z)
+            })
+        }
+        Tables_TableView.reloadData()
+    }
+   
+    //MARK: *** Action
     override func viewWillAppear(_ animated: Bool) {
+        self.searchBarSetup()
         print("\n 🚦 Danh sách bàn =========================")
         Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
+        Areas = GetAreasFromSQLite(query: "SELECT * FROM KhuVuc")
+        if tablesOrigial.count == 0{
+            tablesOrigial = Tables
+        }
         Tables_TableView.reloadData()
         Foods.removeAll()
-        Areas.removeAll()
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func Mageger_Button_Tapped(_ sender: Any) {
         Foods.removeAll()
-        Areas.removeAll()
         pushToVC(withIdentifier: "Manager_VC")
     }
     @IBAction func addNewTable_Button(_ sender: Any) {
@@ -48,6 +126,8 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
             _ = self.addNewTable()
             _ = Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
             _ = self.Tables_TableView.reloadData()
+            _ = self.tablesOrigial = Tables
+            
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive){_ in
             
@@ -55,6 +135,7 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
         let setupNow = UIAlertAction(title: "Thêm và đặt ngay", style: .default){_ in
             _ = indexSelected_tables = self.addNewTable() - 1
             _ = Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
+            _ = self.tablesOrigial = Tables
             _ = self.pushToVC(withIdentifier: "table_detail")
             
         }
@@ -82,6 +163,16 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         let ImageURL = localURL.appendingPathComponent(Tables[indexPath.row].HinhAnh!)
         cell.TableThumnail_ImageView.image = UIImage(contentsOfFile: ImageURL.path)
+        
+        for i in 0..<Areas.count{
+            if Areas[i].MaKV! == Tables[indexPath.row].MaKV!{
+                cell.Position_Label.text = Areas[i].TenKV
+                break;
+            }
+        }
+
+        
+        
         
         let  NotSetupColor  = UIColor.init(red: 0/255.0, green: 128.0/255.0, blue: 1.0, alpha: 0.5)
         let didSetupColor = UIColor.init(red: 1.0, green: 128.0/255.0, blue: 0, alpha: 0.7)
@@ -137,17 +228,18 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
         addRow(T)
         return num
     }
-    /*
+
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     if segue.identifier == "table_detail" {
-     
+     if segue.identifier == "Seque_detailTable" {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
      }
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
      }
-     */
+    
     
 }
