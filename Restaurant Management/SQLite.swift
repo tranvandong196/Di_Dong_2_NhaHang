@@ -15,6 +15,7 @@ var database:OpaquePointer?
 var Tables = [Table]()
 var Foods = [Food]()
 var Areas = [Area]()
+var Bills = [Bill]()
 
 var Parent_dir_data:String = "Resources"
 var Sub_folder_data:[String] = ["Table","Food","Area"]

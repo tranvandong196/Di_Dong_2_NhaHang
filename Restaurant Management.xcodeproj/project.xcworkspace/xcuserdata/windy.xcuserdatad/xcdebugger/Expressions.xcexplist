@@ -3,14 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "FoodsList_ViewController.init(coder : NSCoder) -&gt; FoodsList_ViewController?:FoodsList_ViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "listFoodTypes">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "Area_TableViewController.tableView(UITableView, didSelectRowAt : IndexPath) -&gt; ():Area_TableViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -22,10 +14,26 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "FoodsList_ViewController.tableView(UITableView, didSelectRowAt : IndexPath) -&gt; ():FoodsList_ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Tables[indexSelected_tables]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "FoodsList_ViewController.viewDidLoad() -&gt; ():FoodsList_ViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "FoodsList_ViewController.listFoods">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FoodsList_ViewController.init(coder : NSCoder) -&gt; FoodsList_ViewController?:FoodsList_ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "listFoodTypes">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
