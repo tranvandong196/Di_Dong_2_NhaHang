@@ -11,6 +11,8 @@ import UIKit
 class Table_TableViewCell: UITableViewCell {
     @IBOutlet weak var TableThumnail_ImageView: UIImageView!
     @IBOutlet weak var TableName_Label: UILabel!
+    @IBOutlet weak var Position_Label: UILabel!
+    
     @IBOutlet weak var contentCell_View: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -15,7 +15,7 @@ class Food{
     var MoTa:String!
     var Loai:Int!
     var Icon:String!
-    var SoLuong:Int!
+    var SoLuong:Int?
     init(MaMon:Int,TenMon:String,Gia:Double,HinhAnh:String,MoTa:String,Loai:Int,Icon:String) {
         update(MaMon: MaMon, TenMon: TenMon, Gia: Gia, HinhAnh: HinhAnh, MoTa: MoTa, Loai: Loai, Icon: Icon)
     }
