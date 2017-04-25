@@ -9,12 +9,12 @@
 import Foundation
 
 class Table{
-    var SoBan:Int!
+    var SoBan:Int?
     var TinhTrang:Int!
     var HinhAnh:String!
-    var GhiChu:String?
+    var GhiChu:String!
     var MaKV:Int!
-    var MaHD:Int?
+    var MaHD:Int!
     
     init(SoBan:Int,TinhTrang:Int,HinhAnh:String,GhiChu:String,MaKV:Int,MaHD:Int) {
         self.SoBan = SoBan
