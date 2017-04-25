@@ -15,6 +15,7 @@ var database:OpaquePointer?
 var Tables = [Table]()
 var Foods = [Food]()
 var Areas = [Area]()
+var Bills = [Bill]()
 
 var Parent_dir_data:String = "Resources"
 var Sub_folder_data:[String] = ["Table","Food","Area"]
@@ -108,6 +109,9 @@ func GetTablesFromSQLite(query: String) -> [Table]{
             if sqlite3_column_text(queryStatement, 5) != nil {
                 table.MaHD = Int(sqlite3_column_int(queryStatement, 5))
             }
+            else{
+                table.MaHD = nil
+            }
             
             Tables.append(table)
         }
@@ -144,6 +148,9 @@ func GetFoodsFromSQLite(query: String) -> [Food]{
             }
             if sqlite3_column_text(queryStatement, 8) != nil {
                 food.SoLuong = Int(sqlite3_column_int(queryStatement, 8))
+            }
+            else{
+                food.SoLuong = 0
             }
             Foods.append(food)
             
@@ -223,7 +230,14 @@ func addRow(_ F: Food){
 }
 func updateRow( _ T: Table){
     database = Connect_DB_SQLite(dbName: DBName, type: DBType)
-    let query = "UPDATE BanAn SET TinhTrang = \(T.TinhTrang!), HinhAnh = '\(T.HinhAnh!)', GhiChu = '\(T.GhiChu!)', MaKV = \(T.MaKV!), MaHD = \(T.MaHD!) WHERE SoBan = \(T.SoBan!)"
+    var query = ""
+    if (T.MaHD != nil){
+        query = "UPDATE BanAn SET TinhTrang = \(T.TinhTrang!), HinhAnh = '\(T.HinhAnh!)', GhiChu = '\(T.GhiChu!)', MaKV = \(T.MaKV!), MaHD = \(T.MaHD!) WHERE SoBan = \(T.SoBan!)"
+    }
+    else{
+        query = "UPDATE BanAn SET TinhTrang = \(T.TinhTrang!), HinhAnh = '\(T.HinhAnh!)', GhiChu = '\(T.GhiChu!)', MaKV = \(T.MaKV!), MaHD = null WHERE SoBan = \(T.SoBan!)"
+
+    }
     print(query)
     if edit(query: query){
         print("Cập nhât bàn số \(T.SoBan!)")
@@ -313,7 +327,7 @@ func Query( sql:String, database:OpaquePointer){
     print(sql)
     if (result != SQLITE_OK) {
         sqlite3_close(database)
-        print("Cau truy van bi loi!")
+        print("Truy van bi loi! ERROR \(result)")
         return
     }
 }

@@ -3,10 +3,81 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "FoodsList_ViewController.tableView(UITableView, didSelectRowAt : IndexPath) -&gt; ():FoodsList_ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Tables[indexSelected_tables].SoBan">
+            </PersistentString>
+            <PersistentString
+               value = "Tables[indexSelected_tables]">
+            </PersistentString>
+            <PersistentString
+               value = "database">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "FoodsList_ViewController.init(coder : NSCoder) -&gt; FoodsList_ViewController?:FoodsList_ViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "listFoodTypes">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Tables_ViewController.viewDidLoad() -&gt; ():Tables_ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Tables">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Tables_ViewController.viewWillAppear(Bool) -&gt; ():Tables_ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Foods">
+            </PersistentString>
+            <PersistentString
+               value = "Tables">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FoodsList_ViewController.viewDidLoad() -&gt; ():FoodsList_ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "FoodsList_ViewController.listFoods">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TableInfo_ViewController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:TableInfo_ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Foods">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TableInfo_ViewController.viewWillAppear(Bool) -&gt; ():TableInfo_ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Tables[indexSelected_tables].MaHD">
+            </PersistentString>
+            <PersistentString
+               value = "Tables">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Query(sql : String, database : OpaquePointer) -&gt; ():SQLite.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "database">
+            </PersistentString>
+            <PersistentString
+               value = "statement">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -18,14 +89,6 @@
             </PersistentString>
             <PersistentString
                value = "Tables[indexSelected_tables]">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "FoodsList_ViewController.viewDidLoad() -&gt; ():FoodsList_ViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "FoodsList_ViewController.listFoods">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

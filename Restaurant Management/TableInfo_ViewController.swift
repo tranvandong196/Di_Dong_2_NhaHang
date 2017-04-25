@@ -27,6 +27,21 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     @IBOutlet weak var PositionTable_Button: UIButton!
     @IBOutlet weak var otherInfo: UITextView!
     @IBOutlet weak var payTable_Button: UIButton!
+    
+    @IBAction func Pay_Btn_Action(_ sender: Any) {
+        if(Tables[indexSelected_tables].MaHD != nil){
+            //Loại bỏ hóa đơn của bàn + cập nhật tình trạng
+            var strQuery = "UPDATE BanAn SET MaHD = null, TinhTrang = 0 WHERE SoBan = \(Tables[indexSelected_tables].SoBan!)"
+            Query(sql: strQuery, database: database!)
+            
+            //Cập nhật Thời gian + thành tiền hóa đơn
+            strQuery = "UPDATE HoaDon SET ThoiGian = datetime('now', 'localtime'), ThanhTien = \(priceTotal)" + " WHERE MaHD = \(Tables[indexSelected_tables].MaHD!) AND " + "SoBan = \(Tables[indexSelected_tables].SoBan!)"
+            Query(sql: strQuery, database: database!)
+            Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+    }
     // MARK: *** Display view
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,9 +63,9 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         Areas = GetAreasFromSQLite(query: "SELECT * FROM KhuVuc WHERE MaKV = \(Tables[indexSelected_tables].MaKV!)")
         
         
+        Foods.removeAll()
         if(Tables[indexSelected_tables].MaHD != nil){
             let str = "SELECT * FROM MonAn NATURAL JOIN (SELECT * FROM ChiTietHoaDon WHERE MaHD = \(Tables[indexSelected_tables].MaHD!))"
-            Foods.removeAll()
             Foods = GetFoodsFromSQLite(query: str)
             //let rowData = sqlite3_column_text(statement, 1)
             // Neu cot nao co dau tieng viet thi can phai lam them buoc nay

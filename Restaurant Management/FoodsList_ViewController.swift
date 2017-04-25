@@ -276,8 +276,60 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
         else{
             if Edit_Mode == false // on
             {
-                //updateRow(Tables[indexSelected_tables])
+                database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+                if(Tables[indexSelected_tables].MaHD == nil){//Chưa có hóa đơn
+                    var strQuery = "INSERT INTO HoaDon VALUES (null, " + "datetime('now', 'localtime')" + ",\(Tables[indexSelected_tables].SoBan!)" + ", 0)"
+                    print(strQuery)
+                    Query(sql: strQuery, database: database!)
+                    
+                    let bill = Bill()
+                    //sqlite
+                    
+                    
+                    let statement:OpaquePointer = Select(query: "SELECT LAST_INSERT_ROWID() FROM HoaDon", database: database!)
+                    
+                    if sqlite3_step(statement) == SQLITE_ROW {
+                        // Do ra tung cot tuong ung voi no
+                        
+                        
+                        if(sqlite3_column_text(statement, 0) != nil)
+                        {
+                            bill.MaHD = Int(sqlite3_column_int(statement, 0))
+                        }
+                    }
+                    
+                    sqlite3_finalize(statement)
+                    
+                    //set MaHD cho BanAn
+                    strQuery = "UPDATE BanAn SET MaHD = \(bill.MaHD!) WHERE SoBan = \(Tables[indexSelected_tables].SoBan!)"
+                    Query(sql: strQuery, database: database!)
+                    Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
+                    
+                }
+                if(Tables[indexSelected_tables].MaHD != nil){// ban co ma hoa don (Da dat mon)
+                    //Kiểm tra món đó đã có trong hóa đơn chưa (có thì + 1 SL, không thì thêm)
+                    let str = "SELECT * FROM MonAn NATURAL JOIN (SELECT * FROM ChiTietHoaDon WHERE MaHD = \(Tables[indexSelected_tables].MaHD!)) WHERE MaMon = \(Foods[indexPath.row].MaMon!)"
+                    var Foods_temp = [Food]()
+                    Foods_temp = GetFoodsFromSQLite(query: str)
+                    
+                    if(Foods_temp.count != 0){//Món vừa chọn đã có trong hóa đơn
+                        Foods_temp[0].SoLuong = Foods_temp[0].SoLuong! + 1
+                        let strQuery = "UPDATE ChiTietHoaDon SET SoLuong = \( Foods_temp[0].SoLuong!) WHERE MaHD = \(Tables[indexSelected_tables].MaHD!) AND MaMon = \(Foods[indexPath.row].MaMon!)"
+                        Query(sql: strQuery, database: database!)
+                    }
+                    else{//thêm mới
+                        //add
+                        sqlite3_close(database)
+                        database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+                        let strQuery = "INSERT INTO ChiTietHoaDon VALUES (\(Tables[indexSelected_tables].MaHD!)" + ", \(Foods[indexPath.row].MaMon!)" + ", 1)"
+                        Query(sql: strQuery, database: database!)
+
+                    }
+                    
+                }
+                
                 self.navigationController?.popViewController(animated: true)
+                
             }
         }
         
