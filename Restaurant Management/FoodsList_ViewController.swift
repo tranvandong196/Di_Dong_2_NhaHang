@@ -276,14 +276,15 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
         else{
             if Edit_Mode == false // on
             {
+                database = Connect_DB_SQLite(dbName: DBName, type: DBType)
                 if(Tables[indexSelected_tables].MaHD == nil){//Chưa có hóa đơn
-                    var strQuery = "INSERT INTO HoaDon VALUES (null, " + ", datetime('now', 'localtime')" + ",\(Tables[indexSelected_tables].SoBan)" + ", 0)"
+                    var strQuery = "INSERT INTO HoaDon VALUES (null, " + "datetime('now', 'localtime')" + ",\(Tables[indexSelected_tables].SoBan!)" + ", 0)"
                     print(strQuery)
                     Query(sql: strQuery, database: database!)
                     
                     let bill = Bill()
                     //sqlite
-                    database = Connect_DB_SQLite(dbName: DBName, type: DBType)
+                    
                     
                     let statement:OpaquePointer = Select(query: "SELECT LAST_INSERT_ROWID() FROM HoaDon", database: database!)
                     
@@ -296,12 +297,11 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
                             bill.MaHD = Int(sqlite3_column_int(statement, 0))
                         }
                     }
+                    
                     sqlite3_finalize(statement)
-                    sqlite3_close(database)
                     
                     //set MaHD cho BanAn
-                    strQuery = "UPDATE BanAn SET MaHD = \(bill.MaHD!) WHERE SoBan = \(Tables[indexSelected_tables].SoBan)"
-                    print(strQuery)
+                    strQuery = "UPDATE BanAn SET MaHD = \(bill.MaHD!) WHERE SoBan = \(Tables[indexSelected_tables].SoBan!)"
                     Query(sql: strQuery, database: database!)
                     Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
                     
@@ -315,13 +315,13 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
                     if(Foods_temp.count != 0){//Món vừa chọn đã có trong hóa đơn
                         Foods_temp[0].SoLuong = Foods_temp[0].SoLuong! + 1
                         let strQuery = "UPDATE ChiTietHoaDon SET SoLuong = \( Foods_temp[0].SoLuong!) WHERE MaHD = \(Tables[indexSelected_tables].MaHD!) AND MaMon = \(Foods[indexPath.row].MaMon!)"
-                        print(strQuery)
                         Query(sql: strQuery, database: database!)
                     }
                     else{//thêm mới
                         //add
+                        sqlite3_close(database)
+                        database = Connect_DB_SQLite(dbName: DBName, type: DBType)
                         let strQuery = "INSERT INTO ChiTietHoaDon VALUES (\(Tables[indexSelected_tables].MaHD!)" + ", \(Foods[indexPath.row].MaMon!)" + ", 1)"
-                        print(strQuery)
                         Query(sql: strQuery, database: database!)
 
                     }
