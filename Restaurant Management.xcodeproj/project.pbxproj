@@ -30,6 +30,8 @@
 		0AF579981EA893FF0001DC58 /* Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF579971EA893FF0001DC58 /* Kind.swift */; };
 		23752F9B1EA63D28007AB0AD /* Manager_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23752F9A1EA63D28007AB0AD /* Manager_ViewController.swift */; };
 		2394DCED1EA8D8B800F8D595 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394DCEC1EA8D8B800F8D595 /* Food.swift */; };
+		2394DCF31EAFD16600F8D595 /* Localization (Eng).strings in Resources */ = {isa = PBXBuildFile; fileRef = 2394DCF51EAFD16600F8D595 /* Localization (Eng).strings */; };
+		2394DCF61EAFD16D00F8D595 /* Localization (Vi).strings in Resources */ = {isa = PBXBuildFile; fileRef = 2394DCF81EAFD16D00F8D595 /* Localization (Vi).strings */; };
 		23CC7AB61EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CC7AB51EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift */; };
 		23EDCFFF1EA47F8F005D23F0 /* Area_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDCFFC1EA47F8F005D23F0 /* Area_TableViewCell.swift */; };
 		23EDD0001EA47F8F005D23F0 /* Area_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDCFFD1EA47F8F005D23F0 /* Area_TableViewController.swift */; };
@@ -66,6 +68,9 @@
 		0AF579971EA893FF0001DC58 /* Kind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kind.swift; sourceTree = "<group>"; };
 		23752F9A1EA63D28007AB0AD /* Manager_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager_ViewController.swift; sourceTree = "<group>"; };
 		2394DCEC1EA8D8B800F8D595 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		2394DCEE1EAFCEA500F8D595 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		2394DCF41EAFD16600F8D595 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = "Base.lproj/Localization (Eng).strings"; sourceTree = "<group>"; };
+		2394DCF71EAFD16D00F8D595 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = "vi.lproj/Localization (Vi).strings"; sourceTree = "<group>"; };
 		23CC7AB51EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area_Add_Edit_ViewController.swift; sourceTree = "<group>"; };
 		23EDCFFC1EA47F8F005D23F0 /* Area_TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area_TableViewCell.swift; sourceTree = "<group>"; };
 		23EDCFFD1EA47F8F005D23F0 /* Area_TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area_TableViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +199,8 @@
 				23EDD0041EA4942B005D23F0 /* FoodDetail_ViewController.swift */,
 				23F0AF231EA4A19D006C64F6 /* AreaDetail_ViewController.swift */,
 				23CC7AB51EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift */,
+				2394DCF51EAFD16600F8D595 /* Localization (Eng).strings */,
+				2394DCF81EAFD16D00F8D595 /* Localization (Vi).strings */,
 			);
 			name = "Nguyen Dinh Son";
 			sourceTree = "<group>";
@@ -259,6 +266,8 @@
 			files = (
 				0A7B087C1EA11F7D002B068E /* LaunchScreen.storyboard in Resources */,
 				0A7B08791EA11F7D002B068E /* Assets.xcassets in Resources */,
+				2394DCF61EAFD16D00F8D595 /* Localization (Vi).strings in Resources */,
+				2394DCF31EAFD16600F8D595 /* Localization (Eng).strings in Resources */,
 				0A0690891EAC318B00A205E2 /* QuanLyNhaHang.sqlite in Resources */,
 				0A06908B1EAC31F700A205E2 /* Main.storyboard in Resources */,
 			);
@@ -306,8 +315,25 @@
 			isa = PBXVariantGroup;
 			children = (
 				0A7B087B1EA11F7D002B068E /* Base */,
+				2394DCEE1EAFCEA500F8D595 /* vi */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		2394DCF51EAFD16600F8D595 /* Localization (Eng).strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2394DCF41EAFD16600F8D595 /* Base */,
+			);
+			name = "Localization (Eng).strings";
+			sourceTree = "<group>";
+		};
+		2394DCF81EAFD16D00F8D595 /* Localization (Vi).strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2394DCF71EAFD16D00F8D595 /* vi */,
+			);
+			name = "Localization (Vi).strings";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -317,6 +343,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -367,6 +394,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

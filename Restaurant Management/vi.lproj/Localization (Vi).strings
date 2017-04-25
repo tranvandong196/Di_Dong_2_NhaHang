@@ -1,0 +1,12 @@
+/* 
+  Localization (Vi).strings
+  Restaurant Management
+
+  Created by Windy on 4/26/17.
+  Copyright © 2017 Tran Van Dong. All rights reserved.
+*/
+@"Table" = "Bàn số "
+@"Table List" = "Danh sách"
+@"Add Food" = "Thêm món"
+@"Pay" = "Thanh toán"
+@"Description" = "Ghi chú"
