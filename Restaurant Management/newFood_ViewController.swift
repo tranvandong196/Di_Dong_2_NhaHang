@@ -14,12 +14,18 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     let Kinds = GetKindsFromSQLite(query: "SELECT * FROM Loai")
     var kind_selected:Int?
     var newImage:UIImage?
+    var newIcon:UIImage?
     var newImageFormat:String?
-    var isDeleting:Bool = false
+    var newIconFormat:String?
+    var isAddIcon:Bool = false
+    var isDeletingImg:Bool = false
+    
+    var isDeletingIco:Bool = false
     let localURL = DocURL().appendingPathComponent(Parent_dir_data + "/\(Sub_folder_data[1])")
     
     // MARK: *** UIOulet
     
+    @IBOutlet weak var iconFood_ImageView: UIImageView!
     @IBOutlet weak var imageFood_ImageView: UIImageView!
     @IBOutlet weak var KindofFood_PickerView: UIPickerView!
     @IBOutlet weak var Show_Hide_PickerView_Button: UIButton!
@@ -64,9 +70,10 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         if indexSelected_foods > -1{
             let kind_tmp = GetKindsFromSQLite(query: "SELECT * FROM Loai WHERE Ma = \(Foods[indexSelected_foods].Loai!)")
             imageFood_ImageView.image = newImage ?? UIImage(contentsOfFile: localURL.appendingPathComponent(Foods[indexSelected_foods].HinhAnh).path) ?? #imageLiteral(resourceName: "Add_image_icon")
+            iconFood_ImageView.image = newIcon ?? UIImage(contentsOfFile: localURL.appendingPathComponent(Foods[indexSelected_foods].Icon).path) ?? #imageLiteral(resourceName: "add-icon")
             nameOfFood_TextField.text = Foods[indexSelected_foods].TenMon
             let p = Foods[indexSelected_foods].Gia!.getCurrencyValue(Currency: Currency)
-            priceOfFood_TextField.text = p.0.toCurrencyString(Currency: Currency)
+            priceOfFood_TextField.text = String(p.0)
             NameKindFood_Label.text = " " + kind_tmp[0].Ten
             
             let number: Int = Kinds.count
@@ -79,6 +86,7 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
             }
         }else{
             imageFood_ImageView.image = newImage ?? #imageLiteral(resourceName: "Add_image_icon")
+            iconFood_ImageView.image = newIcon ?? #imageLiteral(resourceName: "add-icon")
         }
         
     }
@@ -111,6 +119,7 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     }
     
     @IBAction func PicturePickerTapped_TapGesture(_ sender: UITapGestureRecognizer) {
+        isAddIcon = false
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         
@@ -130,7 +139,7 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
             alert.addAction(UIAlertAction(title: "YES", style: .default){_ in
                 _ = self.imageFood_ImageView.image = #imageLiteral(resourceName: "Add_image_icon")
                 _ = self.newImage = nil
-                _ = self.isDeleting = true
+                _ = self.isDeletingImg = true
             })
             alert.addAction(UIAlertAction(title: "NO", style: .default){_ in
                 
@@ -143,6 +152,46 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         alertController.addAction(cameraAction)
         alertController.addAction(photosLibraryAction)
         if imageFood_ImageView.image != #imageLiteral(resourceName: "Add_image_icon"){
+            alertController.addAction(deletePhoto)
+        }
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    @IBAction func IconPickerTapped_Button(_ sender: Any) {
+        isAddIcon = true
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: .default){
+            (ACTION) in pickerController.sourceType = .camera
+            self.present(pickerController, animated: true, completion: nil)
+        }
+        let photosLibraryAction = UIAlertAction(title: "Photo Library", style: .default){
+            (ACTION) in pickerController.sourceType = .photoLibrary
+            self.present(pickerController, animated: true, completion: nil)
+        }
+        
+        let deletePhoto = UIAlertAction(title: "Delete", style: .default){ (ACTION) in
+            let alert = UIAlertController(title: "❌", message: "Delete this Icon?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "YES", style: .default){_ in
+                _ = self.iconFood_ImageView.image = #imageLiteral(resourceName: "add-icon")
+                _ = self.newIcon = nil
+                _ = self.isDeletingIco = true
+            })
+            alert.addAction(UIAlertAction(title: "NO", style: .default){_ in
+                
+            })
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+        
+        alertController.addAction(cameraAction)
+        alertController.addAction(photosLibraryAction)
+        if iconFood_ImageView.image != #imageLiteral(resourceName: "add-icon") {
             alertController.addAction(deletePhoto)
         }
         alertController.addAction(cancelAction)
@@ -163,9 +212,16 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         self.dismiss(animated: true, completion: nil)
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-            newImage = image
+            
             let newImageName:String = (info[UIImagePickerControllerReferenceURL] as! NSURL).lastPathComponent!
-            newImageFormat = String(newImageName.characters.suffix(4))
+            
+            if isAddIcon{
+                newIcon = image
+                newIconFormat = String(newImageName.characters.suffix(4))
+            }else{
+                newImage = image
+                newImageFormat = String(newImageName.characters.suffix(4))
+            }
         }
     }
     
@@ -230,7 +286,8 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         if nameOfFood_TextField.isEmpty() || priceOfFood_TextField.isEmpty() || NameKindFood_Label.isEmpty(){
             return false
         }else{
-            let newImageName = newImage == nil ? nil:nameOfFood_TextField.text! + newImageFormat!
+            let newImageName = newImage == nil ? nil:nameOfFood_TextField.text! + "-img" + newImageFormat!
+            let newIconName = newIcon == nil ? nil:nameOfFood_TextField.text! + "-icon" + newIconFormat!
             var price = Double(priceOfFood_TextField.text!)!
             if Currency == "USD"{
                 price = price.getCurrencyValue(Currency: "USDVND").0
@@ -250,13 +307,25 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
                 newImage?.saveImageToDir(at: localURL, name: newImageName!)
                 
                 newfood.HinhAnh = newImageName!
-            }else if isDeleting{
+            }else if isDeletingImg{
                 if newfood.HinhAnh != ""{
                     FileManager.default.remoremoveItem(at: localURL, withName: newfood.HinhAnh!)
                     newfood.HinhAnh = ""
                 }
             }
-            
+            if newIcon != nil{
+                if newfood.Icon! != ""{
+                    FileManager.default.remoremoveItem(at: localURL, withName: newfood.Icon!)
+                }
+                newIcon?.saveImageToDir(at: localURL, name: newIconName!)
+                
+                newfood.Icon = newIconName!
+            }else if isDeletingIco{
+                if newfood.Icon != ""{
+                    FileManager.default.remoremoveItem(at: localURL, withName: newfood.Icon!)
+                    newfood.Icon = ""
+                }
+            }
             if indexSelected_foods > -1{
                 Foods[indexSelected_foods] = newfood
                 updateRow(newfood)

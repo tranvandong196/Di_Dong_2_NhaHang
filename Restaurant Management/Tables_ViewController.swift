@@ -8,7 +8,7 @@
 
 import UIKit
 var indexSelected_tables = 0
-var Currency:String = "VNĐ"
+var Currency:String = "USD"
 
 class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate {
     enum selectedScope:Int{
