@@ -157,3 +157,33 @@
 
 /* Class = "UILabel"; text = "Mô tả:"; ObjectID = "zUc-K0-jfh"; */
 "zUc-K0-jfh.text" = "Mô tả:";
+
+
+
+
+/* Class = "UITabBarController"; title = "Quản lý"; ObjectID = "9rC-ri-cS2"; */
+"9rC-ri-cS2.title" = "Quản lý";
+
+/* Class = "UITabBarItem"; title = "Statistics"; ObjectID = "C17-ul-h80"; */
+"C17-ul-h80.title" = "Thống kê";
+/* Class = "UIViewController"; title = "Thống kê"; ObjectID = "FPZ-r4-9M3"; */
+"FPZ-r4-9M3.title" = "Thống kê";
+/* Class = "UIButton"; normalTitle = "Default language"; ObjectID = "Ycd-7w-os8"; */
+"Ycd-7w-os8.normalTitle" = "Ngôn ngữ mặc định";
+/* Class = "UILabel"; text = "Màn hình thống kê"; ObjectID = "eo2-3K-cpw"; */
+"eo2-3K-cpw.text" = "Màn hình thống kê";
+/* Class = "UIBarButtonItem"; title = "Setting"; ObjectID = "bsa-8H-v2D"; */
+"bsa-8H-v2D.title" = "Cài đặt";
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "Exd-Us-fN2"; */
+"Exd-Us-fN2.normalTitle" = "Xong";
+/* Class = "UILabel"; text = "Description:"; ObjectID = "A2E-Dr-iVq"; */
+"A2E-Dr-iVq.text" = "Mô tả:";
+/* Class = "UILabel"; text = "Name:"; ObjectID = "UQU-YV-cW4"; */
+"UQU-YV-cW4.text" = "Tên:";
+/* Class = "UITabBarItem"; title = "Position"; ObjectID = "ijN-zc-xQX"; */
+"ijN-zc-xQX.title" = "Vị trí";
+
+/* Class = "UITabBarItem"; title = "Food"; ObjectID = "j5t-cG-OlH"; */
+"j5t-cG-OlH.title" = "Đồ ăn";
+/* Class = "UITabBarItem"; title = "Table"; ObjectID = "QOg-Qj-0ZP"; */
+"QOg-Qj-0ZP.title" = "Bàn";

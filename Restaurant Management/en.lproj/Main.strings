@@ -1,0 +1,177 @@
+
+/* Class = "UILabel"; text = "20.000đ"; ObjectID = "27B-Or-lME"; */
+"27B-Or-lME.text" = "20.000đ";
+
+/* Class = "UILabel"; text = "Area name:"; ObjectID = "2OH-GN-lAZ"; */
+"2OH-GN-lAZ.text" = "Area name:";
+
+/* Class = "UILabel"; text = "Type:"; ObjectID = "33u-f8-FJ4"; */
+"33u-f8-FJ4.text" = "Type:";
+
+/* Class = "UITextView"; text = "Món ăn có chưa nhiều đường"; ObjectID = "3nd-hv-Gqa"; */
+"3nd-hv-Gqa.text" = "Món ăn có chưa nhiều đường";
+
+/* Class = "UITextView"; text = "Không gian yên tĩnh, sạch sẽ, thoáng mát"; ObjectID = "5zL-yy-s94"; */
+"5zL-yy-s94.text" = "Không gian yên tĩnh, sạch sẽ, thoáng mát";
+
+/* Class = "UILabel"; text = "Giá"; ObjectID = "63h-89-C4h"; */
+"63h-89-C4h.text" = "Price";
+
+/* Class = "UINavigationController"; title = "Bàn ăn"; ObjectID = "6av-JC-duF"; */
+"6av-JC-duF.title" = "Table";
+
+/* Class = "UILabel"; text = "Price:"; ObjectID = "7Vo-3c-8mZ"; */
+"7Vo-3c-8mZ.text" = "Price:";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "9V6-Nc-elQ"; */
+"9V6-Nc-elQ.title" = "Edit";
+
+/* Class = "UITabBarController"; title = "Quản lý"; ObjectID = "9rC-ri-cS2"; */
+"9rC-ri-cS2.title" = "Manage";
+
+/* Class = "UILabel"; text = "Description:"; ObjectID = "A2E-Dr-iVq"; */
+"A2E-Dr-iVq.text" = "Description:";
+
+/* Class = "UILabel"; text = "Total"; ObjectID = "AFS-rB-9hc"; */
+"AFS-rB-9hc.text" = "Total";
+
+/* Class = "UITabBarItem"; title = "Statistics"; ObjectID = "C17-ul-h80"; */
+"C17-ul-h80.title" = "Statistics";
+
+/* Class = "UINavigationItem"; title = "Chi tiết món"; ObjectID = "DQF-Z7-hRQ"; */
+"DQF-Z7-hRQ.title" = "Food detail";
+
+/* Class = "UINavigationItem"; title = "Foods list"; ObjectID = "Dbc-hI-U8G"; */
+"Dbc-hI-U8G.title" = "Foods list";
+
+/* Class = "UITableViewCell"; accessibilityLabel = "fsdfsfsf"; ObjectID = "EG1-TM-aKc"; */
+"EG1-TM-aKc.accessibilityLabel" = "fsdfsfsf";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "Exd-Us-fN2"; */
+"Exd-Us-fN2.normalTitle" = "Done";
+
+/* Class = "UIViewController"; title = "Thống kê"; ObjectID = "FPZ-r4-9M3"; */
+"FPZ-r4-9M3.title" = "Statistics";
+
+/* Class = "UINavigationItem"; title = "Chi tiết"; ObjectID = "HaW-GP-vs1"; */
+"HaW-GP-vs1.title" = "Detail";
+
+/* Class = "UILabel"; text = "Type:"; ObjectID = "IsT-xl-CtT"; */
+"IsT-xl-CtT.text" = "Type:";
+
+/* Class = "UILabel"; text = "Bàn số 1"; ObjectID = "Kzb-6y-KSH"; */
+"Kzb-6y-KSH.text" = "Bàn số 1";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "L8S-NJ-XKN"; */
+"L8S-NJ-XKN.text" = "Description";
+
+/* Class = "UINavigationController"; title = "Khu vực"; ObjectID = "MVE-Yd-VHJ"; */
+"MVE-Yd-VHJ.title" = "Area";
+
+/* Class = "UILabel"; text = "190.000"; ObjectID = "NMc-bM-a7L"; */
+"NMc-bM-a7L.text" = "190.000";
+
+/* Class = "UINavigationItem"; title = "Chi tiết"; ObjectID = "PjC-tD-pCp"; */
+"PjC-tD-pCp.title" = "Detail";
+
+/* Class = "UITabBarItem"; title = "Table"; ObjectID = "QOg-Qj-0ZP"; */
+"QOg-Qj-0ZP.title" = "Table";
+
+/* Class = "UIButton"; normalTitle = "Default currency"; ObjectID = "Qg9-4M-AHW"; */
+"Qg9-4M-AHW.normalTitle" = "Default currency";
+
+/* Class = "UILabel"; text = "Name:"; ObjectID = "UQU-YV-cW4"; */
+"UQU-YV-cW4.text" = "Name:";
+
+/* Class = "UIButton"; normalTitle = "Sân vườn"; ObjectID = "V3f-7i-q7o"; */
+"V3f-7i-q7o.normalTitle" = "Sân vườn";
+
+/* Class = "UILabel"; text = "Description:"; ObjectID = "WTL-XZ-gHd"; */
+"WTL-XZ-gHd.text" = "Description:";
+
+/* Class = "UILabel"; text = "Vị trí"; ObjectID = "Xxg-7Y-7Gb"; */
+"Xxg-7Y-7Gb.text" = "Location";
+
+/* Class = "UIButton"; normalTitle = "Default language"; ObjectID = "Ycd-7w-os8"; */
+"Ycd-7w-os8.normalTitle" = "Default language";
+
+/* Class = "UIButton"; normalTitle = "Pay"; ObjectID = "bD4-AH-dcd"; */
+"bD4-AH-dcd.normalTitle" = "Pay";
+
+/* Class = "UILabel"; text = "Area 1"; ObjectID = "bNt-zw-lZt"; */
+"bNt-zw-lZt.text" = "Area 1";
+
+/* Class = "UIBarButtonItem"; title = "Setting"; ObjectID = "bsa-8H-v2D"; */
+"bsa-8H-v2D.title" = "Setting";
+
+/* Class = "UILabel"; text = "Name:"; ObjectID = "dTK-Di-MnL"; */
+"dTK-Di-MnL.text" = "Name:";
+
+/* Class = "UITextView"; text = "Mô tả...."; ObjectID = "eM1-c2-ulz"; */
+"eM1-c2-ulz.text" = "Mô tả....";
+
+/* Class = "UILabel"; text = "Màn hình thống kê"; ObjectID = "eo2-3K-cpw"; */
+"eo2-3K-cpw.text" = "Màn hình thống kê";
+
+/* Class = "UILabel"; text = "Tên món"; ObjectID = "f07-bl-Rwn"; */
+"f07-bl-Rwn.text" = "Tên món";
+
+/* Class = "UINavigationItem"; title = "Areas list"; ObjectID = "gwP-B1-lsC"; */
+"gwP-B1-lsC.title" = "Areas list";
+
+/* Class = "UITabBarItem"; title = "Position"; ObjectID = "ijN-zc-xQX"; */
+"ijN-zc-xQX.title" = "Position";
+
+/* Class = "UITabBarItem"; title = "Food"; ObjectID = "j5t-cG-OlH"; */
+"j5t-cG-OlH.title" = "Food";
+
+/* Class = "UILabel"; text = "Price:"; ObjectID = "lWk-DS-19i"; */
+"lWk-DS-19i.text" = "Price:";
+
+/* Class = "UINavigationItem"; title = "Table"; ObjectID = "nIF-Er-P3n"; */
+"nIF-Er-P3n.title" = "Table";
+
+/* Class = "UILabel"; text = "Thức uống"; ObjectID = "nKC-yv-Flz"; */
+"nKC-yv-Flz.text" = "Thức uống";
+
+/* Class = "UINavigationController"; title = "Món ăn"; ObjectID = "nfd-mz-lbU"; */
+"nfd-mz-lbU.title" = "Món ăn";
+
+/* Class = "UILabel"; text = "Description:"; ObjectID = "nyP-KS-GZt"; */
+"nyP-KS-GZt.text" = "Description:";
+
+/* Class = "UILabel"; text = "Kem tràng tiền"; ObjectID = "oKL-Zt-LkC"; */
+"oKL-Zt-LkC.text" = "Kem tràng tiền";
+
+/* Class = "UIButton"; normalTitle = "Add food"; ObjectID = "qNk-Oa-UTZ"; */
+"qNk-Oa-UTZ.normalTitle" = "Add food";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "qjg-Ks-Qlj"; */
+"qjg-Ks-Qlj.title" = "Edit";
+
+/* Class = "UILabel"; text = "Example food"; ObjectID = "rXs-cP-TKR"; */
+"rXs-cP-TKR.text" = "Example food";
+
+/* Class = "UILabel"; text = "VNĐ"; ObjectID = "s56-Sb-Wr8"; */
+"s56-Sb-Wr8.text" = "VNĐ";
+
+/* Class = "UISegmentedControl"; tOE-3b-70Z.segmentTitles[0] = "VNĐ"; ObjectID = "tOE-3b-70Z"; */
+"tOE-3b-70Z.segmentTitles[0]" = "VNĐ";
+
+/* Class = "UISegmentedControl"; tOE-3b-70Z.segmentTitles[1] = "USD"; ObjectID = "tOE-3b-70Z"; */
+"tOE-3b-70Z.segmentTitles[1]" = "USD";
+
+/* Class = "UILabel"; text = "Name:"; ObjectID = "ux0-lk-ZiB"; */
+"ux0-lk-ZiB.text" = "Name:";
+
+/* Class = "UITextView"; text = "Không gian yên tĩnh, sạch sẽ, thoáng mát"; ObjectID = "vWv-Mj-WrX"; */
+"vWv-Mj-WrX.text" = "Không gian yên tĩnh, sạch sẽ, thoáng mát";
+
+/* Class = "UILabel"; text = "Type"; ObjectID = "wOg-dd-XHi"; */
+"wOg-dd-XHi.text" = "Type";
+
+/* Class = "UINavigationItem"; title = "List"; ObjectID = "xeC-8X-Gme"; */
+"xeC-8X-Gme.title" = "List";
+
+/* Class = "UILabel"; text = "Description:"; ObjectID = "zUc-K0-jfh"; */
+"zUc-K0-jfh.text" = "Description:";
