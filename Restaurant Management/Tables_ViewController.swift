@@ -48,8 +48,6 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         filterTableView(ind: selectedScope,searchText: nil)
-        
-        print(selectedScope)
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -73,7 +71,6 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
             switch ind {
             case selectedScope.all.rawValue:
                 Tables = tablesOrigial
-                break
             case selectedScope.set.rawValue:
                 Tables = tablesOrigial.filter({(mod) -> Bool in
                     return mod.TinhTrang == 1
@@ -107,7 +104,8 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
     override func viewWillAppear(_ animated: Bool) {
         self.searchBarSetup()
         print("\n 🚦 Danh sách bàn =========================")
-        Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
+        tablesOrigial = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
+        Tables = tablesOrigial
         Areas = GetAreasFromSQLite(query: "SELECT * FROM KhuVuc")
         if tablesOrigial.count == 0{
             tablesOrigial = Tables
