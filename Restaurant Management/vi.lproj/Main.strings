@@ -1,9 +1,14 @@
+/* Class = "UIButton"; normalTitle = "Product sold statistics"; ObjectID = "1Kz-yh-ckg"; */
+"1Kz-yh-ckg.normalTitle" = "Thống kê số lượng bán được";
+
+/* Class = "UIButton"; normalTitle = "Revenue statistics"; ObjectID = "apA-qG-Yx2"; */
+"apA-qG-Yx2.normalTitle" = "Thống kê doanh thu";
 
 /* Class = "UIButton"; normalTitle = "Quản lý khu vực"; ObjectID = "1M4-sX-QZx"; */
 "1M4-sX-QZx.normalTitle" = "Quản lý khu vực";
 
 /* Class = "UILabel"; text = "20.000đ"; ObjectID = "27B-Or-lME"; */
-"27B-Or-lME.text" = "20.000đ";
+"27B-Or-lME.text" = "20	.000đ";
 
 /* Class = "UILabel"; text = "Tên khu vực"; ObjectID = "2OH-GN-lAZ"; */
 "2OH-GN-lAZ.text" = "Tên khu vực";
@@ -34,6 +39,9 @@
 
 /* Class = "UINavigationItem"; title = "Chi tiết món"; ObjectID = "DQF-Z7-hRQ"; */
 "DQF-Z7-hRQ.title" = "Chi tiết món";
+
+/* Class = "UIButton"; normalTitle = "Language"; ObjectID = "DVA-K0-Iau"; */
+"DVA-K0-Iau.normalTitle" = "Ngôn ngữ mặc định";
 
 /* Class = "UINavigationItem"; title = "Danh sách món"; ObjectID = "Dbc-hI-U8G"; */
 "Dbc-hI-U8G.title" = "Danh sách món";
