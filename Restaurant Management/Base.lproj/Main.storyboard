@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6av-JC-duF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6av-JC-duF">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -593,7 +593,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txR-vT-iIF">
-                                <rect key="frame" x="156.66666666666669" y="106" width="102.00000000000006" height="30"/>
+                                <rect key="frame" x="156" y="114" width="102" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="txR-vT-iIF" secondAttribute="height" multiplier="17:5" id="Oh6-QY-EpG"/>
                                 </constraints>
@@ -602,18 +602,8 @@
                                     <segue destination="6lr-x8-M2H" kind="show" id="aIX-TG-9zk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="prq-4I-dqQ">
-                                <rect key="frame" x="154.66666666666669" y="167" width="107.00000000000006" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="prq-4I-dqQ" secondAttribute="height" multiplier="107:30" id="NNX-yf-aKI"/>
-                                </constraints>
-                                <state key="normal" title="Manage foods"/>
-                                <connections>
-                                    <segue destination="VYs-0F-l1d" kind="show" id="HeH-SZ-5Io"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1M4-sX-QZx">
-                                <rect key="frame" x="153.66666666666669" y="228" width="110.00000000000006" height="30"/>
+                                <rect key="frame" x="152" y="188" width="110" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1M4-sX-QZx" secondAttribute="height" multiplier="11:3" id="RAI-Vr-oKJ"/>
                                 </constraints>
@@ -622,32 +612,65 @@
                                     <segue destination="Kam-sd-Ymg" kind="push" id="rsf-gB-Wc8"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apA-qG-Yx2">
+                                <rect key="frame" x="143" y="226" width="125" height="30"/>
+                                <state key="normal" title="Revenue statistics"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Kz-yh-ckg">
+                                <rect key="frame" x="131" y="264" width="153" height="30"/>
+                                <state key="normal" title="Product sold statistics"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qg9-4M-AHW">
-                                <rect key="frame" x="151" y="288" width="114" height="30"/>
+                                <rect key="frame" x="148" y="340" width="114" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Qg9-4M-AHW" secondAttribute="height" multiplier="19:5" id="sJG-p0-y9z"/>
                                 </constraints>
                                 <state key="normal" title="Default currency"/>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tOE-3b-70Z">
-                                <rect key="frame" x="165" y="326" width="85" height="29"/>
+                                <rect key="frame" x="162" y="378" width="85" height="29"/>
                                 <segments>
                                     <segment title="VNĐ"/>
                                     <segment title="USD"/>
                                 </segments>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVA-K0-Iau">
+                                <rect key="frame" x="151" y="302" width="117" height="30"/>
+                                <state key="normal" title="Default language"/>
+                                <connections>
+                                    <action selector="didPressChangeLanguageButton:" destination="jvX-RK-JAj" eventType="touchUpInside" id="mL2-Uz-eF6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="prq-4I-dqQ">
+                                <rect key="frame" x="122" y="152" width="171" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="BRW-2W-Pua"/>
+                                    <constraint firstAttribute="width" secondItem="prq-4I-dqQ" secondAttribute="height" multiplier="107:30" constant="71.133333333333326" id="NNX-yf-aKI"/>
+                                </constraints>
+                                <state key="normal" title="Manage foods"/>
+                                <connections>
+                                    <segue destination="VYs-0F-l1d" kind="show" id="HeH-SZ-5Io"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1M4-sX-QZx" firstAttribute="centerX" secondItem="Qg9-4M-AHW" secondAttribute="centerX" id="2tf-Py-vdR"/>
+                            <constraint firstItem="1M4-sX-QZx" firstAttribute="centerX" secondItem="Qg9-4M-AHW" secondAttribute="centerX" constant="2" id="2tf-Py-vdR"/>
+                            <constraint firstItem="txR-vT-iIF" firstAttribute="centerX" secondItem="NUp-jU-QnF" secondAttribute="centerX" id="8Wq-eV-JrA"/>
+                            <constraint firstItem="apA-qG-Yx2" firstAttribute="centerX" secondItem="1M4-sX-QZx" secondAttribute="centerX" constant="-1.5" id="BeX-VZ-8Cv"/>
+                            <constraint firstItem="DVA-K0-Iau" firstAttribute="trailing" secondItem="apA-qG-Yx2" secondAttribute="trailing" id="DhW-5e-nTG"/>
                             <constraint firstItem="txR-vT-iIF" firstAttribute="centerX" secondItem="NUp-jU-QnF" secondAttribute="centerX" id="Fro-bH-h0e"/>
-                            <constraint firstItem="Qg9-4M-AHW" firstAttribute="top" secondItem="1M4-sX-QZx" secondAttribute="bottom" constant="30" id="JIJ-4x-U7d"/>
+                            <constraint firstItem="DVA-K0-Iau" firstAttribute="top" secondItem="1Kz-yh-ckg" secondAttribute="bottom" constant="8" symbolic="YES" id="QbQ-t4-xag"/>
                             <constraint firstItem="tOE-3b-70Z" firstAttribute="top" secondItem="Qg9-4M-AHW" secondAttribute="bottom" constant="8" symbolic="YES" id="R3E-71-L9I"/>
+                            <constraint firstItem="1Kz-yh-ckg" firstAttribute="top" secondItem="apA-qG-Yx2" secondAttribute="bottom" constant="8" id="apa-Hl-6lJ"/>
                             <constraint firstItem="txR-vT-iIF" firstAttribute="centerX" secondItem="prq-4I-dqQ" secondAttribute="centerX" id="cBf-p2-LCZ"/>
-                            <constraint firstItem="1M4-sX-QZx" firstAttribute="top" secondItem="prq-4I-dqQ" secondAttribute="bottom" constant="31" id="fA0-pB-xEL"/>
+                            <constraint firstItem="1M4-sX-QZx" firstAttribute="top" secondItem="prq-4I-dqQ" secondAttribute="bottom" constant="8" id="fA0-pB-xEL"/>
+                            <constraint firstItem="Qg9-4M-AHW" firstAttribute="top" secondItem="1Kz-yh-ckg" secondAttribute="bottom" constant="46" id="fzX-Ec-OlM"/>
                             <constraint firstItem="tOE-3b-70Z" firstAttribute="centerX" secondItem="Qg9-4M-AHW" secondAttribute="centerX" id="gSC-8m-7Of"/>
-                            <constraint firstItem="prq-4I-dqQ" firstAttribute="top" secondItem="txR-vT-iIF" secondAttribute="bottom" constant="31" id="jrQ-OJ-Bwi"/>
-                            <constraint firstItem="txR-vT-iIF" firstAttribute="top" secondItem="O7K-hn-ZXO" secondAttribute="bottom" constant="42" id="n58-YY-tDe"/>
+                            <constraint firstItem="prq-4I-dqQ" firstAttribute="top" secondItem="txR-vT-iIF" secondAttribute="bottom" constant="8" id="jrQ-OJ-Bwi"/>
+                            <constraint firstItem="txR-vT-iIF" firstAttribute="top" secondItem="O7K-hn-ZXO" secondAttribute="bottom" constant="50" id="n58-YY-tDe"/>
+                            <constraint firstItem="1Kz-yh-ckg" firstAttribute="centerX" secondItem="1M4-sX-QZx" secondAttribute="centerX" id="vDd-Hq-90J"/>
+                            <constraint firstItem="apA-qG-Yx2" firstAttribute="top" secondItem="1M4-sX-QZx" secondAttribute="bottom" constant="8" id="zAf-Be-bIL"/>
                             <constraint firstItem="prq-4I-dqQ" firstAttribute="centerX" secondItem="1M4-sX-QZx" secondAttribute="centerX" id="zwB-MD-vmH"/>
                         </constraints>
                     </view>
@@ -658,11 +681,12 @@
                         <outlet property="Manage_areas" destination="1M4-sX-QZx" id="Mf6-Ma-ZTj"/>
                         <outlet property="Manage_foods" destination="prq-4I-dqQ" id="AB7-ZL-QkY"/>
                         <outlet property="Manage_tables" destination="txR-vT-iIF" id="8Yg-Vv-3x3"/>
+                        <outlet property="changeLanguageButton" destination="DVA-K0-Iau" id="ngI-8P-EPH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fou-ZC-cIV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48.75" y="999.29577464788736"/>
+            <point key="canvasLocation" x="47.826086956521742" y="998.64130434782612"/>
         </scene>
         <!--Danh sách khu vực-->
         <scene sceneID="WbZ-hS-lpd">
@@ -959,7 +983,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nfd-mz-lbU" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="el8-Hf-NLQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="el8-Hf-NLQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -977,7 +1001,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oYr-8h-jnw" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ama-e5-DxH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ama-e5-DxH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -995,7 +1019,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MVE-Yd-VHJ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jZP-8G-atr">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jZP-8G-atr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1013,7 +1037,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6av-JC-duF" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="LFe-Sy-vek">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LFe-Sy-vek">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1243,8 +1267,8 @@
         <image name="location-icon" width="240" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="HeH-SZ-5Io"/>
         <segue reference="aIX-TG-9zk"/>
-        <segue reference="IR3-H3-RO9"/>
-        <segue reference="sZJ-B4-vAB"/>
+        <segue reference="rsf-gB-Wc8"/>
     </inferredMetricsTieBreakers>
 </document>
