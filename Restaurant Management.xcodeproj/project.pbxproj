@@ -67,7 +67,6 @@
 		2351E7291EB0BC6C0037B01D /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
 		2351E7331EB0C4400037B01D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2351E7361EB0C4430037B01D /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
-		236041071EB0FB0D0052B20F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		23752F9A1EA63D28007AB0AD /* Manager_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager_ViewController.swift; sourceTree = "<group>"; };
 		2394DCEC1EA8D8B800F8D595 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		2394DCEE1EAFCEA500F8D595 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -342,7 +341,6 @@
 			children = (
 				2394DD031EAFE67A00F8D595 /* Base */,
 				2351E7291EB0BC6C0037B01D /* vi */,
-				236041071EB0FB0D0052B20F /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

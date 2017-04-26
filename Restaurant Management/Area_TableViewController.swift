@@ -12,7 +12,7 @@ class Area_TableViewController: UITableViewController {
     public static var listArea = [Area]()
     public static var Add_New_Item = false;
     public static var Edit_Item_Index = -1;
-    let localURL = DocURL().appendingPathComponent(Parent_dir_data + "/\(Sub_folder_data[2])")
+    
     var Edit_Mode = true //0=hide_nav_btn    1=edit
     @IBOutlet var MyTableView: UITableView!
     @IBOutlet weak var Edit_Btn_Outlet: UIBarButtonItem!
@@ -133,11 +133,7 @@ class Area_TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell_table", for: indexPath) as! Area_TableViewCell
         cell.Area_Lable.text = Area_TableViewController.listArea[indexPath.row].TenKV
-        
-        let ImageURL = localURL.appendingPathComponent(Area_TableViewController.listArea[indexPath.row].HinhAnh!)
-        cell.Area_Image.image = UIImage(contentsOfFile: ImageURL.path)
-        
-        
+        cell.Area_Image.image = UIImage(named: Area_TableViewController.listArea[indexPath.row].HinhAnh!)
         cell.Area_Description.text = Area_TableViewController.listArea[indexPath.row].MoTa
 
     
