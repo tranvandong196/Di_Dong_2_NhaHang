@@ -84,7 +84,7 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         //self.navigationItem.rightBarButtonItem = nil
         self.picture_UIImageView.image = newImage ?? UIImage(contentsOfFile: localURLtable.appendingPathComponent(Tables[indexSelected_tables].HinhAnh).path) ?? #imageLiteral(resourceName: "Add_image_icon")
         otherInfo.text = Tables[indexSelected_tables].GhiChu
-        title_navi.title = "Bàn số \(Tables[indexSelected_tables].SoBan!)"
+        title_navi.title = NSLocalizedString("Table num", comment: " ") + "\(Tables[indexSelected_tables].SoBan!)"
         PositionTable_Button.setTitle(Areas[0].TenKV, for: .normal)
     }
     // MARK: *** IBAction

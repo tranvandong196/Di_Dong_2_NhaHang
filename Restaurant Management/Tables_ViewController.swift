@@ -39,7 +39,8 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func searchBarSetup(){
         let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: (UIScreen.main.bounds.width), height: 70))
         searchBar.showsScopeBar = true
-        searchBar.scopeButtonTitles = ["Tất cả","Đã đặt","Chưa đặt"]
+        //searchBar.scopeButtonTitles = ["Tất cả","Đã đặt","Chưa đặt"]
+        searchBar.scopeButtonTitles = [NSLocalizedString("All", comment: " "),NSLocalizedString("Booked", comment: " "),NSLocalizedString("Not booked", comment: " ")]
         searchBar.delegate = self
         searchBar.returnKeyType = .search
         searchBar.selectedScopeButtonIndex = 0
@@ -121,7 +122,7 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     @IBAction func addNewTable_Button(_ sender: Any) {
         
-        let alert = UIAlertController(title: "Thêm bàn mới", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("Add new table", comment: " "), message: nil, preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "OK", style: .default){_ in
             _ = self.addNewTable()
             _ = Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
@@ -132,7 +133,7 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive){_ in
             
         }
-        let setupNow = UIAlertAction(title: "Thêm và đặt ngay", style: .default){_ in
+        let setupNow = UIAlertAction(title: NSLocalizedString("Add new table and book", comment: " "), style: .default){_ in
             _ = indexSelected_tables = self.addNewTable() - 1
             _ = Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
             _ = self.tablesOrigial = Tables
@@ -159,7 +160,7 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell_table", for: indexPath) as! Table_TableViewCell
-        cell.TableName_Label.text = "Bàn số \(Tables[indexPath.row].SoBan!)"
+        cell.TableName_Label.text = NSLocalizedString("Table num", comment: " ") + "\(Tables[indexPath.row].SoBan!)"
         
         let ImageURL = localURL.appendingPathComponent(Tables[indexPath.row].HinhAnh!)
         cell.TableThumnail_ImageView.image = UIImage(contentsOfFile: ImageURL.path)

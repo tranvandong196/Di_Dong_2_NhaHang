@@ -9,6 +9,11 @@
 import UIKit
 class Manager_ViewController: UIViewController,UISearchControllerDelegate {
 
+    @IBOutlet weak var Manage_tables: UIButton!
+    @IBOutlet weak var Manage_foods: UIButton!
+    @IBOutlet weak var Manage_areas: UIButton!
+    @IBOutlet weak var Default_Currency: UIButton!
+    
     @IBOutlet weak var Currency_Segment: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Restaurant Management
+
+  Created by Windy on 4/26/17.
+  Copyright © 2017 Tran Van Dong. All rights reserved.
+*/
+/* Navigation Title: Hey */
+"nav-title-hey" = "Eng";
+
+"All" = "All";
+"Booked" = "Booked";
+"Not booked" = "Not booked";
+"Table num" = "Table ";
+"Add new table and book" = "Add new table and book";
+"Add new table" = "Add new table";

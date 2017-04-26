@@ -1,7 +1,9 @@
 /* 
-  Localization (Vi).strings
+  Localization (Eng).strings
   Restaurant Management
 
   Created by Windy on 4/26/17.
   Copyright © 2017 Tran Van Dong. All rights reserved.
 */
+/* Navigation Title: Hey */
+"nav-title-hey" = "Eng";
