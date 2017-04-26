@@ -1,4 +1,7 @@
 
+/* Class = "UILabel"; text = "0"; ObjectID = "1n9-Ry-Rn6"; */
+"1n9-Ry-Rn6.text" = "0";
+
 /* Class = "UILabel"; text = "20.000đ"; ObjectID = "27B-Or-lME"; */
 "27B-Or-lME.text" = "20.000đ";
 
@@ -8,6 +11,9 @@
 /* Class = "UILabel"; text = "Type:"; ObjectID = "33u-f8-FJ4"; */
 "33u-f8-FJ4.text" = "Type:";
 
+/* Class = "UIButton"; normalTitle = "Revenue statistic"; ObjectID = "3OB-1I-Ufh"; */
+"3OB-1I-Ufh.normalTitle" = "Revenue statistic";
+
 /* Class = "UITextView"; text = "Món ăn có chưa nhiều đường"; ObjectID = "3nd-hv-Gqa"; */
 "3nd-hv-Gqa.text" = "Món ăn có chưa nhiều đường";
 
@@ -15,7 +21,7 @@
 "5zL-yy-s94.text" = "Không gian yên tĩnh, sạch sẽ, thoáng mát";
 
 /* Class = "UILabel"; text = "Giá"; ObjectID = "63h-89-C4h"; */
-"63h-89-C4h.text" = "Price";
+"63h-89-C4h.text" = "Giá";
 
 /* Class = "UINavigationController"; title = "Bàn ăn"; ObjectID = "6av-JC-duF"; */
 "6av-JC-duF.title" = "Table";
@@ -35,6 +41,9 @@
 /* Class = "UILabel"; text = "Total"; ObjectID = "AFS-rB-9hc"; */
 "AFS-rB-9hc.text" = "Total";
 
+/* Class = "UIButton"; normalTitle = "Product sold statistic"; ObjectID = "BrY-Fz-AbG"; */
+"BrY-Fz-AbG.normalTitle" = "Product sold statistic";
+
 /* Class = "UITabBarItem"; title = "Statistics"; ObjectID = "C17-ul-h80"; */
 "C17-ul-h80.title" = "Statistics";
 
@@ -51,13 +60,16 @@
 "Exd-Us-fN2.normalTitle" = "Done";
 
 /* Class = "UIViewController"; title = "Thống kê"; ObjectID = "FPZ-r4-9M3"; */
-"FPZ-r4-9M3.title" = "Statistics";
+"FPZ-r4-9M3.title" = "Statistic";
 
 /* Class = "UINavigationItem"; title = "Chi tiết"; ObjectID = "HaW-GP-vs1"; */
 "HaW-GP-vs1.title" = "Detail";
 
 /* Class = "UILabel"; text = "Type:"; ObjectID = "IsT-xl-CtT"; */
 "IsT-xl-CtT.text" = "Type:";
+
+/* Class = "UILabel"; text = "FROM:"; ObjectID = "J0F-zd-qOO"; */
+"J0F-zd-qOO.text" = "FROM:";
 
 /* Class = "UILabel"; text = "Bàn số 1"; ObjectID = "Kzb-6y-KSH"; */
 "Kzb-6y-KSH.text" = "Bàn số 1";
@@ -71,6 +83,9 @@
 /* Class = "UILabel"; text = "190.000"; ObjectID = "NMc-bM-a7L"; */
 "NMc-bM-a7L.text" = "190.000";
 
+/* Class = "UILabel"; text = "PRODUCT SOLD STATISTIC"; ObjectID = "PHZ-dh-fec"; */
+"PHZ-dh-fec.text" = "PRODUCT SOLD STATISTIC";
+
 /* Class = "UINavigationItem"; title = "Chi tiết"; ObjectID = "PjC-tD-pCp"; */
 "PjC-tD-pCp.title" = "Detail";
 
@@ -79,6 +94,9 @@
 
 /* Class = "UIButton"; normalTitle = "Default currency"; ObjectID = "Qg9-4M-AHW"; */
 "Qg9-4M-AHW.normalTitle" = "Default currency";
+
+/* Class = "UITableViewCell"; accessibilityLabel = "fsdfsfsf"; ObjectID = "T3o-8u-0VP"; */
+"T3o-8u-0VP.accessibilityLabel" = "fsdfsfsf";
 
 /* Class = "UILabel"; text = "Name:"; ObjectID = "UQU-YV-cW4"; */
 "UQU-YV-cW4.text" = "Name:";
@@ -89,11 +107,20 @@
 /* Class = "UILabel"; text = "Description:"; ObjectID = "WTL-XZ-gHd"; */
 "WTL-XZ-gHd.text" = "Description:";
 
+/* Class = "UILabel"; text = "TO:"; ObjectID = "XAO-cP-7qB"; */
+"XAO-cP-7qB.text" = "TO:";
+
 /* Class = "UILabel"; text = "Vị trí"; ObjectID = "Xxg-7Y-7Gb"; */
 "Xxg-7Y-7Gb.text" = "Location";
 
 /* Class = "UIButton"; normalTitle = "Default language"; ObjectID = "Ycd-7w-os8"; */
 "Ycd-7w-os8.normalTitle" = "Default language";
+
+/* Class = "UILabel"; text = "SL"; ObjectID = "Zn3-uo-wyM"; */
+"Zn3-uo-wyM.text" = "SL";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "ats-IX-E8u"; */
+"ats-IX-E8u.text" = "0";
 
 /* Class = "UIButton"; normalTitle = "Pay"; ObjectID = "bD4-AH-dcd"; */
 "bD4-AH-dcd.normalTitle" = "Pay";
@@ -104,20 +131,26 @@
 /* Class = "UIBarButtonItem"; title = "Setting"; ObjectID = "bsa-8H-v2D"; */
 "bsa-8H-v2D.title" = "Setting";
 
+/* Class = "UILabel"; text = "TO:"; ObjectID = "cer-IT-IKp"; */
+"cer-IT-IKp.text" = "TO:";
+
 /* Class = "UILabel"; text = "Name:"; ObjectID = "dTK-Di-MnL"; */
 "dTK-Di-MnL.text" = "Name:";
 
 /* Class = "UITextView"; text = "Mô tả...."; ObjectID = "eM1-c2-ulz"; */
 "eM1-c2-ulz.text" = "Mô tả....";
 
-/* Class = "UILabel"; text = "Màn hình thống kê"; ObjectID = "eo2-3K-cpw"; */
-"eo2-3K-cpw.text" = "Màn hình thống kê";
-
 /* Class = "UILabel"; text = "Tên món"; ObjectID = "f07-bl-Rwn"; */
-"f07-bl-Rwn.text" = "Tên món";
+"f07-bl-Rwn.text" = "Food name";
+
+/* Class = "UILabel"; text = "REVENUE STATISTIC"; ObjectID = "gtb-TI-mJ2"; */
+"gtb-TI-mJ2.text" = "REVENUE STATISTIC";
 
 /* Class = "UINavigationItem"; title = "Areas list"; ObjectID = "gwP-B1-lsC"; */
 "gwP-B1-lsC.title" = "Areas list";
+
+/* Class = "UILabel"; text = "TO:"; ObjectID = "hTv-pq-sf6"; */
+"hTv-pq-sf6.text" = "TO:";
 
 /* Class = "UITabBarItem"; title = "Position"; ObjectID = "ijN-zc-xQX"; */
 "ijN-zc-xQX.title" = "Position";
@@ -125,8 +158,14 @@
 /* Class = "UITabBarItem"; title = "Food"; ObjectID = "j5t-cG-OlH"; */
 "j5t-cG-OlH.title" = "Food";
 
+/* Class = "UILabel"; text = "REVENUE STATISTIC"; ObjectID = "kwB-Lc-Db5"; */
+"kwB-Lc-Db5.text" = "REVENUE STATISTIC";
+
 /* Class = "UILabel"; text = "Price:"; ObjectID = "lWk-DS-19i"; */
 "lWk-DS-19i.text" = "Price:";
+
+/* Class = "UIButton"; normalTitle = "TOTAL REVENUE:"; ObjectID = "lbr-KL-mik"; */
+"lbr-KL-mik.normalTitle" = "TOTAL REVENUE:";
 
 /* Class = "UINavigationItem"; title = "Table"; ObjectID = "nIF-Er-P3n"; */
 "nIF-Er-P3n.title" = "Table";
@@ -142,6 +181,12 @@
 
 /* Class = "UILabel"; text = "Kem tràng tiền"; ObjectID = "oKL-Zt-LkC"; */
 "oKL-Zt-LkC.text" = "Kem tràng tiền";
+
+/* Class = "UILabel"; text = "FROM:"; ObjectID = "pRw-we-1T1"; */
+"pRw-we-1T1.text" = "FROM:";
+
+/* Class = "UILabel"; text = "Tên món"; ObjectID = "pzy-IG-RCZ"; */
+"pzy-IG-RCZ.text" = "Food name";
 
 /* Class = "UIButton"; normalTitle = "Add food"; ObjectID = "qNk-Oa-UTZ"; */
 "qNk-Oa-UTZ.normalTitle" = "Add food";
@@ -160,6 +205,12 @@
 
 /* Class = "UISegmentedControl"; tOE-3b-70Z.segmentTitles[1] = "USD"; ObjectID = "tOE-3b-70Z"; */
 "tOE-3b-70Z.segmentTitles[1]" = "USD";
+
+/* Class = "UILabel"; text = "FROM:"; ObjectID = "tpr-6t-ubc"; */
+"tpr-6t-ubc.text" = "FROM:";
+
+/* Class = "UIButton"; normalTitle = "TOTAL REVENUE:"; ObjectID = "uhx-NK-Acm"; */
+"uhx-NK-Acm.normalTitle" = "TOTAL REVENUE:";
 
 /* Class = "UILabel"; text = "Name:"; ObjectID = "ux0-lk-ZiB"; */
 "ux0-lk-ZiB.text" = "Name:";

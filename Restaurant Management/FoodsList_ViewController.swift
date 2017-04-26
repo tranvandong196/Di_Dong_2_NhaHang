@@ -341,7 +341,7 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
             return .delete
         }
         
-        return .none
+        return .none//không cho vuốt để xóa
         
     }
     

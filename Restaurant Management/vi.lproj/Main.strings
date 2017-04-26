@@ -187,3 +187,30 @@
 "j5t-cG-OlH.title" = "Đồ ăn";
 /* Class = "UITabBarItem"; title = "Table"; ObjectID = "QOg-Qj-0ZP"; */
 "QOg-Qj-0ZP.title" = "Bàn";
+/* Class = "UILabel"; text = "FROM:"; ObjectID = "J0F-zd-qOO"; */
+"J0F-zd-qOO.text" = "Từ ngày:";
+/* Class = "UILabel"; text = "FROM:"; ObjectID = "pRw-we-1T1"; */
+"pRw-we-1T1.text" = "Từ ngày:";
+/* Class = "UILabel"; text = "FROM:"; ObjectID = "tpr-6t-ubc"; */
+"tpr-6t-ubc.text" = "Từ ngày:";
+/* Class = "UILabel"; text = "TO:"; ObjectID = "XAO-cP-7qB"; */
+"XAO-cP-7qB.text" = "Đến ngày:";
+/* Class = "UILabel"; text = "TO:"; ObjectID = "cer-IT-IKp"; */
+"cer-IT-IKp.text" = "Đến ngày:";
+/* Class = "UILabel"; text = "TO:"; ObjectID = "hTv-pq-sf6"; */
+"hTv-pq-sf6.text" = "Đến ngày:";
+/* Class = "UIButton"; normalTitle = "TOTAL REVENUE:"; ObjectID = "lbr-KL-mik"; */
+"lbr-KL-mik.normalTitle" = "TỔNG DOANH THU:";
+/* Class = "UIButton"; normalTitle = "TOTAL REVENUE:"; ObjectID = "uhx-NK-Acm"; */
+"uhx-NK-Acm.normalTitle" = "TỔNG DOANH THU:";
+/* Class = "UIButton"; normalTitle = "Revenue statistic"; ObjectID = "3OB-1I-Ufh"; */
+"3OB-1I-Ufh.normalTitle" = "Thống kê doanh thu";
+/* Class = "UILabel"; text = "REVENUE STATISTIC"; ObjectID = "gtb-TI-mJ2"; */
+"gtb-TI-mJ2.text" = "THỐNG KÊ DOANH THU";
+/* Class = "UILabel"; text = "REVENUE STATISTIC"; ObjectID = "kwB-Lc-Db5"; */
+"kwB-Lc-Db5.text" = "THỐNG KÊ DOANH THU";
+
+/* Class = "UIButton"; normalTitle = "Product sold statistic"; ObjectID = "BrY-Fz-AbG"; */
+"BrY-Fz-AbG.normalTitle" = "Thống kê tiêu thụ";
+/* Class = "UILabel"; text = "PRODUCT SOLD STATISTIC"; ObjectID = "PHZ-dh-fec"; */
+"PHZ-dh-fec.text" = "THỐNG KÊ TIÊU THỤ";

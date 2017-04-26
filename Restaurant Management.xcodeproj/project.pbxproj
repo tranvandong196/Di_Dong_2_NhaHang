@@ -31,6 +31,8 @@
 		23752F9B1EA63D28007AB0AD /* Manager_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23752F9A1EA63D28007AB0AD /* Manager_ViewController.swift */; };
 		2394DCED1EA8D8B800F8D595 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394DCEC1EA8D8B800F8D595 /* Food.swift */; };
 		2394DD001EAFE63E00F8D595 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2394DD021EAFE63E00F8D595 /* Main.storyboard */; };
+		239556231EB121F000EEB50B /* Revenue_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239556221EB121F000EEB50B /* Revenue_ViewController.swift */; };
+		23A55EFB1EB136FF00167D70 /* Sold_Statistic_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A55EFA1EB136FF00167D70 /* Sold_Statistic_ViewController.swift */; };
 		23CC7AB61EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CC7AB51EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift */; };
 		23EDCFFF1EA47F8F005D23F0 /* Area_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDCFFC1EA47F8F005D23F0 /* Area_TableViewCell.swift */; };
 		23EDD0001EA47F8F005D23F0 /* Area_TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDCFFD1EA47F8F005D23F0 /* Area_TableViewController.swift */; };
@@ -67,11 +69,13 @@
 		2351E7291EB0BC6C0037B01D /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
 		2351E7331EB0C4400037B01D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2351E7361EB0C4430037B01D /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
-		2360410B1EB110E00052B20F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		23752F9A1EA63D28007AB0AD /* Manager_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager_ViewController.swift; sourceTree = "<group>"; };
 		2394DCEC1EA8D8B800F8D595 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		2394DCEE1EAFCEA500F8D595 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		2394DD031EAFE67A00F8D595 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		239556221EB121F000EEB50B /* Revenue_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Revenue_ViewController.swift; sourceTree = "<group>"; };
+		23A55EFA1EB136FF00167D70 /* Sold_Statistic_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sold_Statistic_ViewController.swift; sourceTree = "<group>"; };
+		23A55EFD1EB14FFE00167D70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		23CC7AB51EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area_Add_Edit_ViewController.swift; sourceTree = "<group>"; };
 		23EDCFFC1EA47F8F005D23F0 /* Area_TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area_TableViewCell.swift; sourceTree = "<group>"; };
 		23EDCFFD1EA47F8F005D23F0 /* Area_TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area_TableViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +213,8 @@
 				23F0AF231EA4A19D006C64F6 /* AreaDetail_ViewController.swift */,
 				23CC7AB51EA5FFAE0023A7F2 /* Area_Add_Edit_ViewController.swift */,
 				2351E7341EB0C4400037B01D /* Localizable.strings */,
+				239556221EB121F000EEB50B /* Revenue_ViewController.swift */,
+				23A55EFA1EB136FF00167D70 /* Sold_Statistic_ViewController.swift */,
 			);
 			name = "Nguyen Dinh Son";
 			sourceTree = "<group>";
@@ -291,8 +297,10 @@
 				23F0AF241EA4A19D006C64F6 /* AreaDetail_ViewController.swift in Sources */,
 				23752F9B1EA63D28007AB0AD /* Manager_ViewController.swift in Sources */,
 				23EDD0001EA47F8F005D23F0 /* Area_TableViewController.swift in Sources */,
+				239556231EB121F000EEB50B /* Revenue_ViewController.swift in Sources */,
 				0A4F84701EA72E8F004AEFCA /* UIExtension.swift in Sources */,
 				0AF2612E1EA4B45800AF41BA /* Bill.swift in Sources */,
+				23A55EFB1EB136FF00167D70 /* Sold_Statistic_ViewController.swift in Sources */,
 				2394DCED1EA8D8B800F8D595 /* Food.swift in Sources */,
 				0AF261191EA49B3F00AF41BA /* SQLite.swift in Sources */,
 				0A7B08861EA13C5C002B068E /* food_TableViewCell.swift in Sources */,
@@ -342,7 +350,7 @@
 			children = (
 				2394DD031EAFE67A00F8D595 /* Base */,
 				2351E7291EB0BC6C0037B01D /* vi */,
-				2360410B1EB110E00052B20F /* en */,
+				23A55EFD1EB14FFE00167D70 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

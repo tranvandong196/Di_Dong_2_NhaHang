@@ -8,11 +8,12 @@
 
 import Foundation
 struct Detail{
-    var MaMon:Int?
+    var MaMon:Int!
+    var TenMon:String!
     var SoLuong:Int!
 }
 class Bill{
-    var MaHD: Int?
+    var MaHD: Int!
     var ThoiGian:Date!
     var SoBan:Int!
     var ThanhTien:Double!
