@@ -97,13 +97,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A4F45351EB0C9AD0019C4A2 /* Nguyen Dinh Vu */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Nguyen Dinh Vu";
-			sourceTree = "<group>";
-		};
 		0A4F84711EA73218004AEFCA /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,7 +165,6 @@
 				0A4F84711EA73218004AEFCA /* Helper */,
 				0AF2612F1EA4B5B400AF41BA /* Class */,
 				23EDCFFB1EA47F6A005D23F0 /* Nguyen Dinh Son */,
-				0A4F45351EB0C9AD0019C4A2 /* Nguyen Dinh Vu */,
 				0A7B08781EA11F7D002B068E /* Assets.xcassets */,
 				2394DD021EAFE63E00F8D595 /* Main.storyboard */,
 				0A7B087A1EA11F7D002B068E /* LaunchScreen.storyboard */,
