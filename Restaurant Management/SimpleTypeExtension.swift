@@ -23,7 +23,7 @@ extension Integer {
         return Number.formatterWithSeparator.string(for: self) ?? ""
     }
 }
-let oldExRate:Double = 22667.99
+var oldExRate:Double = 22667.99
 var ExRate:Double = 22667.99
 extension Double{
     var VNDToUSD:Double{

@@ -33,7 +33,10 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
             print("Lấy loại tiền tệ: \(Currency)")
         }
         
-        
+        if  UserDefaults.standard.value(forKey: "ExRate") != nil{
+            ExRate = UserDefaults.standard.value(forKey: "ExRate") as! Double
+            oldExRate = ExRate
+        }
     }
     // MARK: *** SearchBar
     func searchBarSetup(){
