@@ -117,11 +117,14 @@
             
             if(date1 != "" || date2 != ""){//Đã chọn 1 trong 2 mốc date
                 
+                
                 if (date1 == ""){
                     date1 = date2
                 }
                 else{
-                    date2 = date1
+                    if(date2 == ""){
+                        date2 = date1
+                    }
                 }
                 
                 
@@ -129,6 +132,7 @@
                     let dateTemp = date1
                     date1 = date2
                     date2 = dateTemp
+                    
                 }
                 
                 date2 =  date2! + " 23:59:59"

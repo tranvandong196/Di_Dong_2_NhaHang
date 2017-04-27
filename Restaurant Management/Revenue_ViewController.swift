@@ -115,7 +115,9 @@ class Revenue_ViewController: UIViewController {
                 date1 = date2
             }
             else{
-                date2 = date1
+                if(date2 == ""){
+                    date2 = date1
+                }
             }
             
             
@@ -123,6 +125,7 @@ class Revenue_ViewController: UIViewController {
                 let dateTemp = date1
                 date1 = date2
                 date2 = dateTemp
+                
             }
             
             date2 =  date2! + " 23:59:59"

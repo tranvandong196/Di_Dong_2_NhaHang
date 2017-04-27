@@ -28,6 +28,8 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     @IBOutlet weak var otherInfo: UITextView!
     @IBOutlet weak var payTable_Button: UIButton!
     
+    var total:Double = 0
+    
     @IBAction func Pay_Btn_Action(_ sender: Any) {
         func PAY(){
             
@@ -37,7 +39,7 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
                 Query(sql: strQuery, database: database!)
                 
                 //Cập nhật Thời gian + thành tiền hóa đơn
-                strQuery = "UPDATE HoaDon SET ThoiGian = datetime('now', 'localtime'), ThanhTien = \(priceTotal)" + " WHERE MaHD = \(Tables[indexSelected_tables].MaHD!) AND " + "SoBan = \(Tables[indexSelected_tables].SoBan!)"
+                strQuery = "UPDATE HoaDon SET ThoiGian = datetime('now', 'localtime'), ThanhTien = \(total)" + " WHERE MaHD = \(Tables[indexSelected_tables].MaHD!) AND " + "SoBan = \(Tables[indexSelected_tables].SoBan!)"
                 Query(sql: strQuery, database: database!)
                 Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
             }
@@ -73,7 +75,7 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         foods_TableView.dataSource = self
         
         priceTotal = 0
-        
+        total = 0
         print("\n 💛 Thông tin bàn =========================")
         
         Areas = GetAreasFromSQLite(query: "SELECT * FROM KhuVuc WHERE MaKV = \(Tables[indexSelected_tables].MaKV!)")
@@ -203,6 +205,7 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         cell.priceOfFood.text = p.0.toCurrencyString(Currency: Currency) + p.1
         
         priceTotal += (Double(Foods[indexPath.row].SoLuong!))*p.0
+        total += (Double(Foods[indexPath.row].SoLuong!))*(Foods[indexPath.row].Gia)!
         TotalPrice_Label.text = priceTotal.toCurrencyString(Currency: Currency) + p.1
         return cell
     }
@@ -218,6 +221,7 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
             //Cập nhật Thời gian + thành tiền hóa đơn
             Foods[indexPath.row].SoLuong = Foods[indexPath.row].SoLuong! + 1
              self.priceTotal = 0
+            self.total = 0
             self.foods_TableView.reloadData()
             let strQuery = "UPDATE ChiTietHoaDon SET SoLuong = \(Foods[indexPath.row].SoLuong!) WHERE MaHD = \(Tables[indexSelected_tables].MaHD!) AND " + "MaMon = \(Foods[indexPath.row].MaMon!)"
             
