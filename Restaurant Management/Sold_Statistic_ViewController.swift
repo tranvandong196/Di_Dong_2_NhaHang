@@ -141,7 +141,7 @@
                 
                 foodsDeTail_List.removeAll()
                 
-                let str = "Select * From (SELECT MaMon, Sum(SoLuong) FROM ChiTietHoaDon NATURAL JOIN (SELECT * FROM HoaDon WHERE ThanhTien > 0 And ThanhTien != \"\") Where ThoiGian Between '" + date1! + "' AND '" + date2! + " 24:59:59' GROUP BY MaMon ORDER BY  Sum(SoLuong) DESC) NATURAL JOIN  (Select MaMon, TenMon From MonAn)"
+                let str = "Select * From (SELECT MaMon, Sum(SoLuong) FROM ChiTietHoaDon NATURAL JOIN (SELECT * FROM HoaDon WHERE ThanhTien > 0 And ThanhTien != \"\") Where ThoiGian Between '" + date1! + "' AND '" + date2! + "' GROUP BY MaMon ORDER BY  Sum(SoLuong) DESC) NATURAL JOIN  (Select MaMon, TenMon From MonAn)"
                 
                 print(str)
                 //Lay data
