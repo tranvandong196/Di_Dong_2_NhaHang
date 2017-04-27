@@ -78,9 +78,6 @@ class Area_TableViewController: UITableViewController,UISearchBarDelegate {
         searchBar.returnKeyType = .search
         self.MyTableView.tableHeaderView = searchBar
     }
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        filterTableView(searchText: nil)
-    }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         searchBar.setShowsCancelButton(true, animated: true)
@@ -100,13 +97,15 @@ class Area_TableViewController: UITableViewController,UISearchBarDelegate {
         filterTableView(searchText: searchBar.text)
     }
     func filterTableView(searchText: String?){
-        if searchText != nil{
+        if searchText != nil && searchText! != ""{
             Area_TableViewController.listArea = AreasOriginal.filter({(mod) -> Bool in
                 let x = String(mod.TenKV!).lowercased().contains(searchText!.lowercased()) ? true:searchText!.lowercased().contains(String(mod.TenKV!).lowercased())
                 let y = mod.MoTa!.lowercased().contains(searchText!.lowercased()) ? true:searchText!.lowercased().contains(mod.MoTa!.lowercased())
                 
                 return (x || y)
             })
+        }else{
+            Area_TableViewController.listArea = AreasOriginal
         }
         MyTableView.reloadData()
     }

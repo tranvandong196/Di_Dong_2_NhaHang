@@ -88,7 +88,7 @@ class FoodsList_ViewController: UIViewController, UITableViewDataSource, UITable
         self.FoodsList_TableView.tableHeaderView = searchBar
     }
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        filterTableView(ind: selectedScope,searchText: nil)
+        filterTableView(ind: selectedScope,searchText: searchBar.text!)
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -123,7 +123,7 @@ class FoodsList_ViewController: UIViewController, UITableViewDataSource, UITable
         default:
             print("Search...")
         }
-        if searchText != nil{
+        if searchText != nil && searchText! != ""{
             Foods = Foods.filter({(mod) -> Bool in
                 let x = String(mod.TenMon!).lowercased().contains(searchText!.lowercased()) ? true:searchText!.lowercased().contains(String(mod.TenMon!).lowercased())
                 let y = mod.MoTa!.lowercased().contains(searchText!.lowercased()) ? true:searchText!.lowercased().contains(mod.MoTa!.lowercased())

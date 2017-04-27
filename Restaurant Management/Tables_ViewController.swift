@@ -47,7 +47,7 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
         self.Tables_TableView.tableHeaderView = searchBar
     }
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        filterTableView(ind: selectedScope,searchText: nil)
+        filterTableView(ind: selectedScope,searchText: searchBar.text!)
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -82,7 +82,7 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
             default:
                 print("Search...")
             }
-        if searchText != nil{
+        if searchText != nil && searchText! != ""{
             Tables = Tables.filter({(mod) -> Bool in
                 let x = String(mod.SoBan!).contains(searchText!) ? true:searchText!.lowercased().contains(String(mod.SoBan!))
                 let y = mod.GhiChu!.lowercased().contains(searchText!.lowercased()) ? true:searchText!.lowercased().contains(mod.GhiChu!.lowercased())
