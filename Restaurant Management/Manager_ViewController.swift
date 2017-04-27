@@ -7,18 +7,28 @@
 //
 
 import UIKit
-class Manager_ViewController: UIViewController,UISearchControllerDelegate {
+class Manager_ViewController: UIViewController,UISearchControllerDelegate,UITextFieldDelegate {
 
-    @IBOutlet weak var Manage_tables: UIButton!
-    @IBOutlet weak var Manage_foods: UIButton!
-    @IBOutlet weak var Manage_areas: UIButton!
     @IBOutlet weak var Default_Currency: UIButton!
+    @IBOutlet weak var ChooseLanguage_Button: UIButton!
     
     @IBOutlet weak var Currency_Segment: UISegmentedControl!
     
+    @IBOutlet weak var exchange_rate_TextField: UITextField!
+    
+    @IBOutlet weak var save_Button: UIButton!
+    
     @IBOutlet weak var changeLanguageButton: UIButton!
     
-    @IBAction func didPressChangeLanguageButton(_ sender: Any) {
+    @IBAction func save_Button_Tapped(_ sender: Any) {
+        if exchange_rate_TextField.text! != ""{
+            ExRate = Double(exchange_rate_TextField.text!)!
+        }else{
+            ExRate = oldExRate
+        }
+        exchange_rate_TextField.resignFirstResponder()
+    }
+    @IBAction func ChooseLanguage_Button_Tapped(_ sender: Any) {
         let message = "Change language of this app including its content."
         let sheetCtrl = UIAlertController(title: "Choose language", message: message, preferredStyle: .actionSheet)
         
@@ -59,10 +69,18 @@ class Manager_ViewController: UIViewController,UISearchControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        exchange_rate_TextField.delegate = self
+        exchange_rate_TextField.text = String(ExRate)
+        
+        save_Button.layer.cornerRadius = 4
+        save_Button.setTitle(NSLocalizedString("Save", comment: " "), for: .normal)
+        //save_Button.isEnabled = true
         Currency_Segment.selectedSegmentIndex = Currency == "VNĐ" ? 0:1
-        
-        
+        ChooseLanguage_Button.layer.cornerRadius = 5
+        ChooseLanguage_Button.setTitle(NSLocalizedString("English", comment: " ") , for: .normal)
         Currency_Segment.addTarget(self, action: #selector(CurrencySegmentDidChange(segment:)), for: .valueChanged)
+        addDoneButton2(to: exchange_rate_TextField)
+        
         // Do any additional setup after loading the view.
     }
     
@@ -75,8 +93,24 @@ class Manager_ViewController: UIViewController,UISearchControllerDelegate {
         UserDefaults.standard.setValue(Currency, forKey: "Currency")
         print(Currency)
     }
+    func addDoneButton2(to control: UITextField){
+        let toolbar = UIToolbar()
+        //let leftBarButtonName = NSLocalizedString("Cancel", comment: " ")
+        let rightBarButtonName = NSLocalizedString("Done", comment: " ")
 
-    /*
+        toolbar.items = [
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
+            UIBarButtonItem(title: rightBarButtonName, style: .done, target: control,
+                            action: #selector(UITextField.resignFirstResponder))
+        ]
+        
+        toolbar.sizeToFit()
+        control.inputAccessoryView = toolbar
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+/*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

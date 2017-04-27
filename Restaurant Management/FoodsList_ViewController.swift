@@ -8,19 +8,21 @@
 
 import UIKit
 
-class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDataSource, UITableViewDelegate{
+class FoodsList_ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,UISearchBarDelegate{
 
     
     public static var Add_New_Item = false;
     var Edit_Mode = true //0=hide_nav_btn    1=edit
-    var listFoodTypes:[String]! = ["Tất cả", "Đồ ăn", "Đồ uống"]
     let localURL = DocURL().appendingPathComponent(Parent_dir_data + "/\(Sub_folder_data[1])")
-    
-    @IBOutlet weak var pickerFoodType: UIPickerView!
+    enum selectedScope:Int{
+        case all = 0
+        case food = 1
+        case drink = 2
+    }
     @IBOutlet weak var FoodsList_TableView: UITableView!
     @IBOutlet weak var Edit_Btn_Outlet: UIBarButtonItem!
     @IBOutlet weak var Add_Btn_Outlet: UIBarButtonItem!
- 
+    var FoodsOriginal = [Food]()
     @IBAction func Add_Btn_Action(_ sender: Any) {
         FoodsList_ViewController.Add_New_Item = true;
         
@@ -42,14 +44,12 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
         reloadDbData()
         FoodsList_TableView.reloadData()
         
-        
+        FoodsOriginal = Foods
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        pickerFoodType.delegate=self
-        pickerFoodType.dataSource=self
+        searchBarSetup()
         
         
         FoodsList_TableView.delegate = self
@@ -60,6 +60,7 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
         FoodsList_ViewController.Add_New_Item = false;
         
         if(Edit_Mode == false){
+            self.navigationItem.leftBarButtonItem = nil
             self.navigationItem.rightBarButtonItem?.isEnabled = false
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
             Add_Btn_Outlet.isEnabled = false
@@ -75,13 +76,65 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
         }
 
     }
-    
-    func reloadDbData(){
-        let defaults = UserDefaults.standard
-        if (defaults.string(forKey: "pickerViewRow") != nil)
-        {
-            pickerFoodType.selectRow(0, inComponent: 0, animated: true)
+    // MARK: *** SearchBar
+    func searchBarSetup(){
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: (UIScreen.main.bounds.width), height: 34))
+        searchBar.showsScopeBar = true
+        //searchBar.scopeButtonTitles = ["Tất cả","Đã đặt","Chưa đặt"]
+        searchBar.scopeButtonTitles = [NSLocalizedString("All", comment: " "),NSLocalizedString("Food", comment: " "),NSLocalizedString("Drink", comment: " ")]
+        searchBar.delegate = self
+        searchBar.returnKeyType = .search
+        searchBar.selectedScopeButtonIndex = 0
+        self.FoodsList_TableView.tableHeaderView = searchBar
+    }
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterTableView(ind: selectedScope,searchText: nil)
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        searchBar.setShowsCancelButton(false, animated: true)
+        filterTableView(ind: searchBar.selectedScopeButtonIndex, searchText: nil)
+        searchBar.text = nil
+        searchBar.resignFirstResponder()
+        //self.searchDisplayController?.setActive(false, animated: true)
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterTableView(ind: searchBar.selectedScopeButtonIndex,searchText: searchBar.text)
+    }
+    func filterTableView(ind:Int,searchText: String?){
+        switch ind {
+        case selectedScope.all.rawValue:
+            Foods = FoodsOriginal
+        case selectedScope.food.rawValue:
+            Foods = FoodsOriginal.filter({(mod) -> Bool in
+                return mod.Loai == selectedScope.food.rawValue
+            })
+        case selectedScope.drink.rawValue:
+            Foods = FoodsOriginal.filter({(mod) -> Bool in
+                return mod.Loai == selectedScope.drink.rawValue
+            })
+        default:
+            print("Search...")
         }
+        if searchText != nil{
+            Foods = Foods.filter({(mod) -> Bool in
+                let x = String(mod.TenMon!).lowercased().contains(searchText!.lowercased()) ? true:searchText!.lowercased().contains(String(mod.TenMon!).lowercased())
+                let y = mod.MoTa!.lowercased().contains(searchText!.lowercased()) ? true:searchText!.lowercased().contains(mod.MoTa!.lowercased())
+                
+                return (x || y)
+            })
+        }
+        FoodsList_TableView.reloadData()
+    }
+
+    func reloadDbData(){
         
         Foods.removeAll()
         
@@ -152,85 +205,7 @@ class FoodsList_ViewController: UIViewController,  UIPickerViewDelegate, UIPicke
         return 1
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return listFoodTypes.count
-    }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return listFoodTypes[row]
-    }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let str:String
-        if row == 0{//select all
-            str = "SELECT * FROM MonAn"
-        }
-        else{
-            str = "SELECT * FROM MonAn WHERE Loai = " + "\(row)"
-        }
-        
-        //sqlite
-        database = Connect_DB_SQLite(dbName: DBName, type: DBType)
-        
-        
-        Foods.removeAll()
-        
-        
-        
-        //Lay data
-        let statement:OpaquePointer = Select(query: str, database: database!)
-        
-        // Do du lieu vao mang
-        while sqlite3_step(statement) == SQLITE_ROW {
-            // Do ra tung cot tuong ung voi no
-            let food = Food()
-            
-            if(sqlite3_column_text(statement, 0) != nil)
-            {
-                food.MaMon = Int(sqlite3_column_int(statement, 0))
-                if(sqlite3_column_text(statement, 1) != nil)
-                {
-                    food.TenMon = String(cString: sqlite3_column_text(statement, 1))
-                }
-                if(sqlite3_column_text(statement, 2) != nil)
-                {
-                    food.Gia = Double(sqlite3_column_double(statement, 2))
-                }
-                if(sqlite3_column_text(statement, 3) != nil)
-                {
-                    food.HinhAnh = String(cString: sqlite3_column_text(statement, 3))
-                    
-                }
-                if(sqlite3_column_text(statement, 3) != nil)
-                {
-                    food.HinhAnh = String(cString: sqlite3_column_text(statement, 3))
-                }
-                if(sqlite3_column_text(statement, 4) != nil)
-                {
-                    food.MoTa = String(cString: sqlite3_column_text(statement, 4))
-                }
-                if(sqlite3_column_text(statement, 5) != nil)
-                {
-                    food.Loai = Int(sqlite3_column_int(statement, 5))
-                }
-                if(sqlite3_column_text(statement, 6) != nil)
-                {
-                    food.Icon = String(cString: sqlite3_column_text(statement, 6))
-                }
-            }
-            
-            Foods.append(food)
-            
-            //let rowData = sqlite3_column_text(statement, 1)
-            // Neu cot nao co dau tieng viet thi can phai lam them buoc nay
-            //let fieldValue = String(cString: rowData!)
-            // Them Vao mang da co
-            //mang.append(fieldValue!)
-        }
-        sqlite3_finalize(statement)
-        sqlite3_close(database)
-        FoodsList_TableView.reloadData()
-
-    }
-
+    
     // MARK: *** Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {

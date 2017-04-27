@@ -7,13 +7,16 @@
 //
 import UIKit
 
-class Area_TableViewController: UITableViewController {
+class Area_TableViewController: UITableViewController,UISearchBarDelegate {
     
     public static var listArea = [Area]()
     public static var Add_New_Item = false;
     public static var Edit_Item_Index = -1;
     let localURL = DocURL().appendingPathComponent(Parent_dir_data + "/\(Sub_folder_data[2])")
     var Edit_Mode = true //0=hide_nav_btn    1=edit
+    
+    var AreasOriginal = [Area]()
+    
     @IBOutlet var MyTableView: UITableView!
     @IBOutlet weak var Edit_Btn_Outlet: UIBarButtonItem!
     @IBOutlet weak var Add_Btn_Outlet: UIBarButtonItem!
@@ -48,6 +51,7 @@ class Area_TableViewController: UITableViewController {
         Area_TableViewController.Edit_Item_Index = -1;
         
         if(Edit_Mode == false){
+            self.navigationItem.leftBarButtonItem = nil
             self.navigationItem.rightBarButtonItem?.isEnabled = false
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
             Add_Btn_Outlet.isEnabled = false
@@ -55,6 +59,7 @@ class Area_TableViewController: UITableViewController {
             
         }
         else{
+            
             self.navigationItem.rightBarButtonItem?.isEnabled = true
             self.navigationItem.rightBarButtonItem?.tintColor = self.view.tintColor
             
@@ -62,9 +67,49 @@ class Area_TableViewController: UITableViewController {
             Add_Btn_Outlet.tintColor = view.tintColor
         }
         reloadDbData()
+        AreasOriginal = Area_TableViewController.listArea
+        searchBarSetup()
         
     }
-    
+    // MARK: *** SearchBar
+    func searchBarSetup(){
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: (UIScreen.main.bounds.width), height: 34))
+        searchBar.delegate = self
+        searchBar.returnKeyType = .search
+        self.MyTableView.tableHeaderView = searchBar
+    }
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterTableView(searchText: nil)
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        searchBar.setShowsCancelButton(false, animated: true)
+        filterTableView(searchText: nil)
+        searchBar.text = nil
+        searchBar.resignFirstResponder()
+        //self.searchDisplayController?.setActive(false, animated: true)
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterTableView(searchText: searchBar.text)
+    }
+    func filterTableView(searchText: String?){
+        if searchText != nil{
+            Area_TableViewController.listArea = AreasOriginal.filter({(mod) -> Bool in
+                let x = String(mod.TenKV!).lowercased().contains(searchText!.lowercased()) ? true:searchText!.lowercased().contains(String(mod.TenKV!).lowercased())
+                let y = mod.MoTa!.lowercased().contains(searchText!.lowercased()) ? true:searchText!.lowercased().contains(mod.MoTa!.lowercased())
+                
+                return (x || y)
+            })
+        }
+        MyTableView.reloadData()
+    }
     //Load data from dbs
     func reloadDbData()
     {

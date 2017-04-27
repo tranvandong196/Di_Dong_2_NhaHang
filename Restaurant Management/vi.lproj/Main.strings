@@ -32,8 +32,8 @@
 /* Class = "UILabel"; text = "Tên hình:"; ObjectID = "CfY-hB-wGG"; */
 "CfY-hB-wGG.text" = "Tên hình:";
 
-/* Class = "UINavigationItem"; title = "Chi tiết món"; ObjectID = "DQF-Z7-hRQ"; */
-"DQF-Z7-hRQ.title" = "Chi tiết món";
+/* Class = "UINavigationItem"; title = "Chi tiết khu vực"; ObjectID = "DQF-Z7-hRQ"; */
+"DQF-Z7-hRQ.title" = "Chi tiết";
 
 /* Class = "UINavigationItem"; title = "Danh sách món"; ObjectID = "Dbc-hI-U8G"; */
 "Dbc-hI-U8G.title" = "Danh sách món";

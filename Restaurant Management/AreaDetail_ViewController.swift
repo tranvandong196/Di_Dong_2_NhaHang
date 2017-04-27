@@ -10,17 +10,21 @@ import UIKit
 
 class AreaDetail_ViewController: UIViewController {
 
+    @IBOutlet weak var AreaName_Label: UILabel!
+    @IBOutlet weak var AreaPicture_ImageView: UIImageView!
+    
+    @IBOutlet weak var AreaDes_TextView: UITextView!
+     let localURL = DocURL().appendingPathComponent(Parent_dir_data + "/\(Sub_folder_data[2])")
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if Areas.count == 1{
+            AreaName_Label.text = Areas[0].TenKV!
+            AreaPicture_ImageView.image = UIImage(contentsOfFile: localURL.appendingPathComponent(Areas[0].HinhAnh!).path) ?? #imageLiteral(resourceName: "Image-Not-Found-img")
+            AreaDes_TextView.text = Areas[0].MoTa!
+        }
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 
     /*

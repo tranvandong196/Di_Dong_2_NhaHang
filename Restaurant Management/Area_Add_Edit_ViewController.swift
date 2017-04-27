@@ -64,8 +64,6 @@ class Area_Add_Edit_ViewController: UIViewController,UIPickerViewDelegate,UIText
             Image_Area.image = newImage ?? UIImage(contentsOfFile: localURL.appendingPathComponent(Area_TableViewController.listArea[Area_TableViewController.Edit_Item_Index].HinhAnh).path) ?? #imageLiteral(resourceName: "Add_image_icon")
             
         }
-        
-        
     }
     
     override func viewDidLoad() {
@@ -74,6 +72,9 @@ class Area_Add_Edit_ViewController: UIViewController,UIPickerViewDelegate,UIText
         
         // Do any additional setup after loading the view.
         loadToEdit(Area_TableViewController.Add_New_Item)
+        addDoneButton(edt_Description)
+        KeyboardShow(self,open_Func:  #selector(self.keyboardWillShow(_:)))
+        KeyboardHide(self, open_Func: #selector(self.keyboardWillHide(_:)))
     }
     
     override func didReceiveMemoryWarning() {
@@ -97,38 +98,25 @@ class Area_Add_Edit_ViewController: UIViewController,UIPickerViewDelegate,UIText
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let alertController = self.AlertPickerImage(pickerController: pickerController)
         
-        let cameraAction = UIAlertAction(title: "Camera", style: .default){
-            (ACTION) in pickerController.sourceType = .camera
-            self.present(pickerController, animated: true, completion: nil)
-        }
-        let photosLibraryAction = UIAlertAction(title: "Photo Library", style: .default){
-            (ACTION) in pickerController.sourceType = .photoLibrary
-            self.present(pickerController, animated: true, completion: nil)
-        }
-        
-        let deletePhoto = UIAlertAction(title: "Delete", style: .default){ (ACTION) in
-            let alert = UIAlertController(title: "❌", message: "Delete this photo?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "YES", style: .default){_ in
+        let deletePhoto = UIAlertAction(title: NSLocalizedString("Delete", comment: " "), style: .default){ (ACTION) in
+            let alert = UIAlertController(title: "❌", message: NSLocalizedString("Delete this photo?", comment: " ") , preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: " "), style: .default){_ in
                 _ = self.Image_Area.image = #imageLiteral(resourceName: "Add_image_icon")
                 _ = self.newImage = nil
                 _ = self.isDeleting = true
             })
-            alert.addAction(UIAlertAction(title: "NO", style: .default){_ in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: " "), style: .default){_ in
                 
             })
             self.present(alert, animated: true, completion: nil)
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
-        
-        alertController.addAction(cameraAction)
-        alertController.addAction(photosLibraryAction)
         if Image_Area.image != #imageLiteral(resourceName: "Add_image_icon"){
             alertController.addAction(deletePhoto)
         }
-        alertController.addAction(cancelAction)
+        alertController.addAction(GetCancelAction())
         
         present(alertController, animated: true, completion: nil)
     }
@@ -146,6 +134,42 @@ class Area_Add_Edit_ViewController: UIViewController,UIPickerViewDelegate,UIText
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    // MARK: *** Keyboard Setup
+    //  Thêm Action khi ẩn/hiện bàn phím
+    func keyboardWillShow(_ notification: NSNotification){
+        //Reserve fouth in code vs ViewController
+        var keyboardHeight:Float = 0
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            keyboardHeight = Float(keyboardSize.height)
+        }
+        
+        self.view.frame.origin.y = 0
+        if edt_Name.isEditing{
+            view.frame.origin.y -= 50
+        }else if edt_Description.isEditable{
+            view.frame.origin.y -= CGFloat(keyboardHeight)
+        }
+    }
+    func keyboardWillHide(_ notification: NSNotification){
+        self.view.frame.origin.y = 0
+    }
+    //Hide or switch next keyboard when user Presses "return" key (for textField)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    //Hide keyboard when user touches outside keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
+    
     /*
      // MARK: - Navigation
      

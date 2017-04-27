@@ -123,38 +123,26 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let alertController = self.AlertPickerImage(pickerController: pickerController)
         
-        let cameraAction = UIAlertAction(title: "Camera", style: .default){
-            (ACTION) in pickerController.sourceType = .camera
-            self.present(pickerController, animated: true, completion: nil)
-        }
-        let photosLibraryAction = UIAlertAction(title: "Photo Library", style: .default){
-            (ACTION) in pickerController.sourceType = .photoLibrary
-            self.present(pickerController, animated: true, completion: nil)
-        }
-        
-        let deletePhoto = UIAlertAction(title: "Delete", style: .default){ (ACTION) in
-            let alert = UIAlertController(title: "❌", message: "Delete this photo?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "YES", style: .default){_ in
+        let deletePhoto = UIAlertAction(title: NSLocalizedString("Delete", comment: " "), style: .default){ (ACTION) in
+            let alert = UIAlertController(title: "❌", message: NSLocalizedString("Delete this photo?", comment: " ") , preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: " "), style: .default){_ in
                 _ = self.imageFood_ImageView.image = #imageLiteral(resourceName: "Add_image_icon")
                 _ = self.newImage = nil
                 _ = self.isDeletingImg = true
             })
-            alert.addAction(UIAlertAction(title: "NO", style: .default){_ in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: " "), style: .default){_ in
                 
             })
             self.present(alert, animated: true, completion: nil)
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
         
-        alertController.addAction(cameraAction)
-        alertController.addAction(photosLibraryAction)
         if imageFood_ImageView.image != #imageLiteral(resourceName: "Add_image_icon"){
             alertController.addAction(deletePhoto)
         }
-        alertController.addAction(cancelAction)
+        alertController.addAction(GetCancelAction())
         
         present(alertController, animated: true, completion: nil)
     }
@@ -163,38 +151,25 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let alertController = self.AlertPickerImage(pickerController: pickerController)
         
-        let cameraAction = UIAlertAction(title: "Camera", style: .default){
-            (ACTION) in pickerController.sourceType = .camera
-            self.present(pickerController, animated: true, completion: nil)
-        }
-        let photosLibraryAction = UIAlertAction(title: "Photo Library", style: .default){
-            (ACTION) in pickerController.sourceType = .photoLibrary
-            self.present(pickerController, animated: true, completion: nil)
-        }
-        
-        let deletePhoto = UIAlertAction(title: "Delete", style: .default){ (ACTION) in
-            let alert = UIAlertController(title: "❌", message: "Delete this Icon?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "YES", style: .default){_ in
+        let deletePhoto = UIAlertAction(title: NSLocalizedString("Delete", comment: " "), style: .default){ (ACTION) in
+            let alert = UIAlertController(title: "❌", message: NSLocalizedString("Delete this photo?", comment: " ") , preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: " "), style: .default){_ in
                 _ = self.iconFood_ImageView.image = #imageLiteral(resourceName: "add-icon")
                 _ = self.newIcon = nil
                 _ = self.isDeletingIco = true
             })
-            alert.addAction(UIAlertAction(title: "NO", style: .default){_ in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: " "), style: .default){_ in
                 
             })
             self.present(alert, animated: true, completion: nil)
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
-        
-        alertController.addAction(cameraAction)
-        alertController.addAction(photosLibraryAction)
         if iconFood_ImageView.image != #imageLiteral(resourceName: "add-icon") {
             alertController.addAction(deletePhoto)
         }
-        alertController.addAction(cancelAction)
+        alertController.addAction(GetCancelAction())
         
         present(alertController, animated: true, completion: nil)
     }

@@ -11,14 +11,14 @@ var indexSelected_tables = 0
 var Currency:String = "USD"
 
 class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate {
+
+    var tablesOrigial = [Table]()
+    let localURL = DocURL().appendingPathComponent(Parent_dir_data + "/\(Sub_folder_data[0])")
     enum selectedScope:Int{
         case all = 0
         case set = 1
         case notset = 2
     }
-    var tablesOrigial = [Table]()
-    let localURL = DocURL().appendingPathComponent(Parent_dir_data + "/\(Sub_folder_data[0])")
-    
     @IBOutlet var Tables_TableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,31 +119,10 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
         pushToVC(withIdentifier: "Manager_VC")
     }
     @IBAction func addNewTable_Button(_ sender: Any) {
-        
-        let alert = UIAlertController(title: NSLocalizedString("Add new table", comment: " "), message: nil, preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "OK", style: .default){_ in
-            _ = self.addNewTable()
-            _ = Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
-            _ = self.Tables_TableView.reloadData()
-            _ = self.tablesOrigial = Tables
-            
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive){_ in
-            
-        }
-        let setupNow = UIAlertAction(title: NSLocalizedString("Add new table and book", comment: " "), style: .default){_ in
-            _ = indexSelected_tables = self.addNewTable() - 1
-            _ = Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
-            _ = self.tablesOrigial = Tables
-            _ = self.pushToVC(withIdentifier: "table_detail")
-            
-        }
-        alert.addAction(yesAction)
-        alert.addAction(setupNow)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
-        
-        //moveToVC(withIdentifier: "table_detail", animated: true)
+        indexSelected_tables = self.addNewTable() - 1
+        Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
+        self.tablesOrigial = Tables
+        self.pushToVC(withIdentifier: "table_detail")
     }
     // MARK: *** Table view data source
     
@@ -170,9 +149,6 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
             }
         }
 
-        
-        
-        
         let  NotSetupColor  = UIColor.init(red: 0/255.0, green: 128.0/255.0, blue: 1.0, alpha: 0.5)
         let didSetupColor = UIColor.init(red: 1.0, green: 128.0/255.0, blue: 0, alpha: 0.7)
         cell.backgroundColor = Tables[indexPath.row].TinhTrang == 1 ? didSetupColor:NotSetupColor
@@ -185,6 +161,7 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
         //let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
         //selectedCell.contentView.backgroundColor = UIColor.red
     }
+    /* //Thêm tuỳ chọn khi vuốt cell trừ phải qua trái
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let Title = Tables[indexPath.row].TinhTrang  == 1 ? "Thanh toán":"Đặt bàn"
@@ -205,11 +182,16 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
         delAction.backgroundColor = UIColor.red
         return [payAction,delAction]
     }
-    
+    */
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            //No action!
+            let soban:Int = Tables[indexPath.row].SoBan!
+            if edit(query: "DELETE FROM BanAn WHERE SoBan = \(soban)"){
+                Tables.remove(at: indexPath.row)
+                print("Đã xoá bàn số \(soban)")
+                self.Tables_TableView.reloadData()
+            }
             
         }
     }
@@ -223,7 +205,7 @@ class Tables_ViewController: UIViewController,UITableViewDelegate,UITableViewDat
                 break;
             }
         }
-        let T = Table(SoBan: num, TinhTrang: 0, HinhAnh: "", GhiChu: "", MaKV: 1, MaHD: num)
+        let T = Table(SoBan: num, TinhTrang: 0, HinhAnh: "", GhiChu: "", MaKV: 1, MaHD: -1)
         addRow(T)
         return num
     }

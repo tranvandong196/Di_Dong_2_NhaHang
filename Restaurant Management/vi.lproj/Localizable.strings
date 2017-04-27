@@ -12,5 +12,22 @@
 "Booked" = "Đã đặt";
 "Not booked" = "Chưa đặt";
 "Table num" = "Bàn số ";
-"Add new table and book" = "Thêm và đặt ngay";
-"Add new table" = "Thêm bàn mới";
+"Pay for this table?" = "Thanh toán bàn này?";
+
+"Delete" = "Xoá";
+"Yes" = "Đồng ý";
+"Cancel" = "Huỷ";
+
+
+
+"Camera" = "Máy ảnh";
+"Photo Library" = "Thư viện ảnh";
+"Delete this photo?" = "Xoá ảnh này?";
+
+"English" = "Tiếng Việt";
+"Save" = "Lưu";
+"Done" = "Xong";
+
+"All" = "Tất cả";
+"Food" = "Đồ ăn";
+"Drink" = "Thức uống";

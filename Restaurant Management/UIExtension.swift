@@ -164,4 +164,35 @@ extension NSData{
         }
     }
 }
+extension UIViewController{
+    func AlertPickerImage(pickerController: UIImagePickerController, cancelAction: Bool = false)->UIAlertController{
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let cameraAction = UIAlertAction(title: NSLocalizedString("Camera", comment: " "), style: .default){
+            (ACTION) in pickerController.sourceType = .camera
+            self.present(pickerController, animated: true, completion: nil)
+        }
+        let photosLibraryAction = UIAlertAction(title: NSLocalizedString("Photo Library", comment: " "), style: .default){
+            (ACTION) in pickerController.sourceType = .photoLibrary
+            self.present(pickerController, animated: true, completion: nil)
+        }
+        
+        
+        
+        
+        alertController.addAction(cameraAction)
+        alertController.addAction(photosLibraryAction)
+        if cancelAction{
+            let CancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: " "), style: .destructive, handler: nil)
+            alertController.addAction(CancelAction)
+        }
+        
+        
+        return alertController
+        
+    }
+    func GetCancelAction()->UIAlertAction{
+        return UIAlertAction(title: NSLocalizedString("Cancel", comment: " "), style: .destructive, handler: nil)
+    }
+}
 

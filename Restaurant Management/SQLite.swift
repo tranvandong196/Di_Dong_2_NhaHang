@@ -208,7 +208,7 @@ func GetKindsFromSQLite(query: String) -> [Kind]{
 }
 func addRow(_ T: Table){
     database = Connect_DB_SQLite(dbName: DBName, type: DBType)
-    let query = "INSERT INTO BanAn VALUES(\(T.SoBan!),\(T.TinhTrang!),'\(T.HinhAnh!)','\(T.GhiChu!)',\(T.MaKV!),\(T.MaHD!))"
+    let query = "INSERT INTO BanAn VALUES(\(T.SoBan!),\(T.TinhTrang!),'\(T.HinhAnh!)','\(T.GhiChu!)',\(T.MaKV!),null)"
     print(query)
     if edit(query: query){
         print("Thêm bàn số \(T.SoBan!)")

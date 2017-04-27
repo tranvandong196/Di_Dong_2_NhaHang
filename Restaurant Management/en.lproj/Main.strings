@@ -50,8 +50,8 @@
 /* Class = "UINavigationItem"; title = "Chi tiết món"; ObjectID = "DQF-Z7-hRQ"; */
 "DQF-Z7-hRQ.title" = "Food detail";
 
-/* Class = "UINavigationItem"; title = "Foods list"; ObjectID = "Dbc-hI-U8G"; */
-"Dbc-hI-U8G.title" = "Foods list";
+/* Class = "UINavigationItem"; title = "Food list"; ObjectID = "Dbc-hI-U8G"; */
+"Dbc-hI-U8G.title" = "Food list";
 
 /* Class = "UITableViewCell"; accessibilityLabel = "fsdfsfsf"; ObjectID = "EG1-TM-aKc"; */
 "EG1-TM-aKc.accessibilityLabel" = "fsdfsfsf";
@@ -146,8 +146,8 @@
 /* Class = "UILabel"; text = "REVENUE STATISTIC"; ObjectID = "gtb-TI-mJ2"; */
 "gtb-TI-mJ2.text" = "REVENUE STATISTIC";
 
-/* Class = "UINavigationItem"; title = "Areas list"; ObjectID = "gwP-B1-lsC"; */
-"gwP-B1-lsC.title" = "Areas list";
+/* Class = "UINavigationItem"; title = "Area list"; ObjectID = "gwP-B1-lsC"; */
+"gwP-B1-lsC.title" = "Area list";
 
 /* Class = "UILabel"; text = "TO:"; ObjectID = "hTv-pq-sf6"; */
 "hTv-pq-sf6.text" = "TO:";
@@ -221,8 +221,8 @@
 /* Class = "UILabel"; text = "Type"; ObjectID = "wOg-dd-XHi"; */
 "wOg-dd-XHi.text" = "Type";
 
-/* Class = "UINavigationItem"; title = "List"; ObjectID = "xeC-8X-Gme"; */
-"xeC-8X-Gme.title" = "List";
+/* Class = "UINavigationItem"; title = "Table List"; ObjectID = "xeC-8X-Gme"; */
+"xeC-8X-Gme.title" = "Table List";
 
 /* Class = "UILabel"; text = "Description:"; ObjectID = "zUc-K0-jfh"; */
 "zUc-K0-jfh.text" = "Description:";

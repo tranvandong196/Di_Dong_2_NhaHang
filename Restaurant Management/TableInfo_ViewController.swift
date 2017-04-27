@@ -29,17 +29,33 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
     @IBOutlet weak var payTable_Button: UIButton!
     
     @IBAction func Pay_Btn_Action(_ sender: Any) {
-        if(Tables[indexSelected_tables].MaHD != nil){
-            //Loại bỏ hóa đơn của bàn + cập nhật tình trạng
-            var strQuery = "UPDATE BanAn SET MaHD = null, TinhTrang = 0 WHERE SoBan = \(Tables[indexSelected_tables].SoBan!)"
-            Query(sql: strQuery, database: database!)
+        func PAY(){
             
-            //Cập nhật Thời gian + thành tiền hóa đơn
-            strQuery = "UPDATE HoaDon SET ThoiGian = datetime('now', 'localtime'), ThanhTien = \(priceTotal)" + " WHERE MaHD = \(Tables[indexSelected_tables].MaHD!) AND " + "SoBan = \(Tables[indexSelected_tables].SoBan!)"
-            Query(sql: strQuery, database: database!)
-            Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
+            if(Tables[indexSelected_tables].MaHD != nil){
+                //Loại bỏ hóa đơn của bàn + cập nhật tình trạng
+                var strQuery = "UPDATE BanAn SET MaHD = null, TinhTrang = 0 WHERE SoBan = \(Tables[indexSelected_tables].SoBan!)"
+                Query(sql: strQuery, database: database!)
+                
+                //Cập nhật Thời gian + thành tiền hóa đơn
+                strQuery = "UPDATE HoaDon SET ThoiGian = datetime('now', 'localtime'), ThanhTien = \(priceTotal)" + " WHERE MaHD = \(Tables[indexSelected_tables].MaHD!) AND " + "SoBan = \(Tables[indexSelected_tables].SoBan!)"
+                Query(sql: strQuery, database: database!)
+                Tables = GetTablesFromSQLite(query: "SELECT * FROM BanAn")
+            }
+        }
+        
+        let alert = UIAlertController(title: NSLocalizedString("Pay for this table?", comment: " "), message: nil, preferredStyle: .actionSheet)
+        let yesAction = UIAlertAction(title: "Yes", style: .default){_ in
+            PAY()
             self.navigationController?.popViewController(animated: true)
         }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive){_ in
+            
+        }
+        
+        alert.addAction(yesAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+
         
     }
     // MARK: *** Display view
@@ -86,6 +102,7 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         otherInfo.text = Tables[indexSelected_tables].GhiChu
         title_navi.title = NSLocalizedString("Table num", comment: " ") + "\(Tables[indexSelected_tables].SoBan!)"
         PositionTable_Button.setTitle(Areas[0].TenKV, for: .normal)
+        payTable_Button.isEnabled = Foods.count == 0 ? false:true
     }
     // MARK: *** IBAction
     
@@ -93,20 +110,13 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let alertController = self.AlertPickerImage(pickerController: pickerController)
+        //let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let cameraAction = UIAlertAction(title: "Camera", style: .default){
-            (ACTION) in pickerController.sourceType = .camera
-            self.present(pickerController, animated: true, completion: nil)
-        }
-        let photosLibraryAction = UIAlertAction(title: "Photo Library", style: .default){
-            (ACTION) in pickerController.sourceType = .photoLibrary
-            self.present(pickerController, animated: true, completion: nil)
-        }
         
-        let deletePhoto = UIAlertAction(title: "Delete", style: .default){ (ACTION) in
-            let alert = UIAlertController(title: "❌", message: "Delete this photo?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "YES", style: .default){_ in
+        let deletePhoto = UIAlertAction(title: NSLocalizedString("Delete", comment: " "), style: .default){ (ACTION) in
+            let alert = UIAlertController(title: "❌", message: NSLocalizedString("Delete this photo?", comment: " ") , preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: " "), style: .default){_ in
                 _ = self.picture_UIImageView.image = #imageLiteral(resourceName: "Add_image_icon")
                 _ = self.newImage = nil
                 if Tables[indexSelected_tables].HinhAnh != ""{
@@ -114,20 +124,17 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
                     Tables[indexSelected_tables].HinhAnh = ""
                 }
             })
-            alert.addAction(UIAlertAction(title: "NO", style: .default){_ in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: " "), style: .default){_ in
                 
             })
             self.present(alert, animated: true, completion: nil)
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
-        
-        alertController.addAction(cameraAction)
-        alertController.addAction(photosLibraryAction)
+
         if picture_UIImageView.image != #imageLiteral(resourceName: "Add_image_icon"){
             alertController.addAction(deletePhoto)
         }
-        alertController.addAction(cancelAction)
+        alertController.addAction(GetCancelAction())
         
         present(alertController, animated: true, completion: nil)
     }
@@ -204,22 +211,61 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         indexSelected_foods = indexPath.row
         //performSegue(withIdentifier: "seque_foodDetal", sender: nil)
     }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     //Thêm tuỳ chọn khi vuốt cell trừ phải qua trái
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        if editingStyle == .delete {
+        let Increase = UITableViewRowAction(style: .normal, title: "➕") { (rowAction, indexPath) in
+            //Cập nhật Thời gian + thành tiền hóa đơn
+            Foods[indexPath.row].SoLuong = Foods[indexPath.row].SoLuong! + 1
+             self.priceTotal = 0
+            self.foods_TableView.reloadData()
+            let strQuery = "UPDATE ChiTietHoaDon SET SoLuong = \(Foods[indexPath.row].SoLuong!) WHERE MaHD = \(Tables[indexSelected_tables].MaHD!) AND " + "MaMon = \(Foods[indexPath.row].MaMon!)"
+            
+            edit(query: strQuery)
+            
+        }
+        let Decrease = UITableViewRowAction(style: .normal, title: "➖") { (rowAction, indexPath) in
+            //Cập nhật Thời gian + thành tiền hóa đơn
+            Foods[indexPath.row].SoLuong = Foods[indexPath.row].SoLuong! - 1
+            self.priceTotal = 0
+            self.foods_TableView.reloadData()
+            let strQuery = "UPDATE ChiTietHoaDon SET SoLuong = \(Foods[indexPath.row].SoLuong!) WHERE MaHD = \(Tables[indexSelected_tables].MaHD!) AND " + "MaMon = \(Foods[indexPath.row].MaMon!)"
+            
+            edit(query: strQuery)
+        }
+        let delAction = UITableViewRowAction(style: .normal, title: NSLocalizedString("Delete", comment: " ")) { (rowAction, indexPath) in
+            
             // Xoá món trong hoá đơn của bàn này
             let tenmon:String = Foods[indexPath.row].TenMon
             if edit(query: "DELETE FROM ChiTietHoaDon WHERE MaMon = \(Foods[indexPath.row].MaMon!)"){
                 Foods.remove(at: indexPath.row)
                 print("Đã huỷ < \(tenmon) > từ bàn số \(Tables[indexSelected_tables].SoBan!)")
-                priceTotal = 0
+                self.priceTotal = 0
                 self.foods_TableView.reloadData()
             }
-            
-            
         }
-    }
+        Increase.backgroundColor = UIColor.init(red: 15.0/255.0, green: 125.0/255.0, blue: 15.0/255.0, alpha: 1.0)
+        delAction.backgroundColor = UIColor.red
+        if Foods[indexPath.row].SoLuong! > 1{
+            return [Increase,Decrease,delAction]
+        }else{
+            return [Increase,delAction]
+        }
+}
+
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        
+//        if editingStyle == .delete {
+//            // Xoá món trong hoá đơn của bàn này
+//            let tenmon:String = Foods[indexPath.row].TenMon
+//            if edit(query: "DELETE FROM ChiTietHoaDon WHERE MaMon = \(Foods[indexPath.row].MaMon!)"){
+//                Foods.remove(at: indexPath.row)
+//                print("Đã huỷ < \(tenmon) > từ bàn số \(Tables[indexSelected_tables].SoBan!)")
+//                priceTotal = 0
+//                self.foods_TableView.reloadData()
+//            }
+//        }
+//    }
     
     // MARK: *** Function
     func saveToDB(){

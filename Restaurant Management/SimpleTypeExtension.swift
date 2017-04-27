@@ -23,12 +23,14 @@ extension Integer {
         return Number.formatterWithSeparator.string(for: self) ?? ""
     }
 }
+let oldExRate:Double = 22667.99
+var ExRate:Double = 22667.99
 extension Double{
     var VNDToUSD:Double{
-        return (self/22667.99).roundTo(places: 1)
+        return (self/ExRate).roundTo(places: 1)
     }
     var USDToVND:Double{
-        return (self*22667.99/1000).roundTo(places: 0)*1000
+        return (self*ExRate/1000).roundTo(places: 0)*1000
     }
     /// Rounds the double to decimal places value
     func roundTo(places:Int) -> Double {
