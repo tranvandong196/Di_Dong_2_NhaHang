@@ -29,11 +29,22 @@ class Area_Add_Edit_ViewController: UIViewController,UIPickerViewDelegate,UIText
         area.TenKV = edt_Name.text
         area.MoTa = edt_Description.text
         let newImageName = newImage == nil ? nil:area.TenKV! + newImageFormat!
-        area.HinhAnh = newImageName
-        if area.HinhAnh == nil{
-            area.HinhAnh = ""
+        
+        
+        if newImageName == nil{
+            if (Area_TableViewController.listArea[Area_TableViewController.Edit_Item_Index].HinhAnh == nil)
+            {
+                area.HinhAnh = ""
+            }
+            else{
+                area.HinhAnh = Area_TableViewController.listArea[Area_TableViewController.Edit_Item_Index].HinhAnh
+            }
         }
-        if area.HinhAnh! != ""{
+        else{
+            area.HinhAnh = newImageName
+        }
+        
+        if (area.HinhAnh! != "" && newImageName != nil){
             FileManager.default.remoremoveItem(at: localURL, withName: area.HinhAnh!)
         }
         newImage?.saveImageToDir(at: localURL, name: newImageName!)

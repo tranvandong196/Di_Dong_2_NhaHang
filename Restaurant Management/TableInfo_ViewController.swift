@@ -103,7 +103,12 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         self.picture_UIImageView.image = newImage ?? UIImage(contentsOfFile: localURLtable.appendingPathComponent(Tables[indexSelected_tables].HinhAnh).path) ?? #imageLiteral(resourceName: "Add_image_icon")
         otherInfo.text = Tables[indexSelected_tables].GhiChu
         title_navi.title = NSLocalizedString("Table num", comment: " ") + "\(Tables[indexSelected_tables].SoBan!)"
-        PositionTable_Button.setTitle(Areas[0].TenKV, for: .normal)
+        if (Areas.count != 0){
+            PositionTable_Button.setTitle(Areas[0].TenKV, for: .normal)
+        }
+        else{
+            PositionTable_Button.setTitle("", for: .normal)
+        }
         payTable_Button.isEnabled = Foods.count == 0 ? false:true
     }
     // MARK: *** IBAction
