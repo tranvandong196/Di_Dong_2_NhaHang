@@ -26,7 +26,7 @@ class Manager_ViewController: UIViewController,UISearchControllerDelegate,UIText
         }else{
             ExRate = oldExRate
         }
-        UserDefaults.standard.setValue(Currency, forKey: "ExRate")
+        UserDefaults.standard.setValue(ExRate, forKey: "ExRate")
         exchange_rate_TextField.resignFirstResponder()
     }
     @IBAction func ChooseLanguage_Button_Tapped(_ sender: Any) {
