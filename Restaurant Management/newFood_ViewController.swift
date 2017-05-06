@@ -75,7 +75,7 @@ class newFood_ViewController: UIViewController,UIPickerViewDataSource,UIPickerVi
             let p = Foods[indexSelected_foods].Gia!.getCurrencyValue(Currency: Currency)
             priceOfFood_TextField.text = String(p.0)
             NameKindFood_Label.text = " " + kind_tmp[0].Ten
-            
+            otherInfo.text = Foods[indexSelected_foods].MoTa!
             let number: Int = Kinds.count
             for i in 0..<number{
                 if kind_tmp[0].Ma == Kinds[i].Ma {

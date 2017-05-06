@@ -195,6 +195,14 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
             Tables[indexSelected_tables].TinhTrang = 1
             updateRow(Tables[indexSelected_tables])
         }
+        priceTotal = 0
+        total = 0
+        for i in 0..<Foods.count{
+            let p = (Foods[i].Gia)!.getCurrencyValue(Currency: Currency)
+            total += (Double(Foods[i].SoLuong!))*(Foods[i].Gia)!
+            priceTotal += (Double(Foods[i].SoLuong!))*p.0
+        }
+        TotalPrice_Label.text = priceTotal.toCurrencyString(Currency: Currency) + (Currency == "VNĐ" ? "đ":"$")
         return Foods.count
     }
     
@@ -208,10 +216,6 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         cell.food_ImageView.image = UIImage(contentsOfFile: ImgURL.path)  ?? #imageLiteral(resourceName: "Image-Not-Found-icon")
         let p = (Foods[indexPath.row].Gia)!.getCurrencyValue(Currency: Currency)
         cell.priceOfFood.text = p.0.toCurrencyString(Currency: Currency) + p.1
-        
-        priceTotal += (Double(Foods[indexPath.row].SoLuong!))*p.0
-        total += (Double(Foods[indexPath.row].SoLuong!))*(Foods[indexPath.row].Gia)!
-        TotalPrice_Label.text = priceTotal.toCurrencyString(Currency: Currency) + p.1
         return cell
     }
     
@@ -225,8 +229,6 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         let Increase = UITableViewRowAction(style: .normal, title: "➕") { (rowAction, indexPath) in
             //Cập nhật Thời gian + thành tiền hóa đơn
             Foods[indexPath.row].SoLuong = Foods[indexPath.row].SoLuong! + 1
-             self.priceTotal = 0
-            self.total = 0
             self.foods_TableView.reloadData()
             let strQuery = "UPDATE ChiTietHoaDon SET SoLuong = \(Foods[indexPath.row].SoLuong!) WHERE MaHD = \(Tables[indexSelected_tables].MaHD!) AND " + "MaMon = \(Foods[indexPath.row].MaMon!)"
             
@@ -236,7 +238,6 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
         let Decrease = UITableViewRowAction(style: .normal, title: "➖") { (rowAction, indexPath) in
             //Cập nhật Thời gian + thành tiền hóa đơn
             Foods[indexPath.row].SoLuong = Foods[indexPath.row].SoLuong! - 1
-            self.priceTotal = 0
             self.foods_TableView.reloadData()
             let strQuery = "UPDATE ChiTietHoaDon SET SoLuong = \(Foods[indexPath.row].SoLuong!) WHERE MaHD = \(Tables[indexSelected_tables].MaHD!) AND " + "MaMon = \(Foods[indexPath.row].MaMon!)"
             
@@ -249,7 +250,6 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
             if edit(query: "DELETE FROM ChiTietHoaDon WHERE MaMon = \(Foods[indexPath.row].MaMon!)"){
                 Foods.remove(at: indexPath.row)
                 print("Đã huỷ < \(tenmon) > từ bàn số \(Tables[indexSelected_tables].SoBan!)")
-                self.priceTotal = 0
                 self.foods_TableView.reloadData()
             }
         }
@@ -270,7 +270,6 @@ class TableInfo_ViewController: UIViewController,UITableViewDataSource,UITableVi
 //            if edit(query: "DELETE FROM ChiTietHoaDon WHERE MaMon = \(Foods[indexPath.row].MaMon!)"){
 //                Foods.remove(at: indexPath.row)
 //                print("Đã huỷ < \(tenmon) > từ bàn số \(Tables[indexSelected_tables].SoBan!)")
-//                priceTotal = 0
 //                self.foods_TableView.reloadData()
 //            }
 //        }
