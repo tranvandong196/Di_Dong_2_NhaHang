@@ -60,7 +60,6 @@ class FoodsList_ViewController: UIViewController, UITableViewDataSource, UITable
         FoodsList_ViewController.Add_New_Item = false;
         
         if(Edit_Mode == false){
-            self.navigationItem.leftBarButtonItem = nil
             self.navigationItem.rightBarButtonItem?.isEnabled = false
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
             Add_Btn_Outlet.isEnabled = false

@@ -51,7 +51,6 @@ class Area_TableViewController: UITableViewController,UISearchBarDelegate {
         Area_TableViewController.Edit_Item_Index = -1;
         
         if(Edit_Mode == false){
-            self.navigationItem.leftBarButtonItem = nil
             self.navigationItem.rightBarButtonItem?.isEnabled = false
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
             Add_Btn_Outlet.isEnabled = false

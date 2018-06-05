@@ -54,14 +54,14 @@ class Area_Add_Edit_ViewController: UIViewController,UIPickerViewDelegate,UIText
         if(isAddNew)
         {
             //add
-            let str = "INSERT INTO KhuVuc VALUES (null,'" + area.TenKV + "','" + area.MoTa + "','" + area.HinhAnh + "')"
+            let str = "INSERT INTO KhuVuc VALUES (null,'\(area.TenKV!)','\(area.MoTa!)','\(area.HinhAnh!)')"
             Query(sql: str, database: database!)
             
         }
         else
         {
             //update
-            let str = "UPDATE KhuVuc SET TenKV = '" + area.TenKV + "', MoTa = '" + area.MoTa + "', HinhAnh = '" + area.HinhAnh + "' WHERE MaKV = " + "\(area.MaKV!)";
+            let str = "UPDATE KhuVuc SET TenKV = '\(area.TenKV!)', MoTa = '\(area.MoTa!)', HinhAnh = '\(area.HinhAnh!)' WHERE MaKV = \(area.MaKV!)";
             Query(sql: str, database: database!)
         }
         self.navigationController?.popViewController(animated: true)
